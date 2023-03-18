@@ -1,7 +1,9 @@
 # ignore everything
 /*
 !/.config/
+!/.local/
 /.config/*
+/.local/*
 !/.config/xmonad/
 
 # files to include
