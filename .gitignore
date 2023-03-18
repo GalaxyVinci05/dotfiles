@@ -32,6 +32,6 @@
 !/.config/rofi/
 !/.config/xmonad/
 !/.icons/
-!/.local/share/fonts/
+#!/.local/share/fonts/
 !/.local/share/themes/
-# !/.local/share/icons/
+!/.local/share/icons/
