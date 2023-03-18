@@ -1,0 +1,10 @@
+configuration {
+  modi: "window,drun,ssh,combi";
+  font: "JetBrainsMono 12";
+  combi-modi: "window,drun,ssh";
+  show-icons: true;
+  cycle: false;
+  hover-select: true;
+  sidebar-mode: true;
+}
+@theme "Arc-Dark"

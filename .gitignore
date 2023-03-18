@@ -1,6 +1,8 @@
 # ignore everything
-/**
-/.config/**
+/*
+!/.config/
+/.config/*
+!/.config/xmonad/
 
 # files to include
 !/.gitignore
