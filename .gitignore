@@ -30,3 +30,5 @@
 !/.config/xmonad/
 !/.icons/
 !/.local/share/fonts/
+!/.local/share/themes/
+!/.local/share/icons/
