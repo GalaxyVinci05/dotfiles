@@ -8,5 +8,9 @@
 !/.xinitrc
 
 # directories to include
-!/.config/
+!/.config/dunst/
+!/.config/picom/
+!/.config/polybar/
+!/.config/rofi/
+!/.config/xmonad/
 !/.icons/
