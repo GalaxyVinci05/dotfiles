@@ -9,9 +9,6 @@
 /.local/*
 !/.local/share/
 /.local/share/*
-!/.local/share/fonts
-!/.local/share/themes
-!/.local/share/icons
 
 # files to include
 !/.gitignore
@@ -29,4 +26,6 @@
 !/.config/rofi/
 !/.config/xmonad/
 !/.icons/
-!/.local/share/fonts/
+!/.local/share/fonts
+!/.local/share/themes
+!/.local/share/icons
