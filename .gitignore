@@ -8,6 +8,7 @@
 !/.xinitrc
 
 # directories to include
+!/.github/
 !/.config/dunst/
 !/.config/picom/
 !/.config/polybar/
