@@ -4,6 +4,7 @@
 # include specific directories
 !/.config/
 !/.local/
+/.local/*
 !/.local/share/
 !/Pictures/
 
