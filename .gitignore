@@ -1,20 +1,15 @@
+
 # ignore everything
 /*
-
-# include specific directories
 !/.config/
 !/.local/
-/.local/*
-!/.local/share/
-/.local/share/*
-!/.local/share/fonts/
 !/Pictures/
-
-# ignore specific directories
 /Pictures/*
 /.config/*
 /.local/*
-# /.local/share/*
+!/.local/share/
+/.local/share/*
+!/.local/share/fonts
 
 # files to include
 !/.gitignore
@@ -32,6 +27,4 @@
 !/.config/rofi/
 !/.config/xmonad/
 !/.icons/
-#!/.local/share/fonts/
-!/.local/share/themes/
-!/.local/share/icons/
+!/.local/share/fonts/
