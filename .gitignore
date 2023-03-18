@@ -7,7 +7,7 @@
 /.config/*
 /.local/*
 !/.local/share/
-/.local/share/
+/.local/share/*
 !/.local/share/fonts
 
 # files to include
