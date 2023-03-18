@@ -1,0 +1,12 @@
+# ignore everything
+/*
+
+# files to include
+!/.gitignore
+!/.bash_profile
+!/.bashrc
+!/.xinitrc
+
+# directories to include
+!/.config/
+!/.icons/
