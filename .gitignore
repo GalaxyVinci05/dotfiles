@@ -4,7 +4,6 @@
 !/.local/
 /.config/*
 /.local/*
-!/.config/xmonad/
 
 # files to include
 !/.gitignore
