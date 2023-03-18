@@ -2,6 +2,8 @@
 /*
 !/.config/
 !/.local/
+!/Pictures/
+/Pictures/*
 /.config/*
 /.local/*
 
@@ -12,6 +14,7 @@
 !/.xinitrc
 
 # directories to include
+!/Pictures/backgrounds/
 !/.github/
 !/.config/
 !/.config/dunst/
