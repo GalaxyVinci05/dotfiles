@@ -6,13 +6,15 @@
 !/.local/
 /.local/*
 !/.local/share/
+/.local/share/*
+!/.local/share/fonts/
 !/Pictures/
 
 # ignore specific directories
 /Pictures/*
 /.config/*
 /.local/*
-/.local/share/*
+# /.local/share/*
 
 # files to include
 !/.gitignore
@@ -32,4 +34,4 @@
 !/.icons/
 !/.local/share/fonts/
 !/.local/share/themes/
-!/.local/share/icons/
+# !/.local/share/icons/
