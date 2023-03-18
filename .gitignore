@@ -1,5 +1,6 @@
 # ignore everything
-/*
+/**
+/.config/**
 
 # files to include
 !/.gitignore
@@ -9,6 +10,7 @@
 
 # directories to include
 !/.github/
+!/.config/
 !/.config/dunst/
 !/.config/picom/
 !/.config/polybar/
