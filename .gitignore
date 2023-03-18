@@ -1,14 +1,17 @@
 # ignore everything
 /*
+
+# ignore specific directories
 !/.config/
 !/.local/
+!/.local/share/
 !/Pictures/
+
+# include specific directories
 /Pictures/*
 /.config/*
 /.local/*
-!/.local/share/
 /.local/share/*
-!/.local/share/fonts
 
 # files to include
 !/.gitignore
