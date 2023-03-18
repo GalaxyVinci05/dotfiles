@@ -10,6 +10,8 @@
 !/.local/share/
 /.local/share/*
 !/.local/share/fonts
+!/.local/share/themes
+!/.local/share/icons
 
 # files to include
 !/.gitignore
