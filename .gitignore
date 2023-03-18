@@ -1,13 +1,13 @@
 # ignore everything
 /*
 
-# ignore specific directories
+# include specific directories
 !/.config/
 !/.local/
 !/.local/share/
 !/Pictures/
 
-# include specific directories
+# ignore specific directories
 /Pictures/*
 /.config/*
 /.local/*
