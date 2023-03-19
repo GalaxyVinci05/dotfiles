@@ -253,7 +253,7 @@ myLogHook = return ()
 -- By default, do nothing.
 myStartupHook = do
 	-- spawnOnce "xmobar -x 0 /home/galaxy/.config/xmobar/xmobarrc &"
-	spawnOnce "polybar -r &"
+	spawnOnce "polybar -r main & polybar -r secondary &"
 	spawnOnce "picom -f &"
 	spawnOnce "feh --bg-scale Pictures/backgrounds/purple_background.jpg &"
 	spawnOnce "dunst &"
