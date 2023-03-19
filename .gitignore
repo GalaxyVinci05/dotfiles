@@ -1,13 +1,14 @@
 # some mess that I ain't touching ever again
 /*
 !/.config/
+!/.config/alacritty/
 !/.local/
 !/Pictures/
 /Pictures/*
 /.config/*
-!/.config/alacritty/
-/.config/alacritty/*
-!/.config/alacritty/themes
+#!/.config/alacritty/
+#/.config/alacritty/*
+#!/.config/alacritty/themes
 /.local/*
 !/.local/share/
 /.local/share/*
