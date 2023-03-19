@@ -255,7 +255,7 @@ myStartupHook = do
 	-- spawnOnce "xmobar -x 0 /home/galaxy/.config/xmobar/xmobarrc &"
 	spawnOnce "polybar -r &"
 	spawnOnce "picom -f &"
-	spawnOnce "feh --bg-scale Pictures/backgrounds/purple_background.jpg &"
+	spawnOnce "feh --bg-scale Pictures/backgrounds/abyss_circle.jpg &"
 	spawnOnce "dunst &"
 	spawnOnce "xinput set-prop 'AlpsPS/2 ALPS GlidePoint' 'libinput Tapping Enabled' 1 &"
 	spawnOnce "xinput set-prop 'AlpsPS/2 ALPS GlidePoint' 'libinput Natural Scrolling Enabled' 1 &"

@@ -22,6 +22,7 @@
 !/Pictures/backgrounds/
 !/.github/
 !/.config/
+!/.config/alacritty/
 !/.config/dunst/
 !/.config/picom/
 !/.config/polybar/
