@@ -1,6 +1,6 @@
 #export DESKTOP_SESSION=plasma
 #exec startplasma-x11
 
-setxkbmap it
+~/.local/bin/set_layout.sh &
 #picom -f &
 exec xmonad

@@ -13,6 +13,7 @@ import XMonad.Hooks.EwmhDesktops
 import XMonad.Util.SpawnOnce
 import XMonad.Util.Run
 import XMonad.Layout.Spacing
+import XMonad.Layout.Fullscreen
 import Data.Monoid
 import System.Exit
 
@@ -268,7 +269,7 @@ myStartupHook = do
 -- main = xmonad $ docks defaults
 main = do
   xmproc <- spawnPipe "xmobar -x 0 /home/galaxy/.config/xmobar/xmobarrc"
-  xmonad $ ewmh $ docks defaults
+  xmonad $ ewmh $ fullscreenSupport $ docks defaults
 
 -- A structure containing your configuration settings, overriding
 -- fields in the default config. Any you don't override, will
