@@ -14,6 +14,7 @@ import XMonad.Util.SpawnOnce
 import XMonad.Util.Run
 import XMonad.Layout.Spacing
 import XMonad.Layout.Fullscreen
+import XMonad.Layout.NoBorders
 import Data.Monoid
 import System.Exit
 
@@ -189,7 +190,7 @@ myMouseBindings (XConfig {XMonad.modMask = modm}) = M.fromList $
 -- The available layouts.  Note that each layout is separated by |||,
 -- which denotes layout choice.
 --
-myLayout = avoidStruts (tiled ||| Mirror tiled ||| Full)
+myLayout = avoidStruts (tiled ||| Mirror tiled ||| noBorders Full)
   where
      -- default tiling algorithm partitions the screen into two panes
      tiled   = Tall nmaster delta ratio
@@ -254,7 +255,7 @@ myLogHook = return ()
 myStartupHook = do
 	-- spawnOnce "xmobar -x 0 /home/galaxy/.config/xmobar/xmobarrc &"
 	spawnOnce "polybar -r main & polybar -r secondary &"
-	spawnOnce "picom -f &"
+	spawnOnce "picom -f --xrender-sync --xrender-sync-fence &"
 	spawnOnce "feh --bg-scale Pictures/backgrounds/abyss_circle.jpg &"
 	spawnOnce "dunst &"
 	spawnOnce "xinput set-prop 'AlpsPS/2 ALPS GlidePoint' 'libinput Tapping Enabled' 1 &"
