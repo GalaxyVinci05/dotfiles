@@ -5,6 +5,9 @@
 !/Pictures/
 /Pictures/*
 /.config/*
+!/.config/alacritty/
+/.config/alacritty/*
+!/.config/alacritty/themes
 /.local/*
 !/.local/share/
 /.local/share/*
