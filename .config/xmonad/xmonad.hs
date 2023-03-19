@@ -69,7 +69,7 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     [ ((modm .|. shiftMask, xK_Return), spawn $ XMonad.terminal conf)
 
     -- launch dmenu
-    , ((modm,               xK_s     ), spawn "rofi -show drun")
+    , ((modm,               xK_s     ), spawn "~/.config/rofi/launchers/type-1/launcher.sh")
 
     -- launch gmrun
     , ((modm .|. shiftMask, xK_d     ), spawn "gmrun")
