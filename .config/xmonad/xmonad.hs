@@ -254,8 +254,8 @@ myLogHook = return ()
 myStartupHook = do
 	-- spawnOnce "xmobar -x 0 /home/galaxy/.config/xmobar/xmobarrc &"
 	spawnOnce "polybar -r &"
-	spawnOnce "picom -f &"
-	spawnOnce "feh --bg-scale Pictures/backgrounds/abyss_circle.jpg &"
+	spawnOnce "picom -f --xrender-sync --xrender-sync-fence &"
+	spawnOnce "feh --bg-scale Pictures/backgrounds/circuit.png &"
 	spawnOnce "dunst &"
 	spawnOnce "xinput set-prop 'AlpsPS/2 ALPS GlidePoint' 'libinput Tapping Enabled' 1 &"
 	spawnOnce "xinput set-prop 'AlpsPS/2 ALPS GlidePoint' 'libinput Natural Scrolling Enabled' 1 &"
