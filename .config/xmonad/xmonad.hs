@@ -15,6 +15,7 @@ import XMonad.Util.Run
 import XMonad.Layout.Spacing
 import XMonad.Layout.Fullscreen
 import XMonad.Layout.NoBorders
+import XMonad.Layout.ToggleLayouts
 import Data.Monoid
 import System.Exit
 
@@ -292,7 +293,7 @@ defaults = ewmh def {
         mouseBindings      = myMouseBindings,
 
       -- hooks, layouts
-        layoutHook         = spacingWithEdge 8 $ myLayout,
+        layoutHook         = toggleLayouts (noBorders Full) $ smartBorders $ spacingWithEdge 8 $ myLayout,
         manageHook         = myManageHook,
         handleEventHook    = myEventHook,
         logHook            = myLogHook,
