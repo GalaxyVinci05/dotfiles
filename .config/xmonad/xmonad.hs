@@ -258,8 +258,6 @@ myStartupHook = do
 	spawnOnce "picom -f --xrender-sync --xrender-sync-fence &"
 	spawnOnce "feh --bg-scale Pictures/backgrounds/circuit.png &"
 	spawnOnce "dunst &"
-	spawnOnce "xinput set-prop 'AlpsPS/2 ALPS GlidePoint' 'libinput Tapping Enabled' 1 &"
-	spawnOnce "xinput set-prop 'AlpsPS/2 ALPS GlidePoint' 'libinput Natural Scrolling Enabled' 1 &"
 	spawnOnce "xsetroot -cursor_name left_ptr &"
 
 ------------------------------------------------------------------------
@@ -270,7 +268,7 @@ myStartupHook = do
 -- main = xmonad $ docks defaults
 main = do
   xmproc <- spawnPipe "xmobar -x 0 /home/galaxy/.config/xmobar/xmobarrc"
-  xmonad $ ewmh $ fullscreenSupport $ docks defaults
+  xmonad $ ewmhFullscreen . ewmh $ docks defaults
 
 -- A structure containing your configuration settings, overriding
 -- fields in the default config. Any you don't override, will
@@ -278,7 +276,7 @@ main = do
 --
 -- No need to modify this.
 --
-defaults = def {
+defaults = ewmh def {
       -- simple stuff
         terminal           = myTerminal,
         focusFollowsMouse  = myFocusFollowsMouse,
