@@ -255,7 +255,7 @@ myLogHook = return ()
 myStartupHook = do
 	-- spawnOnce "xmobar -x 0 /home/galaxy/.config/xmobar/xmobarrc &"
 	spawnOnce "polybar -r &"
-	spawnOnce "picom -f --xrender-sync --xrender-sync-fence &"
+	spawnOnce "picom -f &"
 	spawnOnce "feh --bg-scale Pictures/backgrounds/circuit.png &"
 	spawnOnce "dunst &"
 	spawnOnce "xsetroot -cursor_name left_ptr &"
