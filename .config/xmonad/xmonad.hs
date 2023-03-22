@@ -12,9 +12,11 @@ import XMonad.Hooks.ManageDocks
 import XMonad.Hooks.EwmhDesktops
 import XMonad.Util.SpawnOnce
 import XMonad.Util.Run
+import XMonad.Util.EZConfig
 import XMonad.Layout.Spacing
 import XMonad.Layout.Fullscreen
 import XMonad.Layout.NoBorders
+import Graphics.X11.ExtraTypes.XF86
 import Data.Monoid
 import System.Exit
 
@@ -139,6 +141,11 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
 
     -- Run xmessage with a summary of the default keybindings (useful for beginners)
     , ((modm .|. shiftMask, xK_slash ), spawn ("echo \"" ++ help ++ "\" | xmessage -file -"))
+
+    -- Additional keys
+
+    -- Raise volume
+    -- , (("<xF86XK_AudioRaiseVolume>"), spawn "pamixer -i 5")
     ]
     ++
 
@@ -266,9 +273,14 @@ myStartupHook = do
 -- Run xmonad with the settings you specify. No need to modify this.
 --
 -- main = xmonad $ docks defaults
-main = do
-  xmproc <- spawnPipe "xmobar -x 0 /home/galaxy/.config/xmobar/xmobarrc"
-  xmonad $ ewmhFullscreen . ewmh $ docks defaults
+main = xmonad $ ewmhFullscreen . ewmh $ docks defaults
+  `additionalKeysP`
+  [ ("<XF86AudioRaiseVolume>", spawn "pamixer -u && pamixer -i 5")
+  , ("<XF86AudioLowerVolume>", spawn "pamixer -u && pamixer -d 5")
+  , ("<XF86AudioMute>"	     , spawn "pamixer -t")
+  , ("<XF86MonBrightnessUp>" , spawn "brightnessctl s 10%+")
+  , ("<XF86MonBrightnessDown>", spawn "brightnessctl s 10%-")
+  ]
 
 -- A structure containing your configuration settings, overriding
 -- fields in the default config. Any you don't override, will
