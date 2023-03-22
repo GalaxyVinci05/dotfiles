@@ -223,6 +223,7 @@ myLayout = avoidStruts (tiled ||| Mirror tiled ||| noBorders Full)
 myManageHook = composeAll
     [ className =? "MPlayer"        --> doFloat
     , className =? "Gimp"           --> doFloat
+    , className =? "discord"	    --> doFloat
     , resource  =? "desktop_window" --> doIgnore
     , resource  =? "kdesktop"       --> doIgnore ]
 
