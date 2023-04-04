@@ -4,6 +4,7 @@ pcall(require, "luarocks.loader")
 
 -- Standard awesome library
 local gears = require("gears")
+local cairo = require("lgi").cairo
 local awful = require("awful")
 require("awful.autofocus")
 -- Widget and layout library
@@ -46,6 +47,8 @@ end
 -- {{{ Variable definitions
 -- Themes define colours, icons, font and wallpapers.
 beautiful.init("/home/galaxy/.config/awesome/theme.lua")
+
+beautiful.get().wallpaper = "/home/galaxy/Pictures/backgrounds/circuit.png"
 
 -- This is used later as the default terminal and editor to run.
 terminal = "alacritty"
@@ -114,6 +117,30 @@ mykeyboardlayout = awful.widget.keyboardlayout()
 -- {{{ Wibar
 -- Create a textclock widget
 mytextclock = wibox.widget.textclock()
+
+local widget_fg = "#a6adc8"
+local widget_bg = "#444444"
+
+container_clock_widget = {
+	{
+		{
+			{
+				widget = mytextclock,
+			},
+			left = 6,
+			right = 6,
+			top = 0,
+			bottom = 0,
+			widget = wibox.container.margin,
+		},
+		shape = gears.shape.rounded_bar,
+		fg = "#6fb5f2",
+		bg = "#192a38",
+		widget = wibox.container.background,
+	},
+	spacing = 5,
+	layout = wibox.layout.fixed.horizontal,
+}
 
 -- Create a wibox for each screen and add it
 local taglist_buttons = gears.table.join(
@@ -194,34 +221,89 @@ awful.screen.connect_for_each_screen(function(s)
         buttons = taglist_buttons
     }
 
+    local new_shape = function(cr, width, height)
+        gears.shape.hexagon(cr, width, height, 2)
+    end
+
+    local layoutbox = wibox.widget({
+		s.mylayoutbox,
+		top = 3,
+		bottom = 4,
+		left = 5,
+		right = 10,
+		widget = wibox.container.margin,
+	})
+
     -- Create a tasklist widget
     s.mytasklist = awful.widget.tasklist {
         screen  = s,
         filter  = awful.widget.tasklist.filter.currenttags,
-        buttons = tasklist_buttons
+        buttons = tasklist_buttons,
+        style   = {
+            shape_border_width = 2,
+            shape_border_color = '#04bd92',
+            shape  = gears.shape.rounded_bar,
+        },
+        layout  = {
+            spacing = 10,
+            spacing_widget = {
+                {
+                    forced_width = 5,
+                    forced_height = 5,
+                    shape        = gears.shape.hexagon,
+                    widget       = wibox.widget.separator
+                },
+                valign = 'center',
+                halign = 'center',
+                widget = wibox.container.place,
+            },
+            layout  = wibox.layout.flex.horizontal
+        },
     }
 
     -- Create the wibox
-    s.mywibox = awful.wibar({ position = "top", screen = s })
+    s.mywibox = awful.wibar({
+        position = "top",
+        screen = s,
+        height = 25,
+        shape = gears.shape.rounded_bar,
+        border_width = 2,
+        border_color = "#8803fc",
+    })
 
     -- Add widgets to the wibox
     s.mywibox:setup {
-        layout = wibox.layout.align.horizontal,
-        { -- Left widgets
-            layout = wibox.layout.fixed.horizontal,
-            mylauncher,
-            shishwidget,
-            s.mytaglist,
-            s.mypromptbox,
-        },
-        s.mytasklist, -- Middle widget
-        { -- Right widgets
-            layout = wibox.layout.fixed.horizontal,
-            mykeyboardlayout,
-            wibox.widget.systray(),
-            mytextclock,
-            s.mylayoutbox,
-        },
+        {
+			layout = wibox.layout.align.horizontal,
+			{ -- Left widgets
+				-- container_arch_widget,
+				layout = wibox.layout.fixed.horizontal,
+				mylauncher,
+				s.mytaglist,
+				s.mypromptbox,
+			},
+			{ -- Middle widgets
+				layout = wibox.layout.fixed.horizontal,
+				s.mytasklist,
+			},
+			{ -- Right widgets
+				layout = wibox.layout.fixed.horizontal,
+				--container_temp_widget,
+				-- container_storage_widget,
+				--container_cpu_widget,
+				--container_mem_widget,
+				-- container_brightness_widget,
+				-- container_vol_widget,
+				-- container_battery_widget,
+                mykeyboardlayout,
+                wibox.widget.systray(),
+				container_clock_widget,
+				layoutbox,
+			},
+		},
+		top = 0, -- don't forget to increase wibar height
+		color = "#80aa80",
+		widget = wibox.container.margin,
     }
 end)
 -- }}}

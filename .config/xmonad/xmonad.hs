@@ -304,7 +304,7 @@ defaults = ewmh def {
         mouseBindings      = myMouseBindings,
 
       -- hooks, layouts
-        layoutHook         = spacingWithEdge 8 $ myLayout,
+        layoutHook         = spacingWithEdge 6 $ myLayout,
         manageHook         = myManageHook,
         handleEventHook    = myEventHook,
         logHook            = myLogHook,
