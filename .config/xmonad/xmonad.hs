@@ -308,7 +308,7 @@ defaults = ewmh def {
         mouseBindings      = myMouseBindings,
 
       -- hooks, layouts
-        layoutHook         = toggleLayouts (noBorders Full) $ smartBorders $ spacingWithEdge 8 $ myLayout,
+        layoutHook         = toggleLayouts (noBorders Full) $ smartBorders $ spacingWithEdge 6 $ myLayout,
         manageHook         = myManageHook,
         handleEventHook    = myEventHook,
         logHook            = myLogHook,
