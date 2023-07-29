@@ -60,7 +60,7 @@ myWorkspaces    = ["1","2","3","4","5","6","7","8","9"]
 
 -- Border colors for unfocused and focused windows, respectively.
 --
-myNormalBorderColor  = "#ffffff"
+myNormalBorderColor  = "#000000"
 myFocusedBorderColor = "#8803fc"
 
 ------------------------------------------------------------------------
@@ -144,8 +144,8 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
 
     -- Additional keys
 
-    -- Raise volume
-    -- , (("<xF86XK_AudioRaiseVolume>"), spawn "pamixer -i 5")
+    -- Screenshot tool
+    , ((modm .|. shiftMask, xK_s	), spawn "flameshot gui")
     ]
     ++
 
@@ -263,7 +263,7 @@ myStartupHook = do
 	-- spawnOnce "xmobar -x 0 /home/galaxy/.config/xmobar/xmobarrc &"
 	spawnOnce "polybar -r &"
 	spawnOnce "picom -f &"
-	spawnOnce "feh --bg-scale Pictures/backgrounds/circuit.png &"
+	spawnOnce "feh --bg-scale Pictures/backgrounds/cyberpunk_2.jpg &"
 	spawnOnce "dunst &"
 	spawnOnce "xsetroot -cursor_name left_ptr &"
 

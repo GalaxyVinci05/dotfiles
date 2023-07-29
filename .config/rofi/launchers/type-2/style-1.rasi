@@ -33,9 +33,9 @@ window {
     margin:                      0px;
     padding:                     0px;
     border:                      0px solid;
-    border-radius:               12px;
+    border-radius:               8px;
     border-color:                @selected;
-    background-color:            @background;
+    background-color:            transparent;
     cursor:                      "default";
 }
 
@@ -55,14 +55,14 @@ mainbox {
 /*****----- Inputbar -----*****/
 inputbar {
     enabled:                     true;
-    spacing:                     10px;
-    margin:                      0px;
+    spacing:                     15px;
+    margin:                      10px;
     padding:                     15px;
-    border:                      0px solid;
-    border-radius:               0px;
-    border-color:                @selected;
-    background-color:            @selected;
-    text-color:                  @background;
+    border:                      3px solid;
+    border-radius:               5px;
+    border-color:                #6200ff;
+    background-color:            @background;
+    text-color:                  @selected;
     children:                    [ "prompt", "entry" ];
 }
 
@@ -81,10 +81,10 @@ textbox-prompt-colon {
 entry {
     enabled:                     true;
     background-color:            inherit;
-    text-color:                  inherit;
+    text-color:                  @foreground;
     cursor:                      text;
     placeholder:                 "Search...";
-    placeholder-color:           inherit;
+    placeholder-color:           #676f82;
 }
 
 /*****----- Listview -----*****/
@@ -100,12 +100,12 @@ listview {
     fixed-height:                true;
     fixed-columns:               true;
     
-    spacing:                     5px;
-    margin:                      0px;
+    spacing:                     -10px;
+    margin:                      8px;
     padding:                     0px;
     border:                      0px solid;
-    border-radius:               0px;
-    border-color:                @selected;
+    border-radius:               8px;
+    border-color:                @background;
     background-color:            transparent;
     text-color:                  @foreground;
     cursor:                      "default";
@@ -120,13 +120,13 @@ scrollbar {
 /*****----- Elements -----*****/
 element {
     enabled:                     true;
-    spacing:                     10px;
+    spacing:                     0px;
     margin:                      0px;
-    padding:                     8px;
-    border:                      0px solid;
-    border-radius:               0px;
-    border-color:                @selected;
-    background-color:            transparent;
+    padding:                     0px;
+    border:                      8px solid;
+    border-radius:               3px;
+    border-color:                @background;
+    background-color:            @background;
     text-color:                  @foreground;
     cursor:                      pointer;
 }
@@ -142,6 +142,7 @@ element-icon {
     background-color:            transparent;
     text-color:                  inherit;
     size:                        32px;
+	padding:					 8px;
     cursor:                      inherit;
 }
 element-text {
