@@ -26,6 +26,8 @@
 !/.config/alacritty/
 !/.config/awesome/
 !/.config/dunst/
+!/.config/hypr/
+!/.config/waybar/
 !/.config/picom/
 !/.config/polybar/
 !/.config/rofi/
