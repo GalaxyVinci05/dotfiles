@@ -11,7 +11,7 @@
 #import:
 #  - /path/to/alacritty.yml
 import:
- - ~/.config/alacritty/themes/themes/cyber_punk_neon.yaml
+ - ~/.config/alacritty/themes/themes/midnight-haze.yaml
 
 # Any items in the `env` entry below will be added as
 # environment variables. Some entries may override variables
@@ -37,9 +37,7 @@ import:
   #  lines: 0
 
   # Window position (changes require restart)
-  #
-  # Specified in number of pixels.
-  # If the position is not set, the window manager will handle the placement.
+  # Specified in number of pixels. If the position is not set, the window manager will handle the placement.
   #position:
   #  x: 0
   #  y: 0
