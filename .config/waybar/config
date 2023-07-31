@@ -135,7 +135,7 @@
         "format-ethernet": "{ipaddr}/{cidr} ",
         "tooltip-format": "{essid}",
         "format-linked": "{ifname} (No IP) ",
-        "format-disconnected": "󰖪",
+        "format-disconnected": "<span color=\"#707880\">󰖪</span>",
         "format-alt": "{ifname}: {ipaddr}"
     },
     "pulseaudio": {
