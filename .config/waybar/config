@@ -8,11 +8,11 @@
     // "width": 1280, // Waybar width
     "spacing": 4, // Gaps between modules (4px)
     // Choose the order of the modules
-    "modules-left": ["wlr/workspaces", "hyprland/window", "custom/media"],
+    "modules-left": ["hyprland/workspaces", "hyprland/window", "custom/media"],
     "modules-center": ["clock"],
     "modules-right": ["tray", "pulseaudio", "network", "backlight", "battery"],
     // Modules configuration
-    "wlr/workspaces": {
+    "hyprland/workspaces": {
         "disable-scroll": true,
 		"on-click": "activate",
         "all-outputs": true,
@@ -116,8 +116,8 @@
     "battery": {
         "states": {
             // "good": 95,
-            "warning": 30,
-            "critical": 15
+            "warning": 15,
+            "critical": 5
         },
         "format": "{icon} {capacity}%",
         "format-charging": "<span color=\"#58d145\">{icon}</span> {capacity}%",
@@ -125,6 +125,7 @@
         "format-alt": "{icon} {time}",
 		"tooltip-format": "Time left: {time}",
         // "format-good": "", // An empty format will hide the module
+		// "format-warning": "<span color=\"#00ff00\">{icon}</span> {capacity}%",
         "format-full": "<span color=\"#22d3f2\">{icon}</span> {capacity}%",
         "format-icons": ["", "", "", "", ""],
 		"interval": 5
@@ -141,8 +142,8 @@
     "pulseaudio": {
         "scroll-step": 5, // %, can be a float
         "format": "<span color=\"#9a0eeb\">{icon}</span> {volume}%",
-        "format-bluetooth": "{volume}% {icon} {format_source}",
-        "format-bluetooth-muted": " {icon} {format_source}",
+        "format-bluetooth": "<span color=\"#9a0eeb\">{icon}</span> {volume}%",
+        "format-bluetooth-muted": "<span color=\"#707880\">{icon} </span>",
         "format-muted": "<span color=\"#707880\"></span>",
         "format-source": "{volume}% ",
         "format-source-muted": "",
