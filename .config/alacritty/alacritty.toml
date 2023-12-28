@@ -1,0 +1,17 @@
+import = ["/home/galaxy/.config/alacritty/themes/themes/midnight-haze.toml"]
+
+[font.bold]
+family = "Mononoki"
+style = "Bold"
+
+[font.bold_italic]
+family = "Mononoki"
+style = "Bold Italic"
+
+[font.italic]
+family = "Mononoki"
+style = "Italic"
+
+[font.normal]
+family = "Mononoki"
+style = "Regular"
