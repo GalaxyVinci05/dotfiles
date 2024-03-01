@@ -48,7 +48,7 @@ end
 -- Themes define colours, icons, font and wallpapers.
 beautiful.init("/home/galaxy/.config/awesome/theme.lua")
 
-beautiful.get().wallpaper = "/home/galaxy/Pictures/backgrounds/circuit.png"
+beautiful.get().wallpaper = "/home/galaxy/Pictures/backgrounds/cyberpunk_2.png"
 
 -- This is used later as the default terminal and editor to run.
 terminal = "alacritty"
@@ -56,7 +56,7 @@ editor = os.getenv("EDITOR") or "nvim"
 editor_cmd = terminal .. " -e " .. editor
 
 -- Default launcher
-launcher = "/home/galaxy/.config/rofi/launchers/type-1/launcher.sh"
+launcher = "/home/galaxy/.config/rofi/launchers/type-2/launcher.sh"
 
 -- Default modkey.
 -- Usually, Mod4 is the key with a logo between Control and Alt.
