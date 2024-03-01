@@ -262,7 +262,8 @@ myLogHook = return ()
 -- By default, do nothing.
 myStartupHook = do
 	-- spawnOnce "xmobar -x 0 /home/galaxy/.config/xmobar/xmobarrc &"
-	spawnOnce "polybar -r &"
+	spawnOnce "xrandr --output HDMI-0 --primary --mode 1920x1080 --output DP-0 --mode 1920x1080 --output DP-2 --off &"
+	spawnOnce "MONITOR=HDMI-0 polybar main -r & MONITOR=DP-0 polybar secondary -r &"
 	spawnOnce "picom -f &"
 	spawnOnce "feh --bg-scale Pictures/backgrounds/cyberpunk_2.png &"
 	spawnOnce "dunst &"

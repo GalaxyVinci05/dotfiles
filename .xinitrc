@@ -56,4 +56,4 @@ fi
 
 ~/.local/bin/set_layout.sh &
 ~/.local/bin/xsetup.sh &
-exec awesome
+exec xmonad
