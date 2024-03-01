@@ -14,6 +14,7 @@ import XMonad.Util.SpawnOnce
 import XMonad.Util.Run
 import XMonad.Util.EZConfig
 import XMonad.Layout.Spacing
+import XMonad.Layout.Gaps
 import XMonad.Layout.Fullscreen
 import XMonad.Layout.NoBorders
 import Graphics.X11.ExtraTypes.XF86
@@ -72,7 +73,7 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     [ ((modm .|. shiftMask, xK_Return), spawn $ XMonad.terminal conf)
 
     -- launch dmenu
-    , ((modm,               xK_s     ), spawn "~/.config/rofi/launchers/type-1/launcher.sh")
+    , ((modm,               xK_s     ), spawn "~/.config/rofi/launchers/type-2/launcher.sh")
 
     -- launch gmrun
     , ((modm .|. shiftMask, xK_d     ), spawn "gmrun")
@@ -263,7 +264,7 @@ myStartupHook = do
 	-- spawnOnce "xmobar -x 0 /home/galaxy/.config/xmobar/xmobarrc &"
 	spawnOnce "polybar -r &"
 	spawnOnce "picom -f &"
-	spawnOnce "feh --bg-scale Pictures/backgrounds/cyberpunk_2.jpg &"
+	spawnOnce "feh --bg-scale Pictures/backgrounds/cyberpunk_2.png &"
 	spawnOnce "dunst &"
 	spawnOnce "xsetroot -cursor_name left_ptr &"
 
