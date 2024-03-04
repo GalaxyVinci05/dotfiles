@@ -8,9 +8,9 @@
     // "width": 1280, // Waybar width
     "spacing": 4, // Gaps between modules (4px)
     // Choose the order of the modules
-    "modules-left": ["hyprland/workspaces", "hyprland/window", "custom/media"],
-    "modules-center": ["clock"],
-    "modules-right": ["tray", "pulseaudio", "network", "backlight", "battery"],
+    "modules-left": ["hyprland/workspaces", "custom/media"],
+    "modules-center": ["hyprland/window"],
+    "modules-right": ["tray", "pulseaudio", "network", "backlight", "battery", "clock"],
     // Modules configuration
     "hyprland/workspaces": {
         "disable-scroll": true,
@@ -133,7 +133,7 @@
     "network": {
         // "interface": "wlp2*", // (Optional) To force the use of this interface
         "format-wifi": "<span color=\"#580eeb\"></span> {signalStrength}%",
-        "format-ethernet": "{ipaddr}/{cidr} ",
+        "format-ethernet": "<span color=\"#580eeb\"></span>",
         "tooltip-format": "{essid}",
         "format-linked": "{ifname} (No IP) ",
         "format-disconnected": "<span color=\"#707880\">󰖪</span>",
