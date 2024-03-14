@@ -11,6 +11,7 @@
 !/.local/share/fonts
 !/.local/share/themes
 !/.local/share/icons
+/.local/share/icons/hicolor
 !/.local/share/slock-1.5
 
 # files to include
