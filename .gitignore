@@ -5,6 +5,7 @@
 !/Pictures/
 /Pictures/*
 /.config/*
+/.config/hypr/laptop.conf
 /.local/*
 !/.local/share/
 /.local/share/*
