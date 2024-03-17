@@ -2,9 +2,9 @@
     "layer": "top", // Waybar at top layer
     // "position": "bottom", // Waybar position (top|bottom|left|right)
     "height": 32, // Waybar height (to be removed for auto height)
-    "margin-top": 5,
-    "margin-left": 5,
-    "margin-right": 5,
+    "margin-top": 0,
+    "margin-left": 0,
+    "margin-right": 0,
     // "width": 1280, // Waybar width
     "spacing": 4, // Gaps between modules (4px)
     // Choose the order of the modules
@@ -109,8 +109,9 @@
     },
     "backlight": {
         // "device": "acpi_video1",
-        "format": "<span color=\"#0e71eb\">{icon}</span> {percent}%",
-		"tooltip-format": "Nothing to see here.",
+        "format": "<span color=\"#0e71eb\">{icon}</span>",
+	"format-alt": "<span color=\"#0e71eb\">{icon}</span> {percent}%",
+		"tooltip-format": "{percent}%",
         "format-icons": ["", "", "", "", "", "", "", "", ""]
     },
     "battery": {
@@ -119,11 +120,11 @@
             "warning": 15,
             "critical": 5
         },
-        "format": "{icon} {capacity}%",
+        "format": "{icon}",
         "format-charging": "<span color=\"#58d145\">{icon}</span> {capacity}%",
         // "format-plugged": "<span color=\"#58d145\"></span> {capacity}%",
-        "format-alt": "{icon} {time}",
-		"tooltip-format": "Time left: {time}",
+        "format-alt": "{icon} {capacity}%",
+		"tooltip-format": "{capacity}% ({time})",
         // "format-good": "", // An empty format will hide the module
 		// "format-warning": "<span color=\"#00ff00\">{icon}</span> {capacity}%",
         "format-full": "<span color=\"#22d3f2\">{icon}</span> {capacity}%",
@@ -132,16 +133,17 @@
     },
     "network": {
         // "interface": "wlp2*", // (Optional) To force the use of this interface
-        "format-wifi": "<span color=\"#580eeb\"></span> {signalStrength}%",
+        "format-wifi": "<span color=\"#580eeb\"></span>",
         "format-ethernet": "<span color=\"#580eeb\"></span>",
-        "tooltip-format": "{essid}",
+        "tooltip-format": "{signalStrength}% ({essid})",
         "format-linked": "{ifname} (No IP) ",
         "format-disconnected": "<span color=\"#707880\">󰖪</span>",
         "format-alt": "{ifname}: {ipaddr}"
     },
     "pulseaudio": {
         "scroll-step": 5, // %, can be a float
-        "format": "<span color=\"#9a0eeb\">{icon}</span> {volume}%",
+        "format": "<span color=\"#9a0eeb\">{icon}</span>",
+	"tooltip-format": "{volume}% ({desc})",
         "format-bluetooth": "<span color=\"#9a0eeb\">{icon}</span> {volume}%",
         "format-bluetooth-muted": "<span color=\"#707880\">{icon} </span>",
         "format-muted": "<span color=\"#707880\"></span>",
