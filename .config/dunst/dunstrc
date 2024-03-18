@@ -24,7 +24,7 @@
     # dynamic width from 0 to 300
     # width = (0, 300)
     # constant width of 300
-    width = 300
+    width = (0, 300)
 
     # The maximum height of a single notification, excluding the frame.
     height = 300
@@ -92,7 +92,7 @@
 
     # Defines width in pixels of frame around the notification window.
     # Set to 0 to disable.
-    frame_width = 4
+    frame_width = 3
 
     # Defines color of the frame around the notification window.
     frame_color = "#22d3f2"
@@ -320,7 +320,7 @@
     #default_icon = /path/to/icon
 
 [urgency_normal]
-    background = "#03255c"
+    background = "#011940"
     foreground = "#ffffff"
     timeout = 10
     # Icon for notifications with normal urgency, uncomment to enable
