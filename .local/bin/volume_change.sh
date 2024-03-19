@@ -13,11 +13,11 @@ elif [ $1 == "lower" ]; then
     value=$(pamixer --get-volume)
     newValue=$((value-5))
 
-    if [ newValue == 0 ]; then
-	echo true
+    if [[ newValue -eq 0 ]]; then
 	pamixer -d 5 && pamixer -t
+    elif [[ value -eq 0 ]]; then
+	return
     else
-	echo false
         pamixer -u && pamixer -d 5
     fi
 elif [ $1 == "mute-toggle" ]; then

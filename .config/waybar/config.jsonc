@@ -1,16 +1,16 @@
 {
     "layer": "top", // Waybar at top layer
     // "position": "bottom", // Waybar position (top|bottom|left|right)
-    "height": 32, // Waybar height (to be removed for auto height)
-    "margin-top": 0,
-    "margin-left": 0,
-    "margin-right": 0,
+    "height": 30, // Waybar height (to be removed for auto height)
+    "margin-top": 5,
+    "margin-left": 5,
+    "margin-right": 5,
     // "width": 1280, // Waybar width
     "spacing": 4, // Gaps between modules (4px)
     // Choose the order of the modules
-    "modules-left": ["hyprland/workspaces", "custom/media"],
+    "modules-left": ["hyprland/workspaces", "custom/media", "custom/updates", "tray"],
     "modules-center": ["hyprland/window"],
-    "modules-right": ["tray", "pulseaudio", "network", "backlight", "battery", "clock"],
+    "modules-right": ["custom/notifications", "pulseaudio", "network", "backlight", "battery", "clock"],
     // Modules configuration
     "hyprland/workspaces": {
         "disable-scroll": true,
@@ -160,6 +160,11 @@
         },
         "on-click": "pavucontrol"
     },
+
+    "disk": {
+	"format": "<span color=\"#6fb5f2\"> </span>{percentage_used}%" 
+    },	    
+
     "custom/media": {
         "format": "{icon} {}",
         "return-type": "json",
@@ -171,6 +176,30 @@
         "escape": true,
         "exec": "$HOME/.config/waybar/mediaplayer.py 2> /dev/null" // Script in resources folder
         // "exec": "$HOME/.config/waybar/mediaplayer.py --player spotify 2> /dev/null" // Filter player based on name
+    },
+
+    // custom modules
+    "custom/arch": {
+	"format": "<span color=\"#0F94D2\">󰣇</span>",
+	"on-click": "/home/galaxy/.config/rofi/launchers/type-2/launcher.sh"
+    },
+
+    "custom/separator": {
+	"format": "<span color=\"#808080\">|</span>"
+    },
+
+    "custom/updates": {
+	"format": "<span color=\"#ff00ff\"> {}</span>",
+	"exec": "/home/galaxy/.local/bin/update_check.sh",
+	"exec-if": "[[ $(checkupdates | wc -l) ]]",
+	"interval": 15
+    },
+
+    "custom/notifications": {
+	"format": "<span color=\"#0066ff\"></span>",
+	"format-alt": "<span color=\"#808080\"></span>",
+	"tooltip": false,
+	"on-click": "dunstctl set-paused toggle"
     }
 }
 

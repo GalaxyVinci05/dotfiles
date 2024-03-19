@@ -8,13 +8,23 @@
     border-radius: 12px;
 }
 
-window#waybar {
+.modules-right {
     background-color: rgba(0, 0, 30, 0.5);
-    border-radius: 0px;
-    border-bottom: 2px solid rgba(98, 0, 255, 1);
-    color: #ffffff;
-    transition-property: background-color;
-    transition-duration: .5s;
+    border: 0px solid #8803fc;
+}
+
+.modules-center {
+    background-color: rgba(0, 0, 30, 0.5);
+    border: 0px solid #8803fc;
+}
+
+.modules-left {
+    background-color: rgba(0, 0, 30, 0.5);
+    border: 0px solid #8803fc;
+}
+
+window#waybar {
+    background-color: rgba(0, 0, 0, 0); 
 }
 
 window#waybar.hidden {
@@ -93,6 +103,9 @@ button:hover {
 #mode,
 #idle_inhibitor,
 #scratchpad,
+#custom-arch,
+#custom-updates,
+#custom-notifications,
 #mpd {
     padding: 0 10px;
     color: #ffffff;
@@ -103,12 +116,8 @@ button:hover {
 }
 
 #window {
-    margin: 2px;
-	padding-left: 8px;
-	padding-right: 8px;
-	color: #cdd6f4;
-	border: 2px solid #8803fc;
-	border-radius: 20px;
+    margin-left: 8px;
+    margin-right: 8px;
 }
 
 #workspaces {
@@ -155,7 +164,7 @@ label:focus {
 }
 
 #disk {
-    background-color: #964B00;
+    color: #cdd6f4;
 }
 
 #pulseaudio {
@@ -177,6 +186,10 @@ label:focus {
 }
 
 #clock {
+    color: #cdd6f4;
+}
+
+#custom-updates {
     color: #cdd6f4;
 }
 
@@ -214,8 +227,8 @@ label:focus {
 #tray {
     /* background-color: #2980b9; */
     margin: 2px;
-    border: 2px solid #8803fc;
-	border-radius: 20px;
+    border: 0px solid #8803fc;
+	border-radius: 8px;
 }
 
 #tray > .passive {
