@@ -10,17 +10,17 @@
 
 .modules-right {
     background-color: rgba(0, 0, 30, 0.5);
-    border: 0px solid #8803fc;
+    border: 2px solid #6600ff;
 }
 
 .modules-center {
     background-color: rgba(0, 0, 30, 0.5);
-    border: 0px solid #8803fc;
+    border: 2px solid #6600ff;
 }
 
 .modules-left {
     background-color: rgba(0, 0, 30, 0.5);
-    border: 0px solid #8803fc;
+    border: 2px solid #6600ff;
 }
 
 window#waybar {
