@@ -2,29 +2,35 @@
     /* `otf-font-awesome` is required to be installed for icons */
     color: #cdd6f4;
     font-family: JetBrainsMono, FontAwesome, Roboto, Helvetica, Arial, sans-serif;
-    font-size: 14px;
+    font-size: 12px;
     font-weight: bold;
     min-height: 5px;
-    border-radius: 12px;
+    border-radius: 0px;
 }
 
 .modules-right {
     background-color: rgba(0, 0, 30, 0.5);
-    border: 2px solid #6600ff;
+    border: 0px solid #6600ff;
+    border-radius: 12px;
+    margin: 4px;
 }
 
 .modules-center {
     background-color: rgba(0, 0, 30, 0.5);
-    border: 2px solid #6600ff;
+    border: 0px solid #6600ff;
+    border-radius: 12px;
+    margin: 4px;
 }
 
 .modules-left {
     background-color: rgba(0, 0, 30, 0.5);
-    border: 2px solid #6600ff;
+    border: 0px solid #6600ff;
+    border-radius: 12px;
+    margin: 4px;
 }
 
 window#waybar {
-    background-color: rgba(0, 0, 0, 0); 
+    background-color: rgba(128, 128, 128, 0.15); 
 }
 
 window#waybar.hidden {
@@ -190,6 +196,10 @@ label:focus {
 }
 
 #custom-updates {
+    color: #cdd6f4;
+}
+
+#custom-notifications {
     color: #cdd6f4;
 }
 
