@@ -5,7 +5,7 @@
     font-size: 12px;
     font-weight: bold;
     min-height: 5px;
-    border-radius: 0px;
+    border-radius: 12px;
 }
 
 .modules-right {
@@ -30,7 +30,8 @@
 }
 
 window#waybar {
-    background-color: rgba(32, 32, 32, 0.75); 
+    background-color: rgba(32, 32, 32, 0.75);
+    border-radius: 0px;
 }
 
 window#waybar.hidden {

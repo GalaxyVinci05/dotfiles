@@ -89,7 +89,7 @@
     	"format": " {:%H:%M}",
         // "timezone": "America/New_York",
         "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
-        "format-alt": "<span color=\"#6fb5f2\"></span> {:%Y-%m-%d}",
+        "format-alt": " {:%Y-%m-%d}",
 		"interval": 1
     },
     "cpu": {
