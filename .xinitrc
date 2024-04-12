@@ -56,4 +56,5 @@ fi
 
 ~/.local/bin/set_layout.sh &
 ~/.local/bin/xsetup.sh &
-exec xmonad
+nvidia-settings --load-config-only
+exec startplasma-x11
