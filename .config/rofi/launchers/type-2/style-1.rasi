@@ -59,7 +59,7 @@ inputbar {
     margin:                      10px;
     padding:                     15px;
     border:                      3px solid;
-    border-radius:               5px;
+    border-radius:               8px;
     border-color:                #6200ff;
     background-color:            @background;
     text-color:                  @selected;
@@ -83,7 +83,7 @@ entry {
     background-color:            inherit;
     text-color:                  @foreground;
     cursor:                      text;
-    placeholder:                 "Search...";
+    placeholder:                 "Type to search...";
     placeholder-color:           #676f82;
 }
 
