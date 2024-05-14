@@ -83,7 +83,9 @@ button:hover {
 
 #workspaces button.active {
     /* box-shadow: inset 0 -2px #ffffff; */
-    color: #ffffff;
+    background-color: #83b5ff;
+    border-radius: 12px;
+    margin: 2px;
 }
 
 #workspaces button.urgent {
@@ -162,12 +164,11 @@ label:focus {
 }
 
 #cpu {
-    background-color: #2ecc71;
-    color: #000000;
+    color: #cdd6f4;
 }
 
 #memory {
-    background-color: #9b59b6;
+    color: #cdd6f4;
 }
 
 #disk {
@@ -193,6 +194,10 @@ label:focus {
 }
 
 #clock {
+    color: #cdd6f4;
+}
+
+#custom-arch {
     color: #cdd6f4;
 }
 
