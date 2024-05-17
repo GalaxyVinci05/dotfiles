@@ -30,7 +30,7 @@
 }
 
 window#waybar {
-    background-color: rgba(32, 32, 32, 0.75);
+    background-color: rgba(0, 0, 0, 0);
     border-radius: 0px;
 }
 
@@ -79,6 +79,7 @@ button:hover {
 
 #workspaces button:hover {
     background: rgba(0, 0, 0, 0.5);
+    border-radius: 12px;
 }
 
 #workspaces button.active {

@@ -8,9 +8,9 @@
     // "width": 1280, // Waybar width
     "spacing": 2, // Gaps between modules (4px)
     // Choose the order of the modules
-    "modules-left": ["cpu", "memory", "custom/media", "custom/updates", "tray"],
+    "modules-left": ["cpu", "memory", "custom/media", "custom/updates", "wlr/taskbar"],
     "modules-center": ["hyprland/workspaces", "custom/arch", "hyprland/window"],
-    "modules-right": ["custom/notifications", "pulseaudio", "network", "backlight", "battery", "clock"],
+    "modules-right": ["tray", "custom/notifications", "pulseaudio", "network", "backlight", "battery", "clock"],
     // Modules configuration
     "hyprland/workspaces": {
         "disable-scroll": true,
@@ -31,6 +31,24 @@
     },
     "hyprland/window": {
 	"max-length": 32
+    },
+    "wlr/taskbar": {
+    	"format": "{icon}",
+    	"icon-size": 14,
+    	"icon-theme": "candy-icons",
+    	"tooltip-format": "{title}",
+    	"on-click": "activate",
+    	"on-click-middle": "close",
+    	"ignore-list": [
+       	    "Alacritty"
+    	],
+    	"app_ids-mapping": {
+      	    "firefoxdeveloperedition": "firefox-developer-edition"
+    	},
+    	"rewrite": {
+            "Firefox Web Browser": "Firefox",
+            "Foot Server": "Terminal"
+    	}
     },
     "keyboard-state": {
         "numlock": true,
@@ -166,7 +184,7 @@
 
     "disk": {
 	"format": "<span color=\"#6fb5f2\"> </span>{percentage_used}%" 
-    },	    
+    }, 
 
     "custom/media": {
         "format": "{icon} {}",
