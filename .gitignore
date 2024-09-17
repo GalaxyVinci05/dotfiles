@@ -6,6 +6,7 @@
 /Pictures/*
 /.config/*
 /.config/hypr/laptop.conf
+/.config/hypr/explicit_sync.conf
 /.local/*
 !/.local/share/
 /.local/share/*
