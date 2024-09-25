@@ -30,6 +30,7 @@
 !/.config/awesome/
 !/.config/dunst/
 !/.config/hypr/
+!/.config/nvim/
 !/.config/waybar/
 !/.config/picom/
 !/.config/polybar/
