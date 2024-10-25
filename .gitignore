@@ -7,6 +7,7 @@
 /.config/*
 /.config/hypr/laptop.conf
 /.config/hypr/explicit_sync.conf
+/.config/hypr/nvidia_flags.conf
 /.local/*
 !/.local/share/
 /.local/share/*
@@ -36,6 +37,7 @@
 !/.config/polybar/
 !/.config/rofi/
 !/.config/xmonad/
+!/.config/fish/
 !/.icons/
 !/.local/share/fonts/
 !/.local/bin/

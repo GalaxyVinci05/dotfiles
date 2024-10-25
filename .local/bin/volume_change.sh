@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 # changeVolume
 
 # Arbitrary but unique message tag

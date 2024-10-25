@@ -1,4 +1,4 @@
-general.import = ["/home/galaxy/.config/alacritty/themes/themes/midnight-haze.toml"]
+import = ["/home/galaxy/.config/alacritty/themes/themes/catppuccin.toml"]
 
 [font.bold]
 family = "Mononoki"

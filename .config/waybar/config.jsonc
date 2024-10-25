@@ -9,12 +9,12 @@
     "spacing": 2, // Gaps between modules (4px)
     // Choose the order of the modules
     "modules-left": ["cpu", "memory", "custom/media", "custom/updates", "wlr/taskbar"],
-    "modules-center": ["hyprland/workspaces", "custom/arch", "hyprland/window"],
+    "modules-center": ["hyprland/workspaces", "custom/launcher", "hyprland/window"],
     "modules-right": ["tray", "custom/notifications", "pulseaudio", "network", "backlight", "battery", "clock"],
     // Modules configuration
     "hyprland/workspaces": {
         "disable-scroll": true,
-	"on-click": "activate",
+	    "on-click": "activate",
         "all-outputs": true,
         "warp-on-scroll": false,
         "format": "{icon}{name}</span>",
@@ -30,7 +30,7 @@
         }
     },
     "hyprland/window": {
-	"max-length": 32
+	    "max-length": 32
     },
     "wlr/taskbar": {
     	"format": "{icon}",
@@ -40,10 +40,10 @@
     	"on-click": "activate",
     	"on-click-middle": "close",
     	"ignore-list": [
-       	    "Alacritty"
+            "Alacritty"
     	],
     	"app_ids-mapping": {
-      	    "firefoxdeveloperedition": "firefox-developer-edition"
+            "firefoxdeveloperedition": "firefox-developer-edition"
     	},
     	"rewrite": {
             "Firefox Web Browser": "Firefox",
@@ -131,9 +131,9 @@
     "backlight": {
         // "device": "acpi_video1",
         "format": "{icon}",
-	"format-alt": "{icon} {percent}%",
-	"tooltip-format": "{percent}%",
-        "format-icons": ["", "", "", "", "", "", "", "", ""]
+	    "format-alt": "{icon} {percent}%",
+	    "tooltip-format": "{percent}%",
+            "format-icons": ["", "", "", "", "", "", "", "", ""]
     },
     "battery": {
         "states": {
@@ -145,7 +145,7 @@
         "format-charging": "<span color=\"#58d145\">{icon}</span> {capacity}%",
         // "format-plugged": "<span color=\"#58d145\"></span> {capacity}%",
         "format-alt": "{icon} {capacity}%",
-	"tooltip-format": "{capacity}% ({time})",
+	    "tooltip-format": "{capacity}% ({time})",
         // "format-good": "", // An empty format will hide the module
 		// "format-warning": "<span color=\"#00ff00\">{icon}</span> {capacity}%",
         "format-full": "<span color=\"#22d3f2\">{icon}</span> {capacity}%",
@@ -164,10 +164,10 @@
     "pulseaudio": {
         "scroll-step": 5, // %, can be a float
         "format": "{icon}",
-	"tooltip-format": "{volume}% ({desc})",
+	    "tooltip-format": "{volume}% ({desc})",
         "format-bluetooth": "<span color=\"#9a0eeb\">{icon}</span> {volume}%",
         "format-bluetooth-muted": "<span color=\"#707880\">{icon} </span>",
-        "format-muted": "<span color=\"#707880\"></span>",
+        "format-muted": "<span color=\"#707880\"></span>",
         "format-source": "{volume}% ",
         "format-source-muted": "",
         "format-icons": {
@@ -183,8 +183,8 @@
     },
 
     "disk": {
-	"format": "<span color=\"#6fb5f2\"> </span>{percentage_used}%" 
-    }, 
+	    "format": "<span color=\"#6fb5f2\"> </span>{percentage_used}%"
+    },
 
     "custom/media": {
         "format": "{icon} {}",
@@ -200,29 +200,30 @@
     },
 
     // custom modules
-    "custom/arch": {
-	"format": "󰣇",
-	"tooltip": false,
-	"on-click": "~/.config/rofi/launchers/type-2/launcher.sh"
+    "custom/launcher": {
+	    "format": "",
+	    "tooltip": true,
+        "tooltip-format": "App Launcher",
+	    "on-click": "~/.config/rofi/launchers/type-2/launcher.sh"
     },
 
     "custom/separator": {
-	"format": "<span color=\"#808080\">|</span>"
+	    "format": "<span color=\"#808080\">|</span>"
     },
 
     "custom/updates": {
-	"format": "<span color=\"#fa83ff\"> {}</span>",
-	"tooltip": false,
-	"exec": "/home/galaxy/.local/bin/update_check.sh",
-	"exec-if": "[[ $(checkupdates | wc -l) ]]",
-	"interval": 15
+	    "format": "<span color=\"#fa83ff\"> {}</span>",
+	    "tooltip": false,
+	    "exec": "/home/galaxy/.local/bin/update_check.sh",
+	    "exec-if": "[[ $(checkupdates | wc -l) ]]",
+	    "interval": 15
     },
 
     "custom/notifications": {
-	"format": "",
-	"format-alt": "<span color=\"#808080\"></span>",
-	"tooltip": false,
-	"on-click": "dunstctl set-paused toggle"
+	    "format": "",
+	    "format-alt": "<span color=\"#808080\"></span>",
+	    "tooltip": false,
+	    "on-click": "dunstctl set-paused toggle"
     }
 }
 

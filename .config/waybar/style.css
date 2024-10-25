@@ -113,7 +113,7 @@ button:hover {
 #mode,
 #idle_inhibitor,
 #scratchpad,
-#custom-arch,
+#custom-launcher,
 #custom-updates,
 #custom-notifications,
 #mpd {
@@ -198,8 +198,9 @@ label:focus {
     color: #cdd6f4;
 }
 
-#custom-arch {
-    color: #cdd6f4;
+#custom-launcher {
+    color: #7eb7e1;
+    font-size: 16px;
 }
 
 #custom-updates {
