@@ -15,28 +15,24 @@
 !/.local/share/themes
 !/.local/share/icons
 /.local/share/icons/hicolor
-!/.local/share/slock-1.5
+# !/.local/share/slock-1.5
 
 # files to include
 !/.gitignore
-!/.bash_profile
-!/.bashrc
-!/.xinitrc
+# !/.bash_profile
+# !/.bashrc
+# !/.xinitrc
 
 # directories to include
 !/Pictures/backgrounds/
 !/.github/
 !/.config/
 !/.config/alacritty/
-!/.config/awesome/
 !/.config/dunst/
 !/.config/hypr/
 !/.config/nvim/
 !/.config/waybar/
-!/.config/picom/
-!/.config/polybar/
 !/.config/rofi/
-!/.config/xmonad/
 !/.config/fish/
 !/.icons/
 !/.local/share/fonts/
