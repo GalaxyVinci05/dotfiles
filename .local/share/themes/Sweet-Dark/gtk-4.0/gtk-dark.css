@@ -1810,14 +1810,20 @@ entry, .linked:not(.vertical) >
 entry:drop(active) +
 entry {
   border-left-color: #71f79f; }
-.linked:not(.vertical) > spinbutton:focus-within:not(.vertical), spinbutton.vertical.linked:not(.vertical) > text:focus-within, .linked:not(.vertical) >
-entry:focus-within {
-  border-color: #980ba2;
-  box-shadow: 0px 0px 1px 1px #c50ed2 inset; }
-.linked:not(.vertical) > spinbutton:not(.vertical) + .popup button, spinbutton.vertical.linked:not(.vertical) > text + .popup button, .linked:not(.vertical) >
-entry + .popup button {
-  border-radius: 0px 4px 4px 0px;
-  margin-left: 1px; }
+.linked:not(.vertical) > spinbutton:not(.vertical), spinbutton.vertical.linked:not(.vertical) > text, .linked:not(.vertical) >
+entry {
+  border-right-style: solid;
+  border-right-color: transparent; }
+  .linked:not(.vertical) > spinbutton:focus-within:not(.vertical), spinbutton.vertical.linked:not(.vertical) > text:focus-within, .linked:not(.vertical) >
+  entry:focus-within {
+    border-color: #980ba2;
+    box-shadow: 0px 0px 1px 1px #c50ed2 inset; }
+    .linked:not(.vertical) > spinbutton:focus-within:not(.vertical) + .popup button, spinbutton.vertical.linked:not(.vertical) > text:focus-within + .popup button, .linked:not(.vertical) >
+    entry:focus-within + .popup button {
+      border-left-color: #c50ed2; }
+  .linked:not(.vertical) > spinbutton:not(.vertical) + .popup button, spinbutton.vertical.linked:not(.vertical) > text + .popup button, .linked:not(.vertical) >
+  entry + .popup button {
+    border-radius: 0px 3px 3px 0px; }
 .linked.vertical > spinbutton:not(:disabled):not(.vertical) + entry:not(:disabled), spinbutton.vertical.linked > text:not(:disabled) + entry:not(:disabled), .linked.vertical > spinbutton:not(:disabled):not(.vertical) + spinbutton:not(:disabled):not(.vertical), spinbutton.vertical.linked > text:not(:disabled) + spinbutton:not(:disabled):not(.vertical), spinbutton.vertical.linked > spinbutton:not(:disabled):not(.vertical) + text:not(:disabled), spinbutton.vertical.linked > text:not(:disabled) + text:not(:disabled), .linked.vertical >
 entry:not(:disabled) + entry:not(:disabled), .linked.vertical >
 entry:not(:disabled) + spinbutton:not(:disabled):not(.vertical), spinbutton.vertical.linked > entry:not(:disabled) + text:not(:disabled) {
@@ -2935,7 +2941,8 @@ notebook > header {
       notebook > header.top > tabs > tab:checked {
         background: linear-gradient(to right, #5800E2, #FF00E6) left bottom #141620 no-repeat;
         background-size: 100% 2px;
-        border: 0; }
+        border: 0;
+        box-shadow: none; }
   notebook > header.bottom {
     border-top-style: solid; }
     notebook > header.bottom > tabs {
@@ -4117,6 +4124,10 @@ placessidebar.sidebar, .nautilus-window .navigation-sidebar {
     background-color: transparent; }
     placessidebar.sidebar list:backdrop, .nautilus-window .navigation-sidebar list:backdrop {
       background-color: transparent; }
+
+.bottom-bar button {
+  background-color: #161925;
+  border-radius: 0px; }
 
 /*****************
  * GtkSpinButton *
@@ -5680,11 +5691,6 @@ window.background.budgie-settings-window.csd > box.horizontal > stack > scrolled
     padding: 0 4px; }
   .nautilus-window #NautilusQueryEditor > text, .nautilus-window #NautilusQueryEditor > image {
     margin: 0; }
-.nautilus-window .linked:not(.vertical) > entry {
-  border-radius: 10px;
-  margin-right: 5px; }
-  .nautilus-window .linked:not(.vertical) > entry:focus {
-    border-color: rgba(197, 14, 210, 0.6); }
 
 .nautilus-circular-button {
   border-radius: 20px; }
@@ -5746,6 +5752,16 @@ window.background.budgie-settings-window.csd > box.horizontal > stack > scrolled
   box-shadow: none; }
   #gnc-id-main-window .arrow.button.toggle:hover {
     border-color: #c50ed2; }
+
+/*******************
+ * Calendar events *
+********************/
+.color-light.timed label, .color-light .event-popover label {
+  color: #C3C7D1;
+  opacity: 1; }
+.color-light label {
+  color: #161925;
+  opacity: 1; }
 
 .xfce4-panel.panel {
   background-color: #181b28;
