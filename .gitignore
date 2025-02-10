@@ -8,6 +8,7 @@
 /.config/hypr/laptop.conf
 /.config/hypr/explicit_sync.conf
 /.config/hypr/nvidia_flags.conf
+/.config/hypr/asus.conf
 /.local/*
 !/.local/share/
 /.local/share/*
