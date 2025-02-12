@@ -178,6 +178,8 @@ label:focus {
 
 #pulseaudio {
     color: #cdd6f4;
+    font-size: 16px;
+    margin-bottom: -1px;
     /* color: #9a0eeb; */
 	/* border-bottom: 2px solid #9a0eeb; */
 }

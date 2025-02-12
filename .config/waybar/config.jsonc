@@ -167,7 +167,7 @@
 	    "tooltip-format": "{volume}% ({desc})",
         "format-bluetooth": "<span color=\"#9a0eeb\">{icon}</span> {volume}%",
         "format-bluetooth-muted": "<span color=\"#707880\">{icon} </span>",
-        "format-muted": "<span color=\"#707880\"></span>",
+        "format-muted": "<span color=\"#707880\">󰝟</span>",
         "format-source": "{volume}% ",
         "format-source-muted": "",
         "format-icons": {
@@ -177,7 +177,7 @@
             "phone": "",
             "portable": "",
             "car": "",
-            "default": ["", ""]
+            "default": ["󰖀", "󰕾"]
         },
         "on-click": "alacritty -e pulsemixer"
     },
