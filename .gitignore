@@ -16,7 +16,6 @@
 !/.local/share/themes
 !/.local/share/icons
 /.local/share/icons/hicolor
-/.local/share/applications
 # !/.local/share/slock-1.5
 
 # files to include
@@ -40,3 +39,4 @@
 !/.icons/
 !/.local/share/fonts/
 !/.local/bin/
+!/.local/share/applications/
