@@ -16,6 +16,7 @@
 !/.local/share/themes
 !/.local/share/icons
 /.local/share/icons/hicolor
+/.local/share/applications/mimeinfo.cache
 # !/.local/share/slock-1.5
 
 # files to include
