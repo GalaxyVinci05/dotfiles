@@ -16,11 +16,11 @@
 !/.local/share/themes
 !/.local/share/icons
 /.local/share/icons/hicolor
-/.local/share/applications/mimeinfo.cache
 # !/.local/share/slock-1.5
 
 # files to include
 !/.gitignore
+!/.local/share/applications/nvim.desktop
 # !/.bash_profile
 # !/.bashrc
 # !/.xinitrc
@@ -40,4 +40,3 @@
 !/.icons/
 !/.local/share/fonts/
 !/.local/bin/
-!/.local/share/applications/
