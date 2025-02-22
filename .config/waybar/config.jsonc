@@ -10,7 +10,7 @@
     // Choose the order of the modules
     "modules-left": ["cpu", "memory", "custom/media", "custom/updates", "wlr/taskbar"],
     "modules-center": ["hyprland/workspaces", "custom/launcher", "hyprland/window"],
-    "modules-right": ["tray", "custom/notifications", "pulseaudio", "network", "backlight", "battery", "clock"],
+    "modules-right": ["tray", "custom/notifications", "pulseaudio", "network", "backlight", "battery", "clock", "custom/powermenu"],
     // Modules configuration
     "hyprland/workspaces": {
         "disable-scroll": true,
@@ -224,6 +224,12 @@
 	    "format-alt": "<span color=\"#808080\"></span>",
 	    "tooltip": false,
 	    "on-click": "dunstctl set-paused toggle"
+    },
+
+    "custom/powermenu": {
+        "format": "",
+        "tooltip": false,
+        "on-click": "~/.config/rofi/powermenu/type-1/powermenu.sh"
     }
 }
 

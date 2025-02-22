@@ -19,6 +19,7 @@ configuration {
 /*	cache-dir: ;*/
 	steal-focus: false;
 /*	dpi: -1;*/
+    hover-select: true;
 
 	/*---------- Matching setting ----------*/
 	matching: "normal";
@@ -104,7 +105,7 @@ configuration {
     }
 
 	/*---------- Keybindings ----------*/
-/*
+
 	kb-primary-paste: "Control+V,Shift+Insert";
 	kb-secondary-paste: "Control+v,Insert";
 	kb-clear-line: "Control+w";
@@ -175,7 +176,7 @@ configuration {
 	ml-row-up: "ScrollUp";
 	ml-row-down: "ScrollDown";
 	me-select-entry: "MousePrimary";
-	me-accept-entry: "MouseDPrimary";
+	me-accept-entry: "!MousePrimary";
 	me-accept-custom: "Control+MouseDPrimary";
-*/
+
 }

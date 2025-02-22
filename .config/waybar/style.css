@@ -116,6 +116,7 @@ button:hover {
 #custom-launcher,
 #custom-updates,
 #custom-notifications,
+#custom-powermenu,
 #mpd {
     padding: 0 10px;
     color: #ffffff;
@@ -211,6 +212,13 @@ label:focus {
 
 #custom-notifications {
     color: #cdd6f4;
+}
+
+#custom-powermenu {
+    color: #000022;
+    background-color: #83b5ff;
+    border-radius: 12px;
+    margin: 2px;
 }
 
 #wireplumber {

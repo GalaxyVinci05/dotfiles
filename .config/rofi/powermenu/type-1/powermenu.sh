@@ -11,11 +11,12 @@
 
 # Current Theme
 dir="$HOME/.config/rofi/powermenu/type-1"
-theme='style-1'
+theme='style-2'
 
 # CMDs
-uptime="`uptime -p | sed -e 's/up //g'`"
+uptime="`uptime | awk -F'( |,|:)+' '{d=h=m=0; if ($7=="min") m=$6; else {if ($7~/^day/) {d=$6;h=$8;m=$9} else {h=$6;m=$7}}} {print d+0,"days,",h+0,"hrs,",m+0,"mins."}'`"
 host=`hostname`
+user=`whoami`
 
 # Options
 shutdown=' Shutdown'
@@ -30,7 +31,7 @@ no=' No'
 rofi_cmd() {
 	rofi -dmenu \
 		-p "$host" \
-		-mesg "Uptime: $uptime" \
+        -mesg " Uptime: $uptime" \
 		-theme ${dir}/${theme}.rasi
 }
 
@@ -66,8 +67,8 @@ run_cmd() {
 		elif [[ $1 == '--reboot' ]]; then
 			systemctl reboot
 		elif [[ $1 == '--suspend' ]]; then
-			mpc -q pause
-			amixer set Master mute
+			# mpc -q pause
+			# amixer set Master mute
 			systemctl suspend
 		elif [[ $1 == '--logout' ]]; then
 			if [[ "$DESKTOP_SESSION" == 'openbox' ]]; then
@@ -78,6 +79,8 @@ run_cmd() {
 				i3-msg exit
 			elif [[ "$DESKTOP_SESSION" == 'plasma' ]]; then
 				qdbus org.kde.ksmserver /KSMServer logout 0 0 0
+            elif [[ "$XDG_CURRENT_DESKTOP" == "Hyprland" ]]; then
+                hyprctl dispatch exit 0
 			fi
 		fi
 	else
@@ -99,6 +102,8 @@ case ${chosen} in
 			betterlockscreen -l
 		elif [[ -x '/usr/bin/i3lock' ]]; then
 			i3lock
+        else
+            hyprlock
 		fi
         ;;
     $suspend)
