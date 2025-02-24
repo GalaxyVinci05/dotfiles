@@ -215,10 +215,8 @@ label:focus {
 }
 
 #custom-powermenu {
-    color: #000022;
-    background-color: #83b5ff;
-    border-radius: 12px;
-    margin: 2px;
+    color: #83b5ff;
+    margin-left: -5px;
 }
 
 #wireplumber {
