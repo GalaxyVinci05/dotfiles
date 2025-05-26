@@ -228,7 +228,8 @@
 
     "custom/powermenu": {
         "format": "",
-        "tooltip": false,
+        "tooltip": true,
+        "tooltip-format": "Power Options",
         "on-click": "~/.config/rofi/powermenu/type-1/powermenu.sh"
     }
 }
