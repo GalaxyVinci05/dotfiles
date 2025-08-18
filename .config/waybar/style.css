@@ -152,6 +152,10 @@ button:hover {
     }
 }
 
+/* #battery.warning:not(.charging) {
+    color: #f0932b;
+} */
+
 #battery.critical:not(.charging) {
     color: #f53c3c;
     animation-name: blink;
