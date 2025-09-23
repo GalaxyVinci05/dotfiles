@@ -180,7 +180,8 @@
             "car": "",
             "default": ["󰖀", "󰕾"]
         },
-        "on-click": "alacritty -e pulsemixer"
+        "on-click": "alacritty -e pulsemixer",
+        "on-click-middle": "pamixer -t"
     },
 
     "disk": {
