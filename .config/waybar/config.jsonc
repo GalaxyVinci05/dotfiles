@@ -213,13 +213,13 @@
 	    "format": "<span color=\"#808080\">|</span>"
     },
 
-    "custom/updates": {
-	    "format": "<span color=\"#fa83ff\"> {}</span>",
-	    "tooltip": false,
-	    "exec": "/home/galaxy/.local/bin/update_check.sh",
-	    "exec-if": "[[ $(checkupdates | wc -l) ]]",
-	    "interval": 15
-    },
+    //"custom/updates": {
+	//    "format": "<span color=\"#fa83ff\"> {}</span>",
+	//    "tooltip": false,
+	//    "exec": "/home/galaxy/.local/bin/update_check.sh",
+	//    "exec-if": "[[ $(checkupdates | wc -l) ]]",
+	//    "interval": 15
+    //},
 
     "custom/notifications": {
 	    "format": "",
