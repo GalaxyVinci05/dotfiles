@@ -41,3 +41,5 @@
 !/.icons/
 !/.local/share/fonts/
 !/.local/bin/
+!/.oh-my-zsh/
+!.zshrc
