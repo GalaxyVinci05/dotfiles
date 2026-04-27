@@ -641,10 +641,6 @@
             },
             {
                 "enabled": true,
-                "id": "niri"
-            },
-            {
-                "enabled": true,
                 "id": "hyprland"
             }
         ],
