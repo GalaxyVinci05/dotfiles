@@ -1,0 +1,10 @@
+{
+  "workspace": {
+    "library": [
+      "./stubs"
+    ]
+  },
+  "diagnostics": {
+    "globals": ["hl"]
+  }
+}
