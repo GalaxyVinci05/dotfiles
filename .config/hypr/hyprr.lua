@@ -9,18 +9,7 @@
 -- Create your files separately and then require them like this:
 -- require("myColors")
 
-
-------------------
----- MONITORS ----
-------------------
-
--- See https://wiki.hypr.land/Configuring/Basics/Monitors/
-hl.monitor({
-    output   = "",
-    mode     = "preferred",
-    position = "auto",
-    scale    = "auto",
-})
+require("nvidia_flags")
 
 
 ---------------------
@@ -150,6 +139,11 @@ hl.config({
     animations = {
         enabled = true,
     },
+
+    cursor = {
+        no_warps = true,
+        no_hardware_cursors = 2
+    }
 })
 
 -- Default curves and animations, see https://wiki.hypr.land/Configuring/Advanced-and-Cool/Animations/
@@ -194,10 +188,10 @@ hl.animation({ leaf = "zoomFactor",    enabled = true,  speed = 7,    bezier = "
 --     border_size = 0,
 --     rounding    = 0,
 -- })
-hl.window_rule({
-    name = "opacity",
-    match = { class = "Alacritty" }
-})
+
+-------------------
+----- LAYOUTS -----
+-------------------
 
 -- See https://wiki.hypr.land/Configuring/Layouts/Dwindle-Layout/ for more
 hl.config({
@@ -210,6 +204,8 @@ hl.config({
 hl.config({
     master = {
         new_status = "master",
+        new_on_top = true,
+        mfact = 0.5
     },
 })
 
@@ -275,16 +271,50 @@ hl.device({
 
 local mainMod = "SUPER" -- Sets "Windows" key as main modifier
 
+-- noctalia keys
+hl.bind(mainMod .. "+ SHIFT + Return", hl.dsp.exec_cmd(terminal))
+hl.bind(mainMod .. "+ Q", hl.dsp.window.close())
+hl.bind(mainMod .. "+ SHIFT + Q", hl.dsp.exec_cmd("noctalia-shell ipc call sessionMenu toggle"))
+hl.bind(mainMod .. "+ E", hl.dsp.exec_cmd(fileManager))
+hl.bind(mainMod .. "+ V", hl.dsp.window.float({ action = "toggle" }))
+hl.bind(mainMod .. "+ Space", hl.dsp.exec_cmd("noctalia-shell ipc call launcher toggle"))
+hl.bind(mainMod .. "+ SHIFT + S", hl.dsp.exec_cmd("hyprshot -m region --clipboard-only"))
+hl.bind(mainMod .. "+ ALT + S", hl.dsp.exec_cmd("noctalia-shell ipc call settings toggle"))
+hl.bind(mainMod .. "+ CTRL + S", hl.dsp.exec_cmd("hyprshot -m region -o ~/Downloads/tabs/"))
+hl.bind(mainMod .. "+ SHIFT + L", hl.dsp.exec_cmd("noctalia-shell ipc call lockScreen lock"))
+hl.bind(mainMod .. "+ M", hl.dsp.window.fullscreen({ mode = "maximized", action = "toggle" }))
+hl.bind(mainMod .. "+ F", hl.dsp.window.fullscreen({ mode = "maximized", action = "toggle" }))
+hl.bind(mainMod .. "+ Tab", hl.dsp.window.cycle_next());
+hl.bind(mainMod .. "+ Tab", hl.dsp.window.bring_to_top());
+hl.bind(mainMod .. "+ SHIFT + K", hl.dsp.exec_cmd("hyprctl kill & dunstify \"Kill mode\""))
+hl.bind(mainMod .. "+ SHIFT + C", hl.dsp.exec_cmd("hyprpicker --autocopy"))
+hl.bind(mainMod .. "+ D", hl.dsp.exec_cmd("noctalia-shell ipc call bar toggle"))
+hl.bind(mainMod .. "+ C", hl.dsp.exec_cmd("noctalia-shell ipc call controlCenter toggle"))
+hl.bind(mainMod .. "+ S", hl.dsp.exec_cmd("noctalia-shell ipc call volume togglePanel"))
+hl.bind(mainMod .. "+ B", hl.dsp.exec_cmd("dunstify \"$(acpi)\""))
+hl.bind("CTRL + SHIFT + Escape", hl.dsp.exec_cmd("alacritty -e btop"))
+hl.bind("CTRL + ALT + Z", hl.dsp.exec_cmd("systemctl --user start ydotool && ~/.local/bin/clicker.sh"))
+hl.bind("CTRL + ALT + X", hl.dsp.exec_cmd("pkill -f ~/.local/bin/clicker.sh && pkill -f ydotool"))
+hl.bind(mainMod .. "+ N", hl.dsp.exec_cmd("noctalia-shell ipc call notifications toggleHistory"))
+--hl.bind("ALT + Tab") workspace previous
+
+--hl.bind(mainMod .. "+ Return", hl.dsp.layout("swapwithmaster master"))
+
+-- Scrolling binds
+hl.bind(mainMod .. "+ CTRL + H", hl.dsp.layout("swapcol l"))
+hl.bind(mainMod .. "+ CTRL + L", hl.dsp.layout("swapcol r"))
+hl.bind(mainMod .. "+ Return", hl.dsp.layout("promote"))
+
 -- Example binds, see https://wiki.hypr.land/Configuring/Basics/Binds/ for more
 hl.bind(mainMod .. " + Q", hl.dsp.exec_cmd(terminal))
 local closeWindowBind = hl.bind(mainMod .. " + C", hl.dsp.window.close())
 -- closeWindowBind:set_enabled(false)
-hl.bind(mainMod .. " + M", hl.dsp.exec_cmd("command -v hyprshutdown >/dev/null 2>&1 && hyprshutdown || hyprctl dispatch 'hl.dsp.exit()'"))
-hl.bind(mainMod .. " + E", hl.dsp.exec_cmd(fileManager))
-hl.bind(mainMod .. " + V", hl.dsp.window.float({ action = "toggle" }))
-hl.bind(mainMod .. " + R", hl.dsp.exec_cmd(menu))
-hl.bind(mainMod .. " + P", hl.dsp.window.pseudo())
-hl.bind(mainMod .. " + J", hl.dsp.layout("togglesplit"))    -- dwindle only
+--hl.bind(mainMod .. " + M", hl.dsp.exec_cmd("command -v hyprshutdown >/dev/null 2>&1 && hyprshutdown || hyprctl dispatch 'hl.dsp.exit()'"))
+--hl.bind(mainMod .. " + E", hl.dsp.exec_cmd(fileManager))
+--hl.bind(mainMod .. " + V", hl.dsp.window.float({ action = "toggle" }))
+--hl.bind(mainMod .. " + R", hl.dsp.exec_cmd(menu))
+--hl.bind(mainMod .. " + P", hl.dsp.window.pseudo())
+--hl.bind(mainMod .. " + J", hl.dsp.layout("togglesplit"))    -- dwindle only
 
 -- Move focus with mainMod + arrow keys
 hl.bind(mainMod .. " + left",  hl.dsp.focus({ direction = "left" }))
@@ -301,8 +331,8 @@ for i = 1, 10 do
 end
 
 -- Example special workspace (scratchpad)
-hl.bind(mainMod .. " + S",         hl.dsp.workspace.toggle_special("magic"))
-hl.bind(mainMod .. " + SHIFT + S", hl.dsp.window.move({ workspace = "special:magic" }))
+--hl.bind(mainMod .. " + S",         hl.dsp.workspace.toggle_special("magic"))
+--hl.bind(mainMod .. " + SHIFT + S", hl.dsp.window.move({ workspace = "special:magic" }))
 
 -- Scroll through existing workspaces with mainMod + scroll
 hl.bind(mainMod .. " + mouse_down", hl.dsp.focus({ workspace = "e+1" }))
@@ -330,6 +360,30 @@ hl.bind("XF86AudioPrev",  hl.dsp.exec_cmd("playerctl previous"),   { locked = tr
 --------------------------------
 ---- WINDOWS AND WORKSPACES ----
 --------------------------------
+
+hl.window_rule({
+    name = "opacity",
+    match = {
+        class = "^(Alacritty|code-oss|pcmanfm|thunar)$"
+    },
+    opacity = "0.85"
+})
+
+hl.window_rule({
+    name = "float",
+    match = {
+        class = "^(org.kde.polkit-kde-authentication-agent-1|org.gnome.FileRoller|script-fu|file-png|thunar|gdreqbot)$"
+    },
+    float = true
+})
+
+hl.layer_rule({
+    name = "blur",
+    match = {
+        class = "^(waybar)$"
+    },
+    blur = true
+})
 
 -- See https://wiki.hypr.land/Configuring/Basics/Window-Rules/
 -- and https://wiki.hypr.land/Configuring/Basics/Workspace-Rules/
@@ -376,3 +430,8 @@ hl.window_rule({
     move  = "20 monitor_h-120",
     float = true,
 })
+
+require("laptop")
+--require("explicit_sync")
+--require("asus");
+require("noctalia/noctalia-colors")
