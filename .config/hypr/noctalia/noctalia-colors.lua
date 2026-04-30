@@ -1,9 +1,9 @@
-local primary = rgb(73d1ff)
-local surface = rgb(12131c)
-local secondary = rgb(8dcff2)
-local error = rgb(ffb4ab)
-local tertiary = rgb(bdc2ff)
-local surface_lowest = rgb(0d0d17)
+local primary = rgb("73d1ff")
+local surface = rgb("12131c")
+local secondary = rgb("8dcff2")
+local error = rgb("ffb4ab")
+local tertiary = rgb("bdc2ff")
+local surface_lowest = rgb("0d0d17")
 
 hl.config({
     general = {

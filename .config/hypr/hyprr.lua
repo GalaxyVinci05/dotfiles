@@ -11,7 +11,6 @@
 
 require("nvidia_flags")
 
-
 ---------------------
 ---- MY PROGRAMS ----
 ---------------------
@@ -20,7 +19,6 @@ require("nvidia_flags")
 local terminal    = "alacritty"
 local fileManager = "thunar"
 local menu        = "hyprlauncher"
-
 
 -------------------
 ---- AUTOSTART ----
@@ -56,14 +54,13 @@ hl.env("QT_QPA_PLATFORM", "wayland;xcb")
 hl.env("QT_QPA_PLATFORMTHEME", "qt6ct")
 hl.env("QS_ICON_THEME", "candy-icons")
 
-hl.env("SSH_AUTH_SOCK", "$XDG_RUNTIME_DIR/gcr/ssh")
+hl.env("SSH_AUTH_SOCK", os.getenv("XDG_RUNTIME_DIR") .. "/gcr/ssh")
 
 hl.config({
     debug = {
         disable_logs = false
     }
 })
-
 
 -----------------------
 ----- PERMISSIONS -----
@@ -246,7 +243,7 @@ hl.config({
         sensitivity = 0, -- -1.0 - 1.0, 0 means no modification.
 
         touchpad = {
-            natural_scroll = false,
+            natural_scroll = true,
         },
     },
 })
@@ -296,7 +293,7 @@ hl.bind("CTRL + SHIFT + Escape", hl.dsp.exec_cmd("alacritty -e btop"))
 hl.bind("CTRL + ALT + Z", hl.dsp.exec_cmd("systemctl --user start ydotool && ~/.local/bin/clicker.sh"))
 hl.bind("CTRL + ALT + X", hl.dsp.exec_cmd("pkill -f ~/.local/bin/clicker.sh && pkill -f ydotool"))
 hl.bind(mainMod .. "+ N", hl.dsp.exec_cmd("noctalia-shell ipc call notifications toggleHistory"))
---hl.bind("ALT + Tab") workspace previous
+hl.bind("ALT + Tab", hl.dsp.focus({ workspace = "previous" })) -- previous_per_monitor
 
 --hl.bind(mainMod .. "+ Return", hl.dsp.layout("swapwithmaster master"))
 
@@ -306,8 +303,8 @@ hl.bind(mainMod .. "+ CTRL + L", hl.dsp.layout("swapcol r"))
 hl.bind(mainMod .. "+ Return", hl.dsp.layout("promote"))
 
 -- Example binds, see https://wiki.hypr.land/Configuring/Basics/Binds/ for more
-hl.bind(mainMod .. " + Q", hl.dsp.exec_cmd(terminal))
-local closeWindowBind = hl.bind(mainMod .. " + C", hl.dsp.window.close())
+-- hl.bind(mainMod .. " + Q", hl.dsp.exec_cmd(terminal))
+-- local closeWindowBind = hl.bind(mainMod .. " + C", hl.dsp.window.close())
 -- closeWindowBind:set_enabled(false)
 --hl.bind(mainMod .. " + M", hl.dsp.exec_cmd("command -v hyprshutdown >/dev/null 2>&1 && hyprshutdown || hyprctl dispatch 'hl.dsp.exit()'"))
 --hl.bind(mainMod .. " + E", hl.dsp.exec_cmd(fileManager))
@@ -316,11 +313,11 @@ local closeWindowBind = hl.bind(mainMod .. " + C", hl.dsp.window.close())
 --hl.bind(mainMod .. " + P", hl.dsp.window.pseudo())
 --hl.bind(mainMod .. " + J", hl.dsp.layout("togglesplit"))    -- dwindle only
 
--- Move focus with mainMod + arrow keys
-hl.bind(mainMod .. " + left",  hl.dsp.focus({ direction = "left" }))
-hl.bind(mainMod .. " + right", hl.dsp.focus({ direction = "right" }))
-hl.bind(mainMod .. " + up",    hl.dsp.focus({ direction = "up" }))
-hl.bind(mainMod .. " + down",  hl.dsp.focus({ direction = "down" }))
+-- Move focus with mainMod + vim keys
+hl.bind(mainMod .. " + H",  hl.dsp.focus({ direction = "left" }))
+hl.bind(mainMod .. " + L", hl.dsp.focus({ direction = "right" }))
+hl.bind(mainMod .. " + K",    hl.dsp.focus({ direction = "up" }))
+hl.bind(mainMod .. " + J",  hl.dsp.focus({ direction = "down" }))
 
 -- Switch workspaces with mainMod + [0-9]
 -- Move active window to a workspace with mainMod + SHIFT + [0-9]
@@ -380,7 +377,7 @@ hl.window_rule({
 hl.layer_rule({
     name = "blur",
     match = {
-        class = "^(waybar)$"
+       namespace = "waybar"
     },
     blur = true
 })
@@ -434,4 +431,4 @@ hl.window_rule({
 require("laptop")
 --require("explicit_sync")
 --require("asus");
-require("noctalia/noctalia-colors")
+--require("noctalia/noctalia-colors")
