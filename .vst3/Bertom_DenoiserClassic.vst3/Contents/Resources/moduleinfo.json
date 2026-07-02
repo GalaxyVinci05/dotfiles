@@ -1,0 +1,60 @@
+{
+  "Name": "Bertom_DenoiserClassic",
+  "Version": "3.0.11",
+  "Factory Info": {
+    "Vendor": "Bertom",
+    "URL": "https://bertomaudio.com",
+    "E-Mail": "tom@bertomaudio.com",
+    "Flags": {
+      "Unicode": true,
+      "Classes Discardable": false,
+      "Component Non Discardable": false,
+    },
+  },
+  "Classes": [
+    {
+      "CID": "ABCDEF019182FAEB4272746D446E636C",
+      "Category": "Audio Module Class",
+      "Name": "Denoiser Classic",
+      "Vendor": "Bertom",
+      "Version": "3.0.11",
+      "SDKVersion": "VST 3.7.8",
+      "Sub Categories": [
+        "Fx",
+        "Restoration",
+      ],
+      "Class Flags": 0,
+      "Cardinality": 2147483647,
+      "Snapshots": [
+      ],
+    },
+    {
+      "CID": "ABCDEF011234ABCD4272746D446E636C",
+      "Category": "Component Controller Class",
+      "Name": "Denoiser Classic",
+      "Vendor": "Bertom",
+      "Version": "3.0.11",
+      "SDKVersion": "VST 3.7.8",
+      "Sub Categories": [
+        "Fx",
+        "Restoration",
+      ],
+      "Class Flags": 0,
+      "Cardinality": 2147483647,
+      "Snapshots": [
+      ],
+    },
+    {
+      "CID": "ABCDEF01C0DEF00D4272746D446E636C",
+      "Category": "Plugin Compatibility Class",
+      "Name": "Denoiser Classic",
+      "Vendor": "Bertom",
+      "Version": "3.0.11",
+      "SDKVersion": "VST 3.7.8",
+      "Class Flags": 0,
+      "Cardinality": 2147483647,
+      "Snapshots": [
+      ],
+    },
+  ],
+}

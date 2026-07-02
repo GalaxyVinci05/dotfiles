@@ -41,3 +41,9 @@
 !/.icons/
 !/.local/share/fonts/
 !/.local/bin/
+
+# reaper and plugins
+!/.config/REAPER/
+!/.vst/
+!/.vst3/
+!/.clap/
