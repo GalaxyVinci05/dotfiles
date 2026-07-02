@@ -5,10 +5,9 @@
 !/Pictures/
 /Pictures/*
 /.config/*
-/.config/hypr/laptop.conf
-/.config/hypr/explicit_sync.conf
-/.config/hypr/nvidia_flags.conf
-/.config/hypr/asus.conf
+/.config/hypr/laptop.lua
+/.config/hypr/nvidia_flags.lua
+/.config/hypr/asus.lua
 /.local/*
 !/.local/share/
 /.local/share/*

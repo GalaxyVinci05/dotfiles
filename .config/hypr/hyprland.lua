@@ -9,7 +9,7 @@
 -- Create your files separately and then require them like this:
 -- require("myColors")
 
-require("nvidia_flags")
+pcall(require, "nvidia_flags")
 
 ---------------------
 ---- MY PROGRAMS ----
@@ -30,12 +30,10 @@ local menu        = "hyprlauncher"
 -- Or execute your favorite apps at launch like this:
 --
 hl.on("hyprland.start", function ()
-    hl.exec_cmd("noctalia-shell & kanshi & thunar --daemon & nextcloud & wl-clip-persist --clipboard regular &")
+    hl.exec_cmd("noctalia & kanshi & thunar --daemon & nextcloud & wl-clip-persist --clipboard regular &")
   --hl.exec_cmd("nm-applet")
   --hl.exec_cmd("waybar & hyprpaper & firefox")
 end)
-
--- TODO: require nvidia flags
 
 -------------------------------
 ---- ENVIRONMENT VARIABLES ----
@@ -52,7 +50,7 @@ hl.env("XDG_SESSION_DESKTOP", "Hyprland")
 hl.env("QT_QPA_PLATFORM", "wayland;xcb")
 -- hl.env("GTK_THEME", "Sweet-Dark")
 hl.env("QT_QPA_PLATFORMTHEME", "qt6ct")
-hl.env("QS_ICON_THEME", "candy-icons")
+--hl.env("QS_ICON_THEME", "candy-icons")
 
 hl.env("SSH_AUTH_SOCK", os.getenv("XDG_RUNTIME_DIR") .. "/gcr/ssh")
 
@@ -284,28 +282,29 @@ local mainMod = "SUPER" -- Sets "Windows" key as main modifier
 -- noctalia keys
 hl.bind(mainMod .. "+ SHIFT + Return", hl.dsp.exec_cmd(terminal))
 hl.bind(mainMod .. "+ Q", hl.dsp.window.close())
-hl.bind(mainMod .. "+ SHIFT + Q", hl.dsp.exec_cmd("noctalia-shell ipc call sessionMenu toggle"))
+hl.bind(mainMod .. "+ SHIFT + Q", hl.dsp.exec_cmd("noctalia msg panel-toggle session"))
 hl.bind(mainMod .. "+ E", hl.dsp.exec_cmd(fileManager))
 hl.bind(mainMod .. "+ V", hl.dsp.window.float({ action = "toggle" }))
-hl.bind(mainMod .. "+ Space", hl.dsp.exec_cmd("noctalia-shell ipc call launcher toggle"))
-hl.bind(mainMod .. "+ SHIFT + S", hl.dsp.exec_cmd("hyprshot -m region --clipboard-only"))
-hl.bind(mainMod .. "+ ALT + S", hl.dsp.exec_cmd("noctalia-shell ipc call settings toggle"))
+hl.bind(mainMod .. "+ Space", hl.dsp.exec_cmd("noctalia msg panel-toggle launcher"))
+--hl.bind(mainMod .. "+ SHIFT + S", hl.dsp.exec_cmd("hyprshot -m region --clipboard-only"))
+hl.bind(mainMod .. "+ SHIFT + S", hl.dsp.exec_cmd("noctalia msg screenshot-region"))
+hl.bind(mainMod .. "+ ALT + S", hl.dsp.exec_cmd("noctalia msg settings-toggle"))
 hl.bind(mainMod .. "+ CTRL + S", hl.dsp.exec_cmd("hyprshot -m region -o ~/Downloads/tabs/"))
-hl.bind(mainMod .. "+ SHIFT + L", hl.dsp.exec_cmd("noctalia-shell ipc call lockScreen lock"))
+hl.bind(mainMod .. "+ SHIFT + L", hl.dsp.exec_cmd("noctalia msg session lock"))
 hl.bind(mainMod .. "+ M", hl.dsp.window.fullscreen({ mode = "maximized", action = "toggle" }))
 hl.bind(mainMod .. "+ F", hl.dsp.window.fullscreen({ mode = "maximized", action = "toggle" }))
 hl.bind(mainMod .. "+ Tab", hl.dsp.window.cycle_next());
 hl.bind(mainMod .. "+ Tab", hl.dsp.window.bring_to_top());
 hl.bind(mainMod .. "+ SHIFT + K", hl.dsp.exec_cmd("hyprctl kill & dunstify \"Kill mode\""))
 hl.bind(mainMod .. "+ SHIFT + C", hl.dsp.exec_cmd("hyprpicker --autocopy"))
-hl.bind(mainMod .. "+ D", hl.dsp.exec_cmd("noctalia-shell ipc call bar toggle"))
-hl.bind(mainMod .. "+ C", hl.dsp.exec_cmd("noctalia-shell ipc call controlCenter toggle"))
-hl.bind(mainMod .. "+ S", hl.dsp.exec_cmd("noctalia-shell ipc call volume togglePanel"))
+hl.bind(mainMod .. "+ D", hl.dsp.exec_cmd("noctalia msg bar-toggle"))
+hl.bind(mainMod .. "+ C", hl.dsp.exec_cmd("noctalia msg panel-toggle control-center"))
+hl.bind(mainMod .. "+ S", hl.dsp.exec_cmd("noctalia msg panel-toggle control-center audio"))
 hl.bind(mainMod .. "+ B", hl.dsp.exec_cmd("dunstify \"$(acpi)\""))
 hl.bind("CTRL + SHIFT + Escape", hl.dsp.exec_cmd("alacritty -e btop"))
 hl.bind("CTRL + ALT + Z", hl.dsp.exec_cmd("systemctl --user start ydotool && ~/.local/bin/clicker.sh"))
 hl.bind("CTRL + ALT + X", hl.dsp.exec_cmd("pkill -f ~/.local/bin/clicker.sh && pkill -f ydotool"))
-hl.bind(mainMod .. "+ N", hl.dsp.exec_cmd("noctalia-shell ipc call notifications toggleHistory"))
+hl.bind(mainMod .. "+ N", hl.dsp.exec_cmd("noctalia msg panel-toggle control-center notifications"))
 hl.bind("ALT + Tab", hl.dsp.focus({ workspace = "previous" })) -- previous_per_monitor
 
 --hl.bind(mainMod .. "+ Return", hl.dsp.layout("swapwithmaster master"))
@@ -354,22 +353,22 @@ hl.bind(mainMod .. " + mouse:273", hl.dsp.window.resize(), { mouse = true })
 
 -- Laptop multimedia keys for volume and LCD brightness
 -- wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 5%+
-hl.bind("XF86AudioRaiseVolume", hl.dsp.exec_cmd("noctalia-shell ipc call volume increase && canberra-gtk-play -i audio-volume-change -d \"changeVolume\""), { locked = true, repeating = true })
+hl.bind("XF86AudioRaiseVolume", hl.dsp.exec_cmd("noctalia msg volume-up && canberra-gtk-play -i audio-volume-change -d \"changeVolume\""), { locked = true, repeating = true })
 -- wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-
-hl.bind("XF86AudioLowerVolume", hl.dsp.exec_cmd("noctalia-shell ipc call volume decrease && canberra-gtk-play -i audio-volume-change -d \"changeVolume\""),      { locked = true, repeating = true })
+hl.bind("XF86AudioLowerVolume", hl.dsp.exec_cmd("noctalia msg volume-down && canberra-gtk-play -i audio-volume-change -d \"changeVolume\""),      { locked = true, repeating = true })
 -- wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle
-hl.bind("XF86AudioMute",        hl.dsp.exec_cmd("noctalia-shell ipc call volume muteOutput && canberra-gtk-play -i audio-volume-change -d \"changeVolume\""),     { locked = true, repeating = true })
+hl.bind("XF86AudioMute",        hl.dsp.exec_cmd("noctalia msg volume-mute && canberra-gtk-play -i audio-volume-change -d \"changeVolume\""),     { locked = true, repeating = true })
 hl.bind("XF86AudioMicMute",     hl.dsp.exec_cmd("wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"),   { locked = true, repeating = true })
 -- brightnessctl -e4 -n2 set 5%+
 -- brightnessctl -e4 -n2 set 5%-
-hl.bind("XF86MonBrightnessUp",  hl.dsp.exec_cmd("noctalia-shell ipc call brightness increase"),                  { locked = true, repeating = true })
-hl.bind("XF86MonBrightnessDown",hl.dsp.exec_cmd("noctalia-shell ipc call brightness decrease"),                  { locked = true, repeating = true })
+hl.bind("XF86MonBrightnessUp",  hl.dsp.exec_cmd("noctalia msg brightness-up"),                  { locked = true, repeating = true })
+hl.bind("XF86MonBrightnessDown", hl.dsp.exec_cmd("noctalia msg brightness-down"),                  { locked = true, repeating = true })
 
 -- Requires playerctl
 hl.bind("XF86AudioNext",  hl.dsp.exec_cmd("playerctl next"),       { locked = true })
 -- hl.bind("XF86AudioPause", hl.dsp.exec_cmd("playerctl play-pause"), { locked = true })
 -- hl.bind("XF86AudioPlay",  hl.dsp.exec_cmd("playerctl play-pause"), { locked = true })
-hl.bind("XF86AudioPlay",  hl.dsp.exec_cmd("noctalia-shell ipc call media playPause"), { locked = true })
+hl.bind("XF86AudioPlay",  hl.dsp.exec_cmd("noctalia msg media toggle"), { locked = true })
 hl.bind("XF86AudioPrev",  hl.dsp.exec_cmd("playerctl previous"),   { locked = true })
 
 
@@ -399,6 +398,18 @@ hl.layer_rule({
        namespace = "waybar"
     },
     blur = true
+})
+
+-- noctalia blur
+hl.layer_rule({
+  name = "noctalia",
+  match = {
+    namespace = "^noctalia-(bar-.+|notification|dock|panel|attached-panel|osd)$",
+  },
+  no_anim = true,
+  ignore_alpha = 0.5,
+  blur = true,
+  blur_popups = true,
 })
 
 -- See https://wiki.hypr.land/Configuring/Basics/Window-Rules/
@@ -447,7 +458,8 @@ hl.window_rule({
     float = true,
 })
 
-require("laptop")
---require("explicit_sync")
---require("asus");
---require("noctalia/noctalia-colors")
+pcall(require, "laptop")
+pcall(require, "asus")
+
+-- For Noctalia Color templates
+require("noctalia").apply_theme()

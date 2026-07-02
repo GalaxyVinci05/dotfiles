@@ -1,0 +1,247 @@
+[bar.default]
+center = [ "workspaces" ]
+end = [ "clipboard", "tray", "notifications", "network", "volume", "brightness", "battery", "control-center", "clock" ]
+margin_ends = 10
+padding = 6
+radius = 80
+start = [ "launcher", "cpu", "temp", "ram", "active_window", "media" ]
+
+[control_center]
+sidebar_section = "none"
+
+[desktop_widgets]
+schema_version = 2
+widget_order = []
+
+    [desktop_widgets.grid]
+    cell_size = 16
+    major_interval = 4
+    visible = true
+
+    [desktop_widgets.widget]
+
+[dock]
+auto_hide = true
+enabled = true
+icon_size = 24
+reserve_space = false
+
+[idle]
+behavior_order = [ "lock", "screen-off", "lock-and-suspend" ]
+pre_action_fade_seconds = 5
+
+    [idle.behavior.lock]
+    action = "lock"
+    enabled = true
+    timeout = 600.0
+
+    [idle.behavior.lock-and-suspend]
+    action = "lock_and_suspend"
+    enabled = false
+    timeout = 900.0
+
+    [idle.behavior.screen-off]
+    action = "screen_off"
+    enabled = false
+    timeout = 660.0
+
+[location]
+auto_locate = true
+
+[lockscreen_widgets]
+enabled = true
+schema_version = 2
+widget_order = [
+    "lockscreen-login-box@HDMI-A-1",
+    "lockscreen-login-box@DP-3",
+    "lockscreen-widget-0000000000000001",
+    "lockscreen-widget-0000000000000002",
+    "lockscreen-widget-0000000000000003"
+]
+
+    [lockscreen_widgets.grid]
+    cell_size = 16
+    major_interval = 4
+    visible = true
+
+    [lockscreen_widgets.widget."lockscreen-login-box@DP-3"]
+    box_height = 70.0
+    box_width = 400.0
+    cx = 960.0
+    cy = 961.0
+    output = "DP-3"
+    rotation = 0.0
+    type = "login_box"
+
+        [lockscreen_widgets.widget."lockscreen-login-box@DP-3".settings]
+        background_color = "surface_variant"
+        background_opacity = 0.88
+        background_radius = 12.0
+        input_opacity = 1.0
+        input_radius = 6.0
+        show_caps_lock = true
+        show_keyboard_layout = true
+        show_login_button = true
+        show_password_hint = true
+
+    [lockscreen_widgets.widget."lockscreen-login-box@HDMI-A-1"]
+    box_height = 70.0
+    box_width = 400.0
+    cx = 960.0
+    cy = 961.0
+    output = "HDMI-A-1"
+    rotation = 0.0
+    type = "login_box"
+
+        [lockscreen_widgets.widget."lockscreen-login-box@HDMI-A-1".settings]
+        background_color = "surface_variant"
+        background_opacity = 0.88
+        background_radius = 12.0
+        input_opacity = 1.0
+        input_radius = 6.0
+        show_caps_lock = true
+        show_keyboard_layout = true
+        show_login_button = true
+        show_password_hint = true
+
+    [lockscreen_widgets.widget.lockscreen-widget-0000000000000001]
+    box_height = 0.0
+    box_width = 0.0
+    cx = 960.0
+    cy = 316.5
+    output = "DP-3"
+    rotation = 0.0
+    type = "clock"
+
+        [lockscreen_widgets.widget.lockscreen-widget-0000000000000001.settings]
+        clock_style = "digital"
+
+    [lockscreen_widgets.widget.lockscreen-widget-0000000000000002]
+    box_height = 0.0
+    box_width = 0.0
+    cx = 960.0
+    cy = 796.0
+    output = "DP-3"
+    rotation = 0.0
+    type = "media_player"
+
+        [lockscreen_widgets.widget.lockscreen-widget-0000000000000002.settings]
+        layout = "horizontal"
+
+    [lockscreen_widgets.widget.lockscreen-widget-0000000000000003]
+    box_height = 64.0
+    box_width = 128.0
+    cx = 960.0
+    cy = 444.0
+    output = "DP-3"
+    rotation = 0.0
+    type = "weather"
+
+[osd.kinds]
+lock_keys = false
+
+[shell]
+font_family = "JetBrains Mono"
+settings_show_advanced = true
+
+    [shell.panel]
+    open_near_click_control_center = true
+    open_near_click_wallpaper = true
+    session_placement = "floating"
+    session_position = "center"
+    transparency_mode = "glass"
+
+[theme]
+builtin = "Noctalia"
+community_palette = "Tokyo Night Moon"
+mode = "dark"
+source = "wallpaper"
+wallpaper_scheme = "m3-fruit-salad"
+
+    [theme.templates]
+    builtin_ids = [ "cava", "hyprland" ]
+    community_ids = [ "hyprtoolkit" ]
+
+[wallpaper]
+directory = "/home/galaxy/Pictures/backgrounds"
+
+    [wallpaper.default]
+    path = "/home/galaxy/Pictures/backgrounds/galaxy.jpg"
+
+    [wallpaper.last]
+    path = "/home/galaxy/Pictures/backgrounds/galaxy.jpg"
+
+    [wallpaper.monitors.DP-3]
+    path = "/home/galaxy/Pictures/backgrounds/galaxy.jpg"
+
+    [wallpaper.monitors.HDMI-A-1]
+    path = "/home/galaxy/Pictures/backgrounds/galaxy.jpg"
+
+[widget.active_window]
+capsule = true
+max_length = 140
+title_scroll = "on_hover"
+
+[widget.battery]
+capsule = true
+show_label = false
+
+[widget.brightness]
+capsule = true
+show_label = false
+
+[widget.clipboard]
+capsule = true
+
+[widget.clock]
+capsule = true
+
+[widget.control-center]
+capsule = true
+
+[widget.cpu]
+capsule = true
+show_label = false
+
+[widget.launcher]
+capsule = true
+capsule_padding = 3
+custom_image = "/home/galaxy/Downloads/nixos_logo_icon_170910-953141139.png"
+glyph = "rocket"
+scale = 1.25
+
+[widget.media]
+capsule = true
+hide_when_no_media = true
+max_length = 140
+title_scroll = "on_hover"
+
+[widget.network]
+capsule = true
+show_label = false
+
+[widget.notifications]
+capsule = true
+
+[widget.ram]
+capsule = true
+show_label = false
+
+[widget.sysmon]
+capsule = true
+show_label = false
+
+[widget.temp]
+capsule = true
+show_label = false
+
+[widget.tray]
+capsule = true
+
+[widget.volume]
+capsule = true
+show_label = false
+
+[widget.workspaces]
+capsule = true
+font_weight = 700
