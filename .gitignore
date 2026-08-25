@@ -20,6 +20,7 @@
 # files to include
 !/.gitignore
 !/.local/share/applications/nvim.desktop
+!/.local/share/applications/cockos-reaper.desktop
 # !/.bash_profile
 # !/.bashrc
 # !/.xinitrc

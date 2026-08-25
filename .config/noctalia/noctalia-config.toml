@@ -82,7 +82,6 @@ widget_order = [
         show_caps_lock = true
         show_keyboard_layout = true
         show_login_button = true
-        show_password_hint = true
 
     [lockscreen_widgets.widget."lockscreen-login-box@HDMI-A-1"]
     box_height = 70.0
@@ -102,7 +101,6 @@ widget_order = [
         show_caps_lock = true
         show_keyboard_layout = true
         show_login_button = true
-        show_password_hint = true
 
     [lockscreen_widgets.widget.lockscreen-widget-0000000000000001]
     box_height = 0.0
@@ -201,7 +199,7 @@ capsule = true
 
 [widget.cpu]
 capsule = true
-show_label = false
+show_value = false
 
 [widget.launcher]
 capsule = true
@@ -225,15 +223,15 @@ capsule = true
 
 [widget.ram]
 capsule = true
-show_label = false
+show_value = false
 
 [widget.sysmon]
 capsule = true
-show_label = false
+show_value = false
 
 [widget.temp]
 capsule = true
-show_label = false
+show_value = false
 
 [widget.tray]
 capsule = true
