@@ -292,10 +292,10 @@ hl.bind(mainMod .. "+ ALT + S", hl.dsp.exec_cmd("noctalia msg settings-toggle"))
 hl.bind(mainMod .. "+ CTRL + S", hl.dsp.exec_cmd("hyprshot -m region -o ~/Downloads/tabs/"))
 hl.bind(mainMod .. "+ SHIFT + L", hl.dsp.exec_cmd("noctalia msg session lock"))
 hl.bind(mainMod .. "+ M", hl.dsp.window.fullscreen({ mode = "maximized", action = "toggle" }))
-hl.bind(mainMod .. "+ F", hl.dsp.window.fullscreen({ mode = "maximized", action = "toggle" }))
+hl.bind(mainMod .. "+ F", hl.dsp.window.fullscreen({ mode = "fullscreen", action = "toggle" }))
 hl.bind(mainMod .. "+ Tab", hl.dsp.window.cycle_next());
 hl.bind(mainMod .. "+ Tab", hl.dsp.window.bring_to_top());
-hl.bind(mainMod .. "+ SHIFT + K", hl.dsp.exec_cmd("hyprctl kill & dunstify \"Kill mode\""))
+hl.bind(mainMod .. "+ SHIFT + K", hl.dsp.exec_cmd("hyprctl kill & notify-send \"Kill mode\""))
 hl.bind(mainMod .. "+ SHIFT + C", hl.dsp.exec_cmd("hyprpicker --autocopy"))
 hl.bind(mainMod .. "+ D", hl.dsp.exec_cmd("noctalia msg bar-toggle"))
 hl.bind(mainMod .. "+ C", hl.dsp.exec_cmd("noctalia msg panel-toggle control-center"))
@@ -457,6 +457,24 @@ hl.window_rule({
     move  = "20 monitor_h-120",
     float = true,
 })
+
+-- REAPER window rules
+hl.window_rule({
+    name  = "reaper ctx",
+    match = { class = "REAPER", title = "^$" },
+
+    no_focus = true,
+    rounding = 0,
+    no_anim = true
+})
+
+hl.window_rule({
+    name  = "reaper menu",
+    match = { class = "REAPER", title = "menu" },
+
+    no_focus = true,
+})
+
 
 pcall(require, "laptop")
 pcall(require, "asus")

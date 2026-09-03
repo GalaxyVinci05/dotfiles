@@ -15,3 +15,8 @@ style = "Italic"
 [font.normal]
 family = "Mononoki"
 style = "Regular"
+
+[[keyboard.bindings]]
+key = "Return"
+mods = "Shift"
+chars = "\u001B\r"
