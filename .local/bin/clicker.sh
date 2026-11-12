@@ -3,4 +3,5 @@
 while true
 do
     ydotool click C0 -D 24
+    sleep 10
 done
