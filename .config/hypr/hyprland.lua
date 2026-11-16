@@ -472,7 +472,14 @@ hl.window_rule({
     name  = "reaper menu",
     match = { class = "REAPER", title = "menu" },
 
-    no_focus = true,
+    -- no_focus = true,
+})
+
+hl.window_rule({
+    name  = "reaper",
+    match = { class = "REAPER" },
+
+    opacity = "1 override"
 })
 
 

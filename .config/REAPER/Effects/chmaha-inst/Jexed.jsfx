@@ -1,0 +1,2709 @@
+Version: 1.1.0
+desc: Jexed FM Synth (Dexed port) by chmaha
+tags: instrument
+author: chmaha
+changelog:
+  Full voice editor: every DX7 parameter as an automatable control, with an EDIT page (algorithm diagram, six operators with live envelopes, LFO, pitch envelope, key scaling) next to the PLAY page (voice grid, performance and controller settings).
+  Dexed's performance controls: filter cutoff and resonance, mono mode, master tune, pitch-bend range and step, mod wheel / foot / breath / aftertouch routing, operator on/off switches.
+  User cartridge of 32 slots: STORE the current voice, INIT VOICE, rename voices; saved with the project and in REAPER presets.
+  Edited voices are saved with the project.
+  The name now shows the original plugin (Dexed), and the GUI credits it.
+  Listed in REAPER's Instruments folder.
+  The voice arrows and mouse wheel stay within the current cartridge, wrapping at the ends; choosing another cartridge starts at its first voice.
+  The cartridge file moved to its own folder.
+about:
+  DX7-style FM synthesizer, ported from Dexed by Pascal Gauthier
+  https://github.com/asb2m10/dexed (GPLv3)
+  Dexed's synth engine is based on Music Synthesizer for Android by Raph Levien (Google Inc.)
+  https://github.com/google/music-synthesizer-for-android (Apache 2.0)
+  Bundled cartridges: Dexed_01 and SynprezFM_01-32, as shipped with Dexed
+  JSFX version released under GPLv3+ license
+  Claude Opus 5.x may have generated some of the port of this code
+requires:
+  Data/Jexed/JexedCarts.txt
+
+slider1:0<0,33,1{Dexed_01,SynprezFM_01,SynprezFM_02,SynprezFM_03,SynprezFM_04,SynprezFM_05,SynprezFM_06,SynprezFM_07,SynprezFM_08,SynprezFM_09,SynprezFM_10,SynprezFM_11,SynprezFM_12,SynprezFM_13,SynprezFM_14,SynprezFM_15,SynprezFM_16,SynprezFM_17,SynprezFM_18,SynprezFM_19,SynprezFM_20,SynprezFM_21,SynprezFM_22,SynprezFM_23,SynprezFM_24,SynprezFM_25,SynprezFM_26,SynprezFM_27,SynprezFM_28,SynprezFM_29,SynprezFM_30,SynprezFM_31,SynprezFM_32,User}>-Cartridge
+slider2:0<0,31,1>-Program
+slider3:0<-24,12,0.1>-Output (dB)
+slider4:0<0,16,1{Omni,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16}>-MIDI Channel
+slider5:4<0,8,1{1,2,4,8,16,32,64,128,256}>-Polyphony
+slider6:1<0,1,0.001>-Cutoff
+slider7:0<0,1,0.001>-Resonance
+slider8:0<0,1,1{Poly,Mono}>-Mono
+slider9:0<-100,100,0.1>-Master Tune (cents)
+slider10:3<0,48,1>-Pitch Bend Up
+slider11:3<0,48,1>-Pitch Bend Down
+slider12:0<0,12,1>-Pitch Bend Step
+slider13:0<0,99,1>-Mod Wheel Range
+slider14:0<0,1,1{Off,On}>-Mod Wheel -> Pitch
+slider15:0<0,1,1{Off,On}>-Mod Wheel -> Amp
+slider16:0<0,1,1{Off,On}>-Mod Wheel -> EG Bias
+slider17:0<0,99,1>-Foot Range
+slider18:0<0,1,1{Off,On}>-Foot -> Pitch
+slider19:0<0,1,1{Off,On}>-Foot -> Amp
+slider20:0<0,1,1{Off,On}>-Foot -> EG Bias
+slider21:0<0,99,1>-Breath Range
+slider22:0<0,1,1{Off,On}>-Breath -> Pitch
+slider23:0<0,1,1{Off,On}>-Breath -> Amp
+slider24:0<0,1,1{Off,On}>-Breath -> EG Bias
+slider25:0<0,99,1>-Aftertouch Range
+slider26:0<0,1,1{Off,On}>-Aftertouch -> Pitch
+slider27:0<0,1,1{Off,On}>-Aftertouch -> Amp
+slider28:0<0,1,1{Off,On}>-Aftertouch -> EG Bias
+slider29:1<0,1,1{Off,On}>-OP1 On
+slider30:1<0,1,1{Off,On}>-OP2 On
+slider31:1<0,1,1{Off,On}>-OP3 On
+slider32:1<0,1,1{Off,On}>-OP4 On
+slider33:1<0,1,1{Off,On}>-OP5 On
+slider34:1<0,1,1{Off,On}>-OP6 On
+slider35:7<0,99,1>-OP6 EG Rate 1
+slider36:64<0,99,1>-OP6 EG Rate 2
+slider37:45<0,99,1>-OP6 EG Rate 3
+slider38:99<0,99,1>-OP6 EG Rate 4
+slider39:45<0,99,1>-OP6 EG Level 1
+slider40:99<0,99,1>-OP6 EG Level 2
+slider41:0<0,99,1>-OP6 EG Level 3
+slider42:0<0,99,1>-OP6 EG Level 4
+slider43:0<0,99,1>-OP6 Break Point
+slider44:0<0,99,1>-OP6 L Scale Depth
+slider45:0<0,99,1>-OP6 R Scale Depth
+slider46:0<0,3,1{-LN,-EX,+EX,+LN}>-OP6 L Key Scale
+slider47:0<0,3,1{-LN,-EX,+EX,+LN}>-OP6 R Key Scale
+slider48:0<0,7,1>-OP6 Rate Scaling
+slider49:0<0,3,1>-OP6 Amp Mod Sens
+slider50:0<0,7,1>-OP6 Key Velocity
+slider51:99<0,99,1>-OP6 Output Level
+slider52:0<0,1,1{Ratio,Fixed}>-OP6 Mode
+slider53:0<0,31,1>-OP6 Freq Coarse
+slider54:0<0,99,1>-OP6 Freq Fine
+slider55:7<0,14,1>-OP6 Detune
+slider56:10<0,99,1>-OP5 EG Rate 1
+slider57:64<0,99,1>-OP5 EG Rate 2
+slider58:49<0,99,1>-OP5 EG Rate 3
+slider59:99<0,99,1>-OP5 EG Rate 4
+slider60:46<0,99,1>-OP5 EG Level 1
+slider61:99<0,99,1>-OP5 EG Level 2
+slider62:0<0,99,1>-OP5 EG Level 3
+slider63:0<0,99,1>-OP5 EG Level 4
+slider64:0<0,99,1>-OP5 Break Point
+slider65:0<0,99,1>-OP5 L Scale Depth
+slider66:0<0,99,1>-OP5 R Scale Depth
+slider67:0<0,3,1{-LN,-EX,+EX,+LN}>-OP5 L Key Scale
+slider68:0<0,3,1{-LN,-EX,+EX,+LN}>-OP5 R Key Scale
+slider69:0<0,7,1>-OP5 Rate Scaling
+slider70:0<0,3,1>-OP5 Amp Mod Sens
+slider71:0<0,7,1>-OP5 Key Velocity
+slider72:99<0,99,1>-OP5 Output Level
+slider73:0<0,1,1{Ratio,Fixed}>-OP5 Mode
+slider74:2<0,31,1>-OP5 Freq Coarse
+slider75:0<0,99,1>-OP5 Freq Fine
+slider76:7<0,14,1>-OP5 Detune
+slider77:13<0,99,1>-OP4 EG Rate 1
+slider78:64<0,99,1>-OP4 EG Rate 2
+slider79:49<0,99,1>-OP4 EG Rate 3
+slider80:99<0,99,1>-OP4 EG Rate 4
+slider81:46<0,99,1>-OP4 EG Level 1
+slider82:99<0,99,1>-OP4 EG Level 2
+slider83:0<0,99,1>-OP4 EG Level 3
+slider84:0<0,99,1>-OP4 EG Level 4
+slider85:0<0,99,1>-OP4 Break Point
+slider86:0<0,99,1>-OP4 L Scale Depth
+slider87:0<0,99,1>-OP4 R Scale Depth
+slider88:0<0,3,1{-LN,-EX,+EX,+LN}>-OP4 L Key Scale
+slider89:0<0,3,1{-LN,-EX,+EX,+LN}>-OP4 R Key Scale
+slider90:0<0,7,1>-OP4 Rate Scaling
+slider91:0<0,3,1>-OP4 Amp Mod Sens
+slider92:0<0,7,1>-OP4 Key Velocity
+slider93:99<0,99,1>-OP4 Output Level
+slider94:0<0,1,1{Ratio,Fixed}>-OP4 Mode
+slider95:0<0,31,1>-OP4 Freq Coarse
+slider96:0<0,99,1>-OP4 Freq Fine
+slider97:7<0,14,1>-OP4 Detune
+slider98:15<0,99,1>-OP3 EG Rate 1
+slider99:64<0,99,1>-OP3 EG Rate 2
+slider100:49<0,99,1>-OP3 EG Rate 3
+slider101:99<0,99,1>-OP3 EG Rate 4
+slider102:44<0,99,1>-OP3 EG Level 1
+slider103:99<0,99,1>-OP3 EG Level 2
+slider104:0<0,99,1>-OP3 EG Level 3
+slider105:0<0,99,1>-OP3 EG Level 4
+slider106:0<0,99,1>-OP3 Break Point
+slider107:0<0,99,1>-OP3 L Scale Depth
+slider108:0<0,99,1>-OP3 R Scale Depth
+slider109:0<0,3,1{-LN,-EX,+EX,+LN}>-OP3 L Key Scale
+slider110:0<0,3,1{-LN,-EX,+EX,+LN}>-OP3 R Key Scale
+slider111:0<0,7,1>-OP3 Rate Scaling
+slider112:0<0,3,1>-OP3 Amp Mod Sens
+slider113:0<0,7,1>-OP3 Key Velocity
+slider114:99<0,99,1>-OP3 Output Level
+slider115:0<0,1,1{Ratio,Fixed}>-OP3 Mode
+slider116:2<0,31,1>-OP3 Freq Coarse
+slider117:0<0,99,1>-OP3 Freq Fine
+slider118:7<0,14,1>-OP3 Detune
+slider119:25<0,99,1>-OP2 EG Rate 1
+slider120:64<0,99,1>-OP2 EG Rate 2
+slider121:49<0,99,1>-OP2 EG Rate 3
+slider122:99<0,99,1>-OP2 EG Rate 4
+slider123:50<0,99,1>-OP2 EG Level 1
+slider124:99<0,99,1>-OP2 EG Level 2
+slider125:0<0,99,1>-OP2 EG Level 3
+slider126:0<0,99,1>-OP2 EG Level 4
+slider127:0<0,99,1>-OP2 Break Point
+slider128:0<0,99,1>-OP2 L Scale Depth
+slider129:0<0,99,1>-OP2 R Scale Depth
+slider130:0<0,3,1{-LN,-EX,+EX,+LN}>-OP2 L Key Scale
+slider131:0<0,3,1{-LN,-EX,+EX,+LN}>-OP2 R Key Scale
+slider132:0<0,7,1>-OP2 Rate Scaling
+slider133:0<0,3,1>-OP2 Amp Mod Sens
+slider134:0<0,7,1>-OP2 Key Velocity
+slider135:99<0,99,1>-OP2 Output Level
+slider136:0<0,1,1{Ratio,Fixed}>-OP2 Mode
+slider137:0<0,31,1>-OP2 Freq Coarse
+slider138:0<0,99,1>-OP2 Freq Fine
+slider139:7<0,14,1>-OP2 Detune
+slider140:70<0,99,1>-OP1 EG Rate 1
+slider141:40<0,99,1>-OP1 EG Rate 2
+slider142:49<0,99,1>-OP1 EG Rate 3
+slider143:99<0,99,1>-OP1 EG Rate 4
+slider144:99<0,99,1>-OP1 EG Level 1
+slider145:92<0,99,1>-OP1 EG Level 2
+slider146:0<0,99,1>-OP1 EG Level 3
+slider147:0<0,99,1>-OP1 EG Level 4
+slider148:0<0,99,1>-OP1 Break Point
+slider149:0<0,99,1>-OP1 L Scale Depth
+slider150:0<0,99,1>-OP1 R Scale Depth
+slider151:0<0,3,1{-LN,-EX,+EX,+LN}>-OP1 L Key Scale
+slider152:0<0,3,1{-LN,-EX,+EX,+LN}>-OP1 R Key Scale
+slider153:0<0,7,1>-OP1 Rate Scaling
+slider154:0<0,3,1>-OP1 Amp Mod Sens
+slider155:0<0,7,1>-OP1 Key Velocity
+slider156:99<0,99,1>-OP1 Output Level
+slider157:0<0,1,1{Ratio,Fixed}>-OP1 Mode
+slider158:1<0,31,1>-OP1 Freq Coarse
+slider159:0<0,99,1>-OP1 Freq Fine
+slider160:7<0,14,1>-OP1 Detune
+slider161:99<0,99,1>-Pitch EG Rate 1
+slider162:99<0,99,1>-Pitch EG Rate 2
+slider163:99<0,99,1>-Pitch EG Rate 3
+slider164:99<0,99,1>-Pitch EG Rate 4
+slider165:50<0,99,1>-Pitch EG Level 1
+slider166:50<0,99,1>-Pitch EG Level 2
+slider167:50<0,99,1>-Pitch EG Level 3
+slider168:50<0,99,1>-Pitch EG Level 4
+slider169:31<0,31,1>-Algorithm
+slider170:7<0,7,1>-Feedback
+slider171:1<0,1,1{Off,On}>-Osc Key Sync
+slider172:35<0,99,1>-LFO Speed
+slider173:0<0,99,1>-LFO Delay
+slider174:0<0,99,1>-LFO PM Depth
+slider175:0<0,99,1>-LFO AM Depth
+slider176:1<0,1,1{Off,On}>-LFO Key Sync
+slider177:0<0,5,1{Triangle,Saw Down,Saw Up,Square,Sine,S&H}>-LFO Wave
+slider178:3<0,7,1>-Pitch Mod Sens
+slider179:24<0,48,1>-Transpose
+
+options:no_meter
+
+in_pin:none
+out_pin:left output
+out_pin:right output
+
+@init
+ext_noinit = gfx_ext_retina = 1;
+
+sinlog = 0;
+sinexp = 1024;
+sintab = 2048;
+flut = 4096;
+statics_t = 5136;
+levellut_t = 5216;
+perate = 5240;
+petab = 5344;
+lfosrc = 5448;
+coarse_t = 5552;
+veldata = 5588;
+expscale = 5656;
+pmstab = 5692;
+amstab = 5704;
+algs = 5712;
+prates = 5904;
+pgrates = 6032;
+patch = 6160;
+hc = 6320;
+obuf = 6400;
+bus1 = 6464;
+bus2 = 6528;
+sbuf = 6592;
+outbuf = 6656;
+evq = 6720;
+evq_max = 1024;
+vbase = 300000;
+vstride = 256;
+maxvoices = 256;
+carts = 20000;
+slog4 = 160000;
+sexp64 = 170000;
+cart_bytes = 4104;
+ncarts = 33;
+opsw = 11000;
+kdown = 11300;
+vact = 11500;
+gq = 11700;
+fxs = 11010;
+initv = 11100;
+userc = carts + 33 * cart_bytes;
+
+function parse_nums(dst, s) local(i, n, c, v, neg, dv, have, len)
+(
+  len = strlen(s);
+  i = 0; n = 0; v = 0; neg = 0; dv = 0; have = 0;
+  loop(len + 1,
+    c = i < len ? str_getchar(s, i) : 32;
+    c == 45 ? neg = 1 :
+    c == 46 ? dv = 1 :
+    (c >= 48 && c <= 57) ? ( v = v*10 + c - 48; dv ? dv *= 10; have = 1; ) :
+    have ? (
+      dst[n] = (neg ? -v : v) / (dv ? dv : 1);
+      n += 1; v = 0; neg = 0; dv = 0; have = 0;
+    );
+    i += 1;
+  );
+  n;
+);
+
+function f32(x) local(a, e, u, q, r)
+(
+  x === 0 ? 0 : (
+    a = abs(x);
+    e = floor(log(a) / log(2));
+    2^e > a ? e -= 1;
+    2^(e + 1) <= a ? e += 1;
+    u = 2^(e - 23);
+    q = a / u;
+    r = floor(q + 0.5);
+    (r - q === 0.5 && (r & 1)) ? r -= 1;
+    x < 0 ? -r*u : r*u;
+  );
+);
+
+function trunc(x) ( x < 0 ? ceil(x) : floor(x); );
+
+function mulshr(a, b, k) local(bh, bl, t, th)
+(
+  bh = floor(b / 65536);
+  bl = b - bh*65536;
+  t = a*bl;
+  th = floor(t / 65536);
+  floor((a*bh + th) / 2^(k - 16));
+);
+
+function mac30(a, b, c, d) local(bh, bl, dh, dl, lo, lh)
+(
+  bh = floor(b / 65536); bl = b - bh*65536;
+  dh = floor(d / 65536); dl = d - dh*65536;
+  lo = a*bl + c*dl + 536870912;
+  lh = floor(lo / 65536);
+  floor((a*bh + c*dh + lh) / 16384);
+);
+
+parse_nums(statics_t, "1764000 1764000 1411200 1411200 1190700 1014300 992250 882000 705600 705600 584325 507150 502740 441000 418950 352800 308700 286650 253575 220500 220500 176400 145530 145530 125685 110250 110250 88200 88200 74970 61740 61740 55125 48510 44100 37485 31311 30870 27562 27562 22050 18522 17640 15435 14112 13230 11025 9261 9261 7717 6615 6615 5512 5512 4410 3969 3969 3439 2866 2690 2249 1984 1896 1808 1411 1367 1234 1146 926 837 837 705 573 573 529 441 441");
+parse_nums(levellut_t, "0 5 9 13 17 20 23 25 27 29 31 33 35 37 39 41 42 43 45 46");
+parse_nums(perate, "1 2 3 3 4 4 5 5 6 6 7 7 8 8 9 9 10 10 11 11 12 12 13 13 14 14 15 16 16 17 18 18 19 20 21 22 23 24 25 26 27 28 30 31 33 34 36 37 38 39 41 42 44 46 47 49 51 53 54 56 58 60 62 64 66 68 70 72 74 76 79 82 85 88 91 94 98 102 106 110 115 120 125 130 135 141 147 153 159 165 171 178 185 193 202 211 232 243 254 255");
+parse_nums(petab, "-128 -116 -104 -95 -85 -76 -68 -61 -56 -52 -49 -46 -43 -41 -39 -37 -35 -33 -32 -31 -30 -29 -28 -27 -26 -25 -24 -23 -22 -21 -20 -19 -18 -17 -16 -15 -14 -13 -12 -11 -10 -9 -8 -7 -6 -5 -4 -3 -2 -1 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 38 40 43 46 49 53 58 65 73 82 92 103 115 127");
+parse_nums(lfosrc, "0.062541 0.125031 0.312393 0.437120 0.624610 0.750694 0.936330 1.125302 1.249609 1.436782 1.560915 1.752081 1.875117 2.062494 2.247191 2.374451 2.560492 2.686728 2.873976 2.998950 3.188013 3.369840 3.500175 3.682224 3.812065 4.000800 4.186202 4.310716 4.501260 4.623209 4.814636 4.930480 5.121901 5.315191 5.434783 5.617346 5.750431 5.946717 6.062811 6.248438 6.431695 6.564264 6.749460 6.868132 7.052186 7.250580 7.375719 7.556294 7.687577 7.877738 7.993605 8.181967 8.372405 8.504848 8.685079 8.810573 8.986341 9.122423 9.300595 9.500285 9.607994 9.798158 9.950249 10.117361 11.251125 11.384335 12.562814 13.676149 13.904338 15.092062 16.366612 16.638935 17.869907 19.193858 19.425019 20.833333 21.034918 22.502250 24.003841 24.260068 25.746653 27.173913 27.578599 29.052876 30.693677 31.191516 32.658393 34.317090 34.674064 36.416606 38.197097 38.550501 40.387722 40.749796 42.625746 44.326241 44.883303 46.772685 48.590865 49.261084");
+parse_nums(coarse_t, "-16777216 0 16777216 26591258 33554432 38955489 43368474 47099600 50331648 53182516 55732705 58039632 60145690 62083076 63876816 65546747 67108864 68576247 69959732 71268397 72509921 73690858 74816848 75892776 76922906 77910978 78860292 79773775 80654032 81503396 82323963 83117622");
+parse_nums(veldata, "0 70 86 97 106 114 121 126 132 138 142 148 152 156 160 163 166 170 173 174 178 181 184 186 189 190 194 196 198 200 202 205 206 209 211 214 216 218 220 222 224 225 227 229 230 232 233 235 237 238 240 241 242 243 244 246 246 248 249 250 251 252 253 254");
+parse_nums(expscale, "0 1 2 3 4 5 6 7 8 9 11 14 16 19 23 27 33 39 47 56 66 80 94 110 126 142 158 174 190 206 222 238 250");
+parse_nums(pmstab, "0 10 20 33 55 92 153 255");
+parse_nums(amstab, "0 4342338 7171437 16777216");
+parse_nums(algs, "193 17 17 20 1 20 1 17 17 20 193 20 193 17 20 1 17 20 193 17 148 1 17 20 193 20 1 20 1 20 193 148 1 20 1 20 193 17 5 20 1 20 1 17 197 20 1 20 1 17 5 20 193 20 1 5 20 193 17 20 193 5 20 1 17 20 1 5 5 20 193 20 193 5 5 20 1 20 193 5 17 20 1 20 1 5 17 20 193 20 193 17 2 37 5 20 1 17 2 37 197 20 1 17 17 197 5 20 193 20 20 1 17 20 1 5 20 193 20 20 1 20 20 193 20 20 193 20 20 20 1 20 193 20 20 1 20 4 193 20 20 20 4 4 193 20 20 4 4 4 193 5 20 1 20 4 1 5 20 193 20 4 4 193 17 20 1 20 193 20 1 20 4 4 4 193 17 20 4 4 193 20 4 4 4 4 196 4 4 4 4 4");
+
+i = 0;
+loop(1024,
+  sinlog[i] = floor(-1024 * log(f32(sin(((0.5 + i) / 1024) * $pi / 2))) / log(2) + 0.5);
+  sinexp[i] = floor(f32((2^(i / 1024) - 1) * 4096) + 0.5);
+  i += 1;
+);
+
+i = 0;
+loop(4096,
+  x = i & 1023;
+  q = i & 3072;
+  slog4[i] = q == 0 ? sinlog[x] : q == 1024 ? sinlog[x ~ 1023] : q == 2048 ? sinlog[x] + 32768 : sinlog[x ~ 1023] + 32768;
+  i += 1;
+);
+i = 0;
+loop(65536,
+  x = i & 32767;
+  q = (4096 + sinexp[(x & 1023) ~ 1023]) >> (x >> 10);
+  sexp64[i] = (i & 32768) ? (-q - 1) * 8192 : q * 8192;
+  i += 1;
+);
+
+sc_c = floor(cos(2 * $pi / 1024) * 1073741824 + 0.5);
+sc_s = floor(sin(2 * $pi / 1024) * 1073741824 + 0.5);
+sc_u = 1073741824;
+sc_v = 0;
+i = 0;
+loop(512,
+  sintab[i*2 + 1] = floor((sc_v + 32) / 64);
+  sintab[(i + 512)*2 + 1] = -floor((sc_v + 32) / 64);
+  sc_t = mac30(sc_u, sc_s, sc_v, sc_c);
+  sc_u = mac30(sc_u, sc_c, -sc_v, sc_s);
+  sc_v = sc_t;
+  i += 1;
+);
+i = 0;
+loop(1023, sintab[i*2] = sintab[i*2 + 3] - sintab[i*2 + 1]; i += 1; );
+sintab[2046] = -sintab[2047];
+
+function init_sr() local(i, y, inc, sps)
+(
+  y = 17592186044416 / srate;
+  inc = 2^(1 / 1024);
+  i = 0;
+  loop(1025, flut[i] = floor(y + 0.5); y *= inc; i += 1; );
+  srmul = floor((44100 / srate) * 16777216);
+  peunit = floor(1073741824 / (21.3 * srate) + 0.5);
+  lfounit = floor(1612187136 / srate + 0.5);
+  lforatio = floor(4437500000 * 64 / srate);
+  i = 0;
+  loop(128,
+    sps = 2100 * 2^(-0.062 * i);
+    prates[i] = floor(0.5 + 1398101 * (sps / srate * 64));
+    sps = 1300 * 2^(-0.062 * i);
+    pgrates[i] = floor(0.5 + 1398101 * (sps / srate * 64));
+    i += 1;
+  );
+  dc_r = 1 - 126 / srate;
+  meter_decay = 0.001^(1 / (0.4 * srate));
+  fx_rc = 970 / 44000 * sqrt(44000 / srate);
+  fx_bright = tan((srate * 0.5 - 10) * $pi / srate);
+  last_srate = srate;
+);
+
+function scaleout(x) ( x >= 20 ? 28 + x : levellut_t[x]; );
+
+function env_advance(o, newix) local(nl, al, qr, sr, st)
+(
+  o[14] = newix;
+  newix < 4 ? (
+    nl = o[22 + newix];
+    al = scaleout(nl) >> 1;
+    al = (al << 6) + o[9] - 4256;
+    al < 16 ? al = 16;
+    o[12] = al * 65536;
+    o[13] = o[12] > o[11];
+    qr = (o[18 + newix] * 41) >> 6;
+    qr += o[10];
+    qr = min(qr, 63);
+    (o[12] == o[11] || (newix == 0 && nl == 0)) ? (
+      sr = min(o[18 + newix] + o[10], 99);
+      st = sr < 77 ? statics_t[sr] : 20 * (99 - sr);
+      (sr < 77 && newix == 0 && nl == 0) ? st = floor(st / 20);
+      o[16] = floor(st * srmul / 16777216);
+    ) : (
+      o[16] = 0;
+    );
+    o[15] = (4 + (qr & 3)) * 2^(8 + (qr >> 2));
+    o[15] = floor(o[15] * srmul / 16777216);
+  );
+);
+
+function env_init(o, ol, rs)
+(
+  o[8] = 1;
+  o[9] = ol;
+  o[10] = rs;
+  o[11] = 0;
+  o[17] = 1;
+  env_advance(o, 0);
+);
+
+function env_getsample(o)
+(
+  o[16] != 0 ? (
+    o[16] -= 64;
+    o[16] <= 0 ? ( o[16] = 0; env_advance(o, o[14] + 1); );
+  );
+  (o[14] < 3 || (o[14] < 4 && !o[17])) ? (
+    o[16] != 0 ? 0 :
+    o[13] ? (
+      o[11] < 112459776 ? o[11] = 112459776;
+      o[11] += ((285212672 - o[11]) >> 24) * o[15];
+      o[11] >= o[12] ? ( o[11] = o[12]; env_advance(o, o[14] + 1); );
+    ) : (
+      o[11] -= o[15];
+      o[11] <= o[12] ? ( o[11] = o[12]; env_advance(o, o[14] + 1); );
+    );
+  );
+  o[11];
+);
+
+function env_keydown(o, d)
+(
+  o[17] != d ? ( o[17] = d; env_advance(o, d ? 0 : 3); );
+);
+
+function env_active(o) ( o[8] && (o[14] < 4 || o[25] > 0); );
+
+function pe_advance(v, newix)
+(
+  v[11] = newix;
+  newix < 4 ? (
+    v[9] = petab[v[18 + newix]] * 524288;
+    v[10] = v[9] > v[8];
+    v[12] = perate[v[14 + newix]] * peunit;
+  );
+);
+
+function pe_set(v)
+(
+  v[8] = petab[v[21]] * 524288;
+  v[13] = 1;
+  pe_advance(v, 0);
+);
+
+function pe_getsample(v)
+(
+  (v[11] < 3 || (v[11] < 4 && !v[13])) ? (
+    v[10] ? (
+      v[8] += v[12];
+      v[8] >= v[9] ? ( v[8] = v[9]; pe_advance(v, v[11] + 1); );
+    ) : (
+      v[8] -= v[12];
+      v[8] <= v[9] ? ( v[8] = v[9]; pe_advance(v, v[11] + 1); );
+    );
+  );
+  v[8];
+);
+
+function pe_keydown(v, d)
+(
+  v[13] != d ? ( v[13] = d; pe_advance(v, d ? 0 : 3); );
+);
+
+function lfo_reset() local(a)
+(
+  lfo_delta = floor(lfosrc[patch[137]] * lforatio);
+  a = 99 - patch[138];
+  a == 99 ? (
+    lfo_dinc = 4294967295;
+    lfo_dinc2 = 4294967295;
+  ) : (
+    a = (16 + (a & 15)) * 2^(1 + (a >> 4));
+    lfo_dinc = lfounit * a;
+    a = a & 65408;
+    a = max(128, a);
+    lfo_dinc2 = lfounit * a;
+  );
+  lfo_wave = patch[142];
+  lfo_sync = patch[141] != 0;
+);
+
+function lfo_getsample() local(x, w)
+(
+  lfo_phase += lfo_delta;
+  lfo_phase >= 4294967296 ? lfo_phase -= 4294967296;
+  lfo_wave == 0 ? (
+    x = floor(lfo_phase / 128) & 16777215;
+    lfo_phase >= 2147483648 ? 16777215 - x : x;
+  ) :
+  lfo_wave == 1 ? (
+    w = 4294967295 - lfo_phase;
+    floor((w >= 2147483648 ? w - 2147483648 : w + 2147483648) / 256);
+  ) :
+  lfo_wave == 2 ? (
+    floor((lfo_phase >= 2147483648 ? lfo_phase - 2147483648 : lfo_phase + 2147483648) / 256);
+  ) :
+  lfo_wave == 3 ? (
+    lfo_phase < 2147483648 ? 16777216 : 0;
+  ) :
+  lfo_wave == 4 ? (
+    x = floor(lfo_phase / 256);
+    w = (x >> 13) & 2046;
+    8388608 + floor((sintab[w + 1] + floor(sintab[w] * (x & 16383) / 16384)) / 2);
+  ) :
+  lfo_wave == 5 ? (
+    lfo_phase < lfo_delta ? lfo_rand = (lfo_rand * 179 + 17) & 255;
+    ((lfo_rand ~ 128) + 1) * 65536;
+  ) : 8388608;
+);
+
+function lfo_getdelay() local(d)
+(
+  d = lfo_dstate + (lfo_dstate < 2147483648 ? lfo_dinc : lfo_dinc2);
+  d > 4294967295 ? 16777216 : (
+    lfo_dstate = d;
+    d < 2147483648 ? 0 : floor(d / 128) & 16777215;
+  );
+);
+
+function lfo_keydown()
+(
+  lfo_sync ? lfo_phase = 2147483647;
+  lfo_dstate = 0;
+);
+
+function flut_lookup(lf) local(ix, y0, y, hb)
+(
+  ix = (lf & 16777215) >> 14;
+  y0 = flut[ix];
+  y = y0 + floor((flut[ix + 1] - y0) * (lf & 16383) / 16384);
+  hb = floor(lf / 16777216);
+  y >> (20 - hb);
+);
+
+function op_pure(outp, ph, fr, g1, g2, add) local(dg, g, i)
+(
+  dg = floor((g2 - g1 + 32) / 64);
+  g = g1;
+  i = 0;
+  add ? loop(64, g += dg; outp[i] += sexp64[slog4[(ph & 16777215) >> 12] + g]; ph += fr; i += 1; )
+      : loop(64, g += dg; outp[i] = sexp64[slog4[(ph & 16777215) >> 12] + g]; ph += fr; i += 1; );
+);
+
+function op_mod(outp, inp, ph, fr, g1, g2, add) local(dg, g, i)
+(
+  dg = floor((g2 - g1 + 32) / 64);
+  g = g1;
+  i = 0;
+  add ? loop(64, g += dg; outp[i] += sexp64[slog4[((ph + inp[i]) & 16777215) >> 12] + g]; ph += fr; i += 1; )
+      : loop(64, g += dg; outp[i] = sexp64[slog4[((ph + inp[i]) & 16777215) >> 12] + g]; ph += fr; i += 1; );
+);
+
+function op_fb(v, outp, ph, fr, g1, g2, fbs, add) local(dg, g, i, y0, y, sh, ph2)
+(
+  dg = floor((g2 - g1 + 32) / 64);
+  g = g1;
+  y0 = v[22];
+  y = v[23];
+  sh = 2^(fbs + 1);
+  i = 0;
+  add ? loop(64,
+    g += dg;
+    ph2 = ph + floor((y0 + y) / sh);
+    y0 = y;
+    y = sexp64[slog4[(ph2 & 16777215) >> 12] + g];
+    outp[i] += y;
+    ph += fr;
+    i += 1;
+  ) : loop(64,
+    g += dg;
+    ph2 = ph + floor((y0 + y) / sh);
+    y0 = y;
+    y = sexp64[slog4[(ph2 & 16777215) >> 12] + g];
+    outp[i] = y;
+    ph += fr;
+    i += 1;
+  );
+  v[22] = y0;
+  v[23] = y;
+);
+
+function op_fbchain(v, outp, p, g01, g02, fbs, nops) local(p1, p2, g0, gg1, gg2, dg0, dg1, dg2, ph0, ph1, ph2, y0, y, sh, i, sfb)
+(
+  p1 = p + 32;
+  p2 = p + 64;
+  p1[1] = 16384 - floor(p1[0] / 16384);
+  gg1 = p1[1] == 0 ? 16383 : p1[1];
+  dg1 = p1[1] - gg1;
+  nops == 3 ? (
+    p2[1] = 16384 - floor(p2[0] / 16384);
+    gg2 = p2[1] == 0 ? 16383 : p2[1];
+    dg2 = p2[1] - gg2;
+  );
+  g0 = g01;
+  dg0 = floor((g02 - g01 + 32) / 64);
+  ph0 = p[3]; ph1 = p1[3]; ph2 = p2[3];
+  y0 = v[22];
+  y = v[23];
+  sh = 2^(fbs + 1);
+  i = 0;
+  loop(64,
+    sfb = floor((y0 + y) / sh);
+    g0 += dg0;
+    y0 = y;
+    y = sexp64[slog4[((ph0 + sfb) & 16777215) >> 12] + g0];
+    ph0 += p[2];
+    gg1 += dg1;
+    y = sexp64[slog4[((ph1 + y) & 16777215) >> 12] + gg1];
+    ph1 += p1[2];
+    nops == 3 ? (
+      gg2 += dg2;
+      y = sexp64[slog4[((ph2 + y) & 16777215) >> 12] + gg2];
+      ph2 += p2[2];
+    );
+    outp[i] = y;
+    i += 1;
+  );
+  v[22] = y0;
+  v[23] = y;
+);
+
+function render(v) local(alg, fbon, op, fl, add, p, inb, outb, outp, g1, g2, fbs)
+(
+  alg = v[25];
+  fbon = v[24] < 16;
+  hc[0] = 1; hc[1] = 0; hc[2] = 0;
+  op = 0;
+  while (op < 6) (
+    fl = algs[alg*6 + op];
+    (op == 0 && fbon && (alg == 3 || alg == 5)) ? fl = 196;
+    add = (fl & 4) != 0;
+    p = v + 32 + op*32;
+    inb = (fl >> 4) & 3;
+    outb = fl & 3;
+    outp = outb == 0 ? obuf : outb == 1 ? bus1 : bus2;
+    g1 = p[1] == 0 ? 16383 : p[1];
+    g2 = 16384 - floor(p[0] / 16384);
+    p[1] = g2;
+    (g1 <= 16284 || g2 <= 16284) ? (
+      !hc[outb] ? add = 0;
+      (inb == 0 || !hc[inb]) ? (
+        ((fl & 192) == 192 && fbon) ? (
+          fbs = min(v[24] + 2, 16);
+          alg == 3 ? (
+            op_fbchain(v, outp, p, g1, g2, fbs, 3);
+            p[35] = (p[35] + p[34]*64) & 16777215;
+            p[67] = (p[67] + p[66]*64) & 16777215;
+            op += 2;
+          ) : alg == 5 ? (
+            op_fbchain(v, outp, p, g1, g2, fbs, 2);
+            p[35] = (p[35] + p[34]*64) & 16777215;
+            op += 1;
+          ) : (
+            op_fb(v, outp, p[3], p[2], g1, g2, alg == 31 ? fbs : v[24], add);
+          );
+        ) : (
+          op_pure(outp, p[3], p[2], g1, g2, add);
+        );
+      ) : (
+        op_mod(outp, inb == 1 ? bus1 : bus2, p[3], p[2], g1, g2, add);
+      );
+      hc[outb] = 1;
+    ) : (
+      !add ? hc[outb] = 0;
+    );
+    p[3] = (p[3] + p[2]*64) & 16777215;
+    op += 1;
+  );
+);
+
+function osc_freq(mn, mode, coarse, fine, detune) local(lf, dr)
+(
+  mode == 0 ? (
+    lf = 50857777 + 1398101 * mn;
+    dr = 0.0209 * exp(-0.396 * (f32(lf) / 16777216)) / 7;
+    lf = trunc(lf + dr * lf * (detune - 7));
+    lf += coarse_t[coarse & 31];
+    fine ? lf += floor(24204406.323123 * log(1 + 0.01 * fine) + 0.5);
+  ) : (
+    lf = (4458616 * ((coarse & 3) * 100 + fine)) >> 3;
+    detune > 7 ? lf += 13457 * (detune - 7);
+  );
+  lf;
+);
+
+function scale_curve(group, depth, curve) local(s)
+(
+  (curve == 0 || curve == 3) ? (
+    s = (group * depth * 329) >> 12;
+  ) : (
+    s = (expscale[min(group, 32)] * depth * 329) >> 15;
+  );
+  curve < 2 ? -s : s;
+);
+
+function scale_level(mn, bp, ld, rd, lc, rc) local(o)
+(
+  o = mn - bp - 17;
+  o >= 0 ? scale_curve(floor((o + 1) / 3), rd, rc) : scale_curve(floor((1 - o) / 3), ld, lc);
+);
+
+function note_init(v, mn, vel) local(op, o, p, ol, vv)
+(
+  v[7] = 1;
+  op = 0;
+  loop(6,
+    o = patch + op*21;
+    p = v + 32 + op*32;
+    p[18] = o[0]; p[19] = o[1]; p[20] = o[2]; p[21] = o[3];
+    p[22] = o[4]; p[23] = o[5]; p[24] = o[6]; p[25] = o[7];
+    ol = scaleout(o[16]);
+    ol += scale_level(mn, o[8], o[9], o[10], o[11], o[12]);
+    ol = min(127, ol);
+    ol = ol * 32;
+    vv = veldata[max(0, min(127, vel)) >> 1] - 239;
+    ol += floor((o[15] * vv + 7) / 8) * 16;
+    ol = max(0, ol);
+    env_init(p, ol, (o[13] * min(31, max(0, floor(mn / 3) - 7))) >> 3);
+    p[4] = osc_freq(mn, o[17], o[18], o[19], o[20]);
+    p[7] = p[4];
+    p[6] = o[17];
+    p[5] = amstab[o[14] & 3];
+    op += 1;
+  );
+  v[14] = patch[126]; v[15] = patch[127]; v[16] = patch[128]; v[17] = patch[129];
+  v[18] = patch[130]; v[19] = patch[131]; v[20] = patch[132]; v[21] = patch[133];
+  pe_set(v);
+  v[25] = patch[134];
+  v[24] = patch[135] != 0 ? 8 - patch[135] : 16;
+  v[26] = (patch[139] * 165) >> 6;
+  v[27] = pmstab[patch[143] & 7];
+  v[28] = (patch[140] * 165) >> 6;
+);
+
+function note_update(v) local(op, o, p, ol, vv, mn, vel)
+(
+  mn = v[0]; vel = v[1];
+  op = 0;
+  loop(6,
+    o = patch + op*21;
+    p = v + 32 + op*32;
+    p[4] = osc_freq(mn, o[17], o[18], o[19], o[20]);
+    p[5] = amstab[o[14] & 3];
+    p[6] = o[17];
+    p[18] = o[0]; p[19] = o[1]; p[20] = o[2]; p[21] = o[3];
+    p[22] = o[4]; p[23] = o[5]; p[24] = o[6]; p[25] = o[7];
+    ol = scaleout(o[16]);
+    ol += scale_level(mn, o[8], o[9], o[10], o[11], o[12]);
+    ol = min(127, ol);
+    ol = ol * 32;
+    vv = veldata[max(0, min(127, vel)) >> 1] - 239;
+    ol += floor((o[15] * vv + 7) / 8) * 16;
+    ol = max(0, ol);
+    p[9] = ol;
+    p[10] = (o[13] * min(31, max(0, floor(mn / 3) - 7))) >> 3;
+    p[17] ? env_advance(p, 2);
+    op += 1;
+  );
+  v[25] = patch[134];
+  v[24] = patch[135] != 0 ? 8 - patch[135] : 16;
+  v[26] = (patch[139] * 165) >> 6;
+  v[27] = pmstab[patch[143] & 7];
+  v[28] = (patch[140] * 165) >> 6;
+);
+
+function note_transfer(dst, src, full) local(op, p, q, i)
+(
+  op = 0;
+  loop(6,
+    p = dst + 32 + op*32; q = src + 32 + op*32;
+    full ? ( i = 9; loop(17, p[i] = q[i]; i += 1; ); );
+    p[1] = q[1]; p[3] = q[3];
+    op += 1;
+  );
+);
+
+function note_playing(v) local(op, r, alg)
+(
+  r = 0;
+  v[7] ? (
+    alg = v[25];
+    op = 0;
+    loop(6,
+      ((algs[alg*6 + op] & 4) && env_active(v + 32 + op*32)) ? r = 1;
+      op += 1;
+    );
+  );
+  r;
+);
+
+function note_audible(v) local(op, r, alg, o)
+(
+  r = 0;
+  v[7] ? (
+    alg = v[25];
+    op = 0;
+    loop(6,
+      o = v + 32 + op*32;
+      ((algs[alg*6 + op] & 7) == 4 && o[8] && (o[14] < 4 || o[11] >= 33570816)) ? r = 1;
+      op += 1;
+    );
+  );
+  r;
+);
+
+function note_keyup(v) local(op)
+(
+  op = 0;
+  loop(6, env_keydown(v + 32 + op*32, 0); op += 1; );
+  pe_keydown(v, 0);
+);
+
+function note_oscsync(v) local(op)
+(
+  op = 0;
+  loop(6, v[33 + op*32] = 0; v[35 + op*32] = 0; op += 1; );
+);
+
+function round2semi(f) local(d)
+(
+  d = f - 50857777;
+  f - (d - trunc(d / 1398101) * 1398101);
+);
+
+function note_compute(v, lfov, lfod) local(pmd, sl, pm1, pm2, pm, pb, pbase, lv2, am1, am2, amd, prate, op, p, bp, cur, dst, up, np, lvl, sa, pt, stp)
+(
+  pmd = v[26] * lfod;
+  sl = v[27] * (lfov - 8388608);
+  pm1 = abs(mulshr(pmd, sl, 39));
+  pm2 = abs(floor(pitch_mod * sl / 16384));
+  pm = max(pm1, pm2);
+  pm = pe_getsample(v) + (sl < 0 ? -pm : pm);
+  pb = pitchbend - 8192;
+  pb != 0 ? (
+    pb_step == 0 ? pb = trunc(f32(pb * 2048 * (pb >= 0 ? pb_up : pb_dn)) / 12) : (
+      stp = floor(12 / pb_step);
+      pb = trunc(pb * stp / 8191);
+      pb = pb * floor(8191 / stp) * 2048;
+    );
+  );
+  pbase = pb + master_tune;
+  pm += pbase;
+  lv2 = 16777216 - lfov;
+  am1 = floor(v[28] * lfod / 256);
+  am1 = floor(am1 * lv2 / 16777216);
+  am2 = floor(amp_mod * lv2 / 128);
+  amd = max(am1, am2);
+  amd = max(16777216 - (eg_mod + 1) * 131072, amd);
+  prate = porta_en ? (porta_gliss ? pgrates[porta_cc] : prates[porta_cc]) : prates[0];
+  op = 0;
+  loop(6,
+    p = v + 32 + op*32;
+    !opsw[op] ? ( env_getsample(p); p[0] = 0; ) : (
+    p[6] ? (
+      p[2] = flut_lookup(p[4] + pbase);
+    ) : (
+      bp = p[4];
+      p[7] != p[4] ? (
+        bp = p[7];
+        porta_gliss ? bp = round2semi(bp);
+        cur = p[7];
+        dst = p[4];
+        up = cur < dst;
+        np = cur + (up ? prate : -prate);
+        ((up && np > dst) || (!up && np < dst)) ? np = dst;
+        p[7] = np;
+      );
+      p[2] = flut_lookup(bp + pm);
+    );
+    lvl = env_getsample(p);
+    p[5] != 0 ? (
+      sa = floor(amd * p[5] / 16777216);
+      pt = floor(exp(sa / 262144 * 0.07 + 12.2));
+      lvl -= mulshr(lvl, pt * 16, 28);
+    );
+    p[0] = lvl;
+    );
+    op += 1;
+  );
+  render(v);
+);
+
+function mods_refresh() local(r)
+(
+  amp_mod = 0; pitch_mod = 0; eg_mod = 0;
+  r = floor(f32(modwheel_cc * f32(0.01 * wheel_range)));
+  wheel_amp ? amp_mod = max(amp_mod, r);
+  wheel_pitch ? pitch_mod = max(pitch_mod, r);
+  wheel_eg ? eg_mod = max(eg_mod, r);
+  r = floor(f32(breath_cc * f32(0.01 * breath_range)));
+  breath_amp ? amp_mod = max(amp_mod, r);
+  breath_pitch ? pitch_mod = max(pitch_mod, r);
+  breath_eg ? eg_mod = max(eg_mod, r);
+  r = floor(f32(foot_cc * f32(0.01 * foot_range)));
+  foot_amp ? amp_mod = max(amp_mod, r);
+  foot_pitch ? pitch_mod = max(pitch_mod, r);
+  foot_eg ? eg_mod = max(eg_mod, r);
+  r = floor(f32(at_cc * f32(0.01 * at_range)));
+  at_amp ? amp_mod = max(amp_mod, r);
+  at_pitch ? pitch_mod = max(pitch_mod, r);
+  at_eg ? eg_mod = max(eg_mod, r);
+  !(wheel_eg || foot_eg || breath_eg || at_eg) ? eg_mod = 127;
+);
+
+function voice(n) ( vbase + n*vstride; );
+
+function choose_note(pitch) local(best, bscore, n, i, s, v, bv)
+(
+  best = cur_note;
+  bscore = -1;
+  n = cur_note;
+  i = 0;
+  loop(nvoices,
+    v = voice(n);
+    s = 0;
+    !note_playing(v) ? s += 4;
+    !v[4] ? s += 2;
+    v[0] == pitch ? s += 1;
+    bv = voice(best);
+    (s > bscore || (s == bscore && v[3] < bv[3])) ? ( best = n; bscore = s; );
+    n = (n + 1) % nvoices;
+    i += 1;
+  );
+  best;
+);
+
+function key_up(pitch) local(n, v, found, high, tgt, src)
+(
+  pitch += patch[144] - 24;
+  found = -1;
+  n = 0;
+  while (found < 0 && n < nvoices) (
+    v = voice(n);
+    (v[0] == pitch && v[4]) ? ( v[4] = 0; found = n; );
+    n += 1;
+  );
+  found >= 0 ? (
+    v = voice(found);
+    mono_mode ? (
+      high = -1; tgt = 0;
+      n = 0;
+      loop(nvoices, src = voice(n); (src[4] && src[0] > high) ? ( tgt = n; high = src[0]; ); n += 1; );
+      (high != -1 && v[6]) ? ( v[6] = 0; src = voice(tgt); src[6] = 1; note_transfer(src, v, 1); );
+    );
+    sustain ? ( v[5] = 1; ) : note_keyup(v);
+  );
+);
+
+function key_down(pitch, vel) local(trig, i, n, v, steal, src, op, done)
+(
+  vel == 0 ? key_up(pitch) : (
+    pitch += patch[144] - 24;
+    trig = 1;
+    i = 0;
+    loop(nvoices, v = voice(i); v[4] ? trig = 0; i += 1; );
+    trig ? lfo_keydown();
+    n = choose_note(pitch);
+    cur_note = (n + 1) % nvoices;
+    v = voice(n);
+    v[0] = pitch; v[1] = vel; v[5] = sustain; v[4] = 1;
+    v[3] = keydown_seq; keydown_seq += 1;
+    steal = note_playing(v);
+    note_init(v, pitch, vel);
+    (patch[136] && !steal) ? note_oscsync(v);
+    src = voice(last_voice);
+    (src[0] != -1000 && porta_en && porta_cc > 0) ? (
+      op = 0;
+      loop(6, v[39 + op*32] = src[39 + op*32]; op += 1; );
+    );
+    done = 0;
+    mono_mode ? (
+      i = 0;
+      while (!done && i < nvoices) (
+        src = voice(i);
+        src[6] ? (
+          !src[4] ? ( src[6] = 0; note_transfer(v, src, 0); done = 1; ) :
+          src[0] < pitch ? ( src[6] = 0; note_transfer(v, src, 1); done = 1; ) :
+          done = 2;
+        );
+        i += 1;
+      );
+    ) : !patch[136] ? (
+      i = 0;
+      loop(nvoices,
+        src = voice(i);
+        (!done && i != n && note_playing(src) && src[0] == pitch) ? (
+          op = 0;
+          loop(6, v[35 + op*32] = src[35 + op*32]; op += 1; );
+          done = 1;
+        );
+        i += 1;
+      );
+    );
+    done !== 2 ? (
+      v[6] = 1;
+      last_voice = n;
+    );
+  );
+);
+
+function panic() local(i, v)
+(
+  i = 0;
+  loop(nvoices,
+    v = voice(i);
+    v[0] = -1000; v[4] = 0; v[6] = 0;
+    note_oscsync(v);
+    i += 1;
+  );
+);
+
+function voice_to_sliders() local(k)
+(
+  k = 0;
+  loop(145, slider(35 + k) = patch[k]; k += 1; );
+  sl_dirty = 1;
+);
+
+function load_program(c, n) local(b, op, i, x, o)
+(
+  b = carts + c * cart_bytes + 6 + n * 128;
+  op = 0;
+  loop(6,
+    o = patch + op*21;
+    i = 0;
+    loop(11, o[i] = b[op*17 + i]; i += 1; );
+    x = b[op*17 + 11] & 15;
+    o[11] = x & 3;
+    o[12] = (x >> 2) & 3;
+    x = b[op*17 + 12] & 127;
+    o[13] = x & 7;
+    o[20] = (x >> 3) & 127;
+    x = b[op*17 + 13] & 31;
+    o[14] = x & 3;
+    o[15] = (x >> 2) & 7;
+    o[16] = b[op*17 + 14] & 127;
+    x = b[op*17 + 15] & 63;
+    o[17] = x & 1;
+    o[18] = (x >> 1) & 31;
+    o[19] = b[op*17 + 16] & 127;
+    op += 1;
+  );
+  i = 0;
+  loop(8, patch[126 + i] = min(b[102 + i] & 127, 99); i += 1; );
+  patch[134] = min(b[110] & 31, 31);
+  x = b[111] & 15;
+  patch[135] = x & 7;
+  patch[136] = x >> 3;
+  patch[137] = b[112] & 127;
+  patch[138] = b[113] & 127;
+  patch[139] = b[114] & 127;
+  patch[140] = b[115] & 127;
+  x = b[116] & 127;
+  patch[141] = x & 1;
+  patch[142] = (x >> 1) & 7;
+  patch[143] = x >> 4;
+  patch[144] = b[117] & 127;
+  i = 0; loop(10, patch[145 + i] = b[118 + i] & 127; i += 1; );
+  panic();
+  lfo_reset();
+  cur_cart = c;
+  cur_prog = n;
+  voice_edited = 0;
+  voice_to_sliders();
+);
+
+function pack_voice(b) local(op, s, x, i)
+(
+  op = 0;
+  loop(6,
+    s = patch + op*21;
+    i = 0; loop(11, b[op*17 + i] = s[i]; i += 1; );
+    b[op*17 + 11] = (s[11] & 3) | ((s[12] & 3) << 2);
+    b[op*17 + 12] = (s[13] & 7) | ((s[20] & 15) << 3);
+    b[op*17 + 13] = (s[14] & 3) | ((s[15] & 7) << 2);
+    b[op*17 + 14] = opsw[op] ? s[16] : 0;
+    b[op*17 + 15] = (s[17] & 1) | ((s[18] & 31) << 1);
+    b[op*17 + 16] = s[19];
+    op += 1;
+  );
+  i = 0; loop(9, b[102 + i] = patch[126 + i]; i += 1; );
+  b[111] = (patch[135] & 7) | ((patch[136] & 1) << 3);
+  i = 0; loop(4, b[112 + i] = patch[137 + i]; i += 1; );
+  b[116] = (patch[141] & 1) | ((patch[142] & 7) << 1) | ((patch[143] & 7) << 4);
+  b[117] = patch[144];
+  i = 0; loop(10, x = patch[145 + i]; b[118 + i] = x < 32 || x > 127 ? 32 : x; i += 1; );
+);
+
+function init_voice() local(i)
+(
+  i = 0; loop(155, patch[i] = initv[i]; i += 1; );
+  panic();
+  lfo_reset();
+  voice_to_sliders();
+);
+
+function fx_coefs() local(rr, cn)
+(
+  rr = 0.991 - (((exp((1 - fx_reso) * log(20)) - 1) / 19) * 0.991);
+  fx_r24 = 3.5 * rr;
+  cn = ((exp(fx_cut * log(20)) - 1) / 19) * (19000 - 60) + 60;
+  fx_g = tan(cn / srate * $pi);
+  fx_lpc = fx_g / (1 + fx_g);
+  fx_pc = fx_cut; fx_pr = fx_reso;
+);
+
+function fx_tpt(st, inp, co) local(v, r) ( v = ((inp - st[0]) * co) / (1 + co); r = v + st[0]; st[0] = r + v; r; );
+
+function fx_filter(x) local(s, co, ml, ss, gg, y0, v, r, y1, y2, y3, y4)
+(
+  s = x;
+  co = 15 / srate * $pi;
+  s = s - 0.45 * fx_tpt(fxs + 4, s, co);
+  s = fx_tpt(fxs + 5, s, fx_bright);
+  ml = 1 / (1 + fx_g);
+  ss = (fx_lpc * (fx_lpc * (fx_lpc * fxs[0] + fxs[1]) + fxs[2]) + fxs[3]) * ml;
+  gg = fx_lpc * fx_lpc * fx_lpc * fx_lpc;
+  y0 = (s - fx_r24 * ss) / (1 + fx_r24 * gg) + 0.00000001;
+  v = (y0 - fxs[0]) * fx_lpc;
+  r = v + fxs[0];
+  fxs[0] = r + v;
+  fxs[0] = atan(fxs[0] * fx_rc) / fx_rc;
+  y1 = r;
+  y2 = fx_tpt(fxs + 1, y1, fx_g);
+  y3 = fx_tpt(fxs + 2, y2, fx_g);
+  y4 = fx_tpt(fxs + 3, y3, fx_g);
+  y4 * (1 + fx_r24 * 0.45);
+);
+
+function handle_midi(st, d1, d2) local(i, v)
+(
+  (st & 240) == 128 ? ( kdown[d1] = 0; key_up(d1); ) :
+  (st & 240) == 144 ? ( d2 > 0 ? midi_flag = 1; kdown[d1] = d2 > 0; key_down(d1, d2); ) :
+  (st & 240) == 176 ? (
+    d1 == 1 ? ( modwheel_cc = d2; mods_refresh(); ) :
+    d1 == 2 ? ( breath_cc = d2; mods_refresh(); ) :
+    d1 == 4 ? ( foot_cc = d2; mods_refresh(); ) :
+    d1 == 5 ? ( porta_cc = d2; ) :
+    d1 == 64 ? (
+      sustain = d2 > 63;
+      !sustain ? (
+        i = 0;
+        loop(nvoices,
+          v = voice(i);
+          (v[5] && !v[4]) ? ( note_keyup(v); v[5] = 0; );
+          i += 1;
+        );
+      );
+    ) :
+    d1 == 65 ? ( porta_en = d2 >= 64; ) :
+    d1 == 120 ? panic() :
+    d1 == 123 ? (
+      i = 0;
+      loop(nvoices, v = voice(i); v[4] ? key_up(v[0] - patch[144] + 24); i += 1; );
+    );
+  ) :
+  (st & 240) == 192 ? (
+    load_program(cur_cart, min(d1, 31));
+    slider2 = cur_prog;
+    sliderchange(slider2);
+  ) :
+  (st & 240) == 208 ? ( at_cc = d1; mods_refresh(); ) :
+  (st & 240) == 224 ? ( pitchbend = d1 + d2 * 128; );
+);
+
+function set_poly(np) local(i, v)
+(
+  i = np;
+  loop(maxvoices - np,
+    v = voice(i);
+    v[0] = -1000; v[4] = 0; v[5] = 0; v[6] = 0;
+    i += 1;
+  );
+  nvoices = np;
+  cur_note >= np ? cur_note = 0;
+  last_voice >= np ? last_voice = 0;
+);
+
+function render_block() local(lv, ld, n, v, j, x)
+(
+  lv = lfo_getsample();
+  ld = lfo_getdelay();
+  memset(sbuf, 0, 64);
+  memset(vact, 0, 128);
+  n = 0;
+  n_active = 0;
+  loop(nvoices,
+    v = voice(n);
+    (v[6] && note_audible(v)) ? ( n_active += 1; j = v[0] - patch[144] + 24; j >= 0 && j < 128 ? vact[j] = 1; );
+    v[6] ? (
+      memset(obuf, 0, 64);
+      note_compute(v, lv, ld);
+      j = 0;
+      loop(64,
+        x = obuf[j];
+        sbuf[j] += (x >= 268435456 || x < -268435456) ? (x < 0 ? 1 : 0.999969482421875) : floor(x * 0.0001220703125) * 0.000030517578125;
+        j += 1;
+      );
+      !note_audible(v) ? v[6] = 0;
+    );
+    n += 1;
+  );
+);
+
+function run_events(upto) local(k, m)
+(
+  k = 0;
+  while (k < evq_n && evq[k*4] <= upto) (
+    handle_midi(evq[k*4 + 1], evq[k*4 + 2], evq[k*4 + 3]);
+    k += 1;
+  );
+  k > 0 ? (
+    m = 0;
+    loop(evq_n - k, evq[m*4] = evq[(m + k)*4]; evq[m*4 + 1] = evq[(m + k)*4 + 1]; evq[m*4 + 2] = evq[(m + k)*4 + 2]; evq[m*4 + 3] = evq[(m + k)*4 + 3]; m += 1; );
+    evq_n -= k;
+  );
+);
+
+function read_carts(fn) local(h, n, c, b, ok)
+(
+  ok = 0;
+  h = file_open(fn);
+  h >= 0 ? (
+    file_text(h) ? (
+      n = file_mem(h, carts, ncarts * cart_bytes);
+      n == ncarts * cart_bytes ? (
+        ok = 1;
+        c = 0;
+        loop(ncarts,
+          b = carts + c * cart_bytes;
+          (b[0] != 240 || b[1] != 67 || b[3] != 9 || b[4] != 32 || b[5] != 0 || b[cart_bytes - 1] != 247) ? ok = 0;
+          c += 1;
+        );
+      );
+    );
+    file_close(h);
+  );
+  ok;
+);
+
+function load_carts()
+(
+  carts_ok = read_carts("Jexed/JexedCarts.txt");
+  !carts_ok ? carts_ok = read_carts("Dependencies/Jexed/JexedCarts.txt");
+  !carts_ok ? memset(carts, 0, ncarts * cart_bytes);
+);
+
+srate != last_srate ? init_sr();
+!voices_ready ? (
+  nvoices = 16;
+  i = 0;
+  loop(maxvoices,
+    v = voice(i);
+    memset(v, 0, vstride);
+    v[0] = -1000; v[3] = -1;
+    i += 1;
+  );
+  cur_note = 0;
+  keydown_seq = 0;
+  last_voice = 0;
+  pitchbend = 8192;
+  pb_up = 3; pb_dn = 3;
+  master_tune = 0;
+  modwheel_cc = 0; breath_cc = 0; foot_cc = 0; at_cc = 0;
+  porta_en = 0; porta_cc = 0; porta_gliss = 0;
+  sustain = 0;
+  mods_refresh();
+  lfo_phase = 0; lfo_dstate = 0; lfo_rand = 0;
+  evq_n = 0;
+  blkpos = 0;
+  dc_id = 0; dc_prev = 0;
+  load_carts();
+  mem_set_values(initv, 99,99,99,99,99,99,99,0,0,0,0,0,0,0,0,0,0,0,1,0,7,
+  99,99,99,99,99,99,99,0,0,0,0,0,0,0,0,0,0,0,1,0,7,
+  99,99,99,99,99,99,99,0,0,0,0,0,0,0,0,0,0,0,1,0,7,
+  99,99,99,99,99,99,99,0,0,0,0,0,0,0,0,0,0,0,1,0,7,
+  99,99,99,99,99,99,99,0,0,0,0,0,0,0,0,0,0,0,1,0,7,
+  99,99,99,99,99,99,99,0,0,0,0,0,0,0,0,0,99,0,1,0,7,
+  99,99,99,99,50,50,50,50,0,0,1,35,0,0,0,1,0,3,24,73,78,
+  73,84,32,86,79,73,67,69);
+  i = 0; loop(6, opsw[i] = 1; i += 1; );
+  i = 0; loop(155, patch[i] = initv[i]; i += 1; );
+  i = 0; loop(32, pack_voice(userc + 6 + i * 128); i += 1; );
+  memset(fxs, 0, 8);
+  fx_cut = 1; fx_reso = 0; fx_pc = -1;
+  cur_cart = -1;
+  voices_ready = 1;
+);
+
+function sliders_to_voice() local(k, v, chg)
+(
+  chg = 0;
+  k = 0;
+  loop(145,
+    v = floor(slider(35 + k) + 0.5);
+    v = max(0, min(127, v));
+    v !== patch[k] ? ( patch[k] = v; chg = 1; k === 144 ? panic(); );
+    k += 1;
+  );
+  chg;
+);
+
+function refresh_voices() local(i, v)
+(
+  i = 0;
+  loop(nvoices, v = voice(i); v[6] ? note_update(v); i += 1; );
+  lfo_reset();
+);
+
+function rate_change()
+(
+  init_sr();
+  fx_pc = -1;
+  refresh_voices();
+);
+
+vmax = 11900;
+mem_set_values(vmax, 99,99,99,99,99,99,99,99,99,99,99,3,3,7,3,7,99,1,31,99,14,
+  99,99,99,99,99,99,99,99,99,99,99,3,3,7,3,7,99,1,31,99,14,
+  99,99,99,99,99,99,99,99,99,99,99,3,3,7,3,7,99,1,31,99,14,
+  99,99,99,99,99,99,99,99,99,99,99,3,3,7,3,7,99,1,31,99,14,
+  99,99,99,99,99,99,99,99,99,99,99,3,3,7,3,7,99,1,31,99,14,
+  99,99,99,99,99,99,99,99,99,99,99,3,3,7,3,7,99,1,31,99,14,
+  99,99,99,99,99,99,99,99,31,7,1,99,99,99,99,1,5,7,48);
+
+@slider
+last_srate != srate ? rate_change();
+
+@block
+spos = 0;
+run_events(2147483647);
+init_req ? ( init_req = 0; init_voice(); voice_edited = 1; );
+
+(cur_cart != floor(slider1 + 0.5) || cur_prog != floor(slider2 + 0.5)) ? (
+  load_program(max(0, min(ncarts, floor(slider1 + 0.5))), max(0, min(31, floor(slider2 + 0.5))));
+) : (
+  sliders_to_voice() ? ( refresh_voices(); voice_edited = 1; );
+);
+sl_dirty ? (
+  sl_dirty = 0;
+<? loop(i = 35; 145,
+  printf("  sliderchange(slider%d);\n", i);
+  i += 1;
+); ?>
+);
+out_g = 10^(slider3 / 20);
+midi_ch = floor(slider4 + 0.5);
+poly_n = 2^max(0, min(8, floor(slider5 + 0.5)));
+poly_n != nvoices ? set_poly(poly_n);
+fx_cut = slider6; fx_reso = slider7;
+(fx_cut !== fx_pc || fx_reso !== fx_pr) ? fx_coefs();
+(slider8 >= 0.5) !== mono_mode ? ( panic(); mono_mode = slider8 >= 0.5; );
+tn = floor((slider9 / 100 + 1) / 2 * 16384) - 8192;
+master_tune = trunc(f32(tn * 2048) * (1 / 12));
+pb_up = floor(slider10 + 0.5); pb_dn = floor(slider11 + 0.5); pb_step = floor(slider12 + 0.5);
+wheel_range = floor(slider13 + 0.5); wheel_pitch = slider14 >= 0.5; wheel_amp = slider15 >= 0.5; wheel_eg = slider16 >= 0.5;
+foot_range = floor(slider17 + 0.5); foot_pitch = slider18 >= 0.5; foot_amp = slider19 >= 0.5; foot_eg = slider20 >= 0.5;
+breath_range = floor(slider21 + 0.5); breath_pitch = slider22 >= 0.5; breath_amp = slider23 >= 0.5; breath_eg = slider24 >= 0.5;
+at_range = floor(slider25 + 0.5); at_pitch = slider26 >= 0.5; at_amp = slider27 >= 0.5; at_eg = slider28 >= 0.5;
+mods_refresh();
+opsw[5] = slider29 >= 0.5; opsw[4] = slider30 >= 0.5; opsw[3] = slider31 >= 0.5;
+opsw[2] = slider32 >= 0.5; opsw[1] = slider33 >= 0.5; opsw[0] = slider34 >= 0.5;
+while (gq_r != gq_w) (
+  evq_n < evq_max ? (
+    evq[evq_n*4] = 0; evq[evq_n*4 + 1] = gq[gq_r*3]; evq[evq_n*4 + 2] = gq[gq_r*3 + 1]; evq[evq_n*4 + 3] = gq[gq_r*3 + 2];
+    evq_n += 1;
+  );
+  gq_r = (gq_r + 1) % 64;
+);
+while (midirecv(mofs, m1, m2, m3)) (
+  (midi_ch == 0 || (m1 & 15) == midi_ch - 1) && m1 >= 128 && m1 < 240 && evq_n < evq_max ? (
+    evq[evq_n*4] = mofs;
+    evq[evq_n*4 + 1] = m1;
+    evq[evq_n*4 + 2] = m2;
+    evq[evq_n*4 + 3] = m3;
+    evq_n += 1;
+  );
+);
+
+@sample
+blkpos == 0 ? (
+  run_events(spos);
+  render_block();
+);
+x = sbuf[blkpos];
+y = x - dc_id + dc_r * dc_prev;
+dc_id = x;
+dc_prev = y;
+y *= out_g;
+fx_cut !== 1 ? y = fx_filter(y);
+spl0 = spl1 = y * 0.5;
+blkpos = (blkpos + 1) & 63;
+spos += 1;
+lvl_now = abs(spl0);
+lvl_now > meter_peak ? meter_peak = lvl_now : meter_peak *= meter_decay;
+lvl_now >= 0.999 ? clip_latch = 1;
+
+@serialize
+ser_v = 1;
+file_var(0, ser_v);
+file_var(0, cur_cart);
+file_var(0, cur_prog);
+file_mem(0, patch + 145, 10);
+file_mem(0, userc + 6, 4096);
+file_var(0, voice_edited);
+@gfx 960 640
+
+W0 = 960; H0 = 640;
+z = max(0.5, min(gfx_w / W0, gfx_h / H0));
+ox = floor((gfx_w - W0 * z) * 0.5);
+oy = floor((gfx_h - H0 * z) * 0.5);
+now = time_precise();
+
+function automate(s, e)
+(
+<? loop(i = 1; 179,
+  printf("  s == %d ? slider_automate(slider%d, e) :\n", i, i);
+  i += 1;
+); ?>  0;
+);
+
+function op_name(k, str)
+(
+  k == 0 ? strcpy(str, "EG Rate 1") :
+  k == 1 ? strcpy(str, "EG Rate 2") :
+  k == 2 ? strcpy(str, "EG Rate 3") :
+  k == 3 ? strcpy(str, "EG Rate 4") :
+  k == 4 ? strcpy(str, "EG Level 1") :
+  k == 5 ? strcpy(str, "EG Level 2") :
+  k == 6 ? strcpy(str, "EG Level 3") :
+  k == 7 ? strcpy(str, "EG Level 4") :
+  k == 8 ? strcpy(str, "Break Point") :
+  k == 9 ? strcpy(str, "L Scale Depth") :
+  k == 10 ? strcpy(str, "R Scale Depth") :
+  k == 11 ? strcpy(str, "L Key Scale") :
+  k == 12 ? strcpy(str, "R Key Scale") :
+  k == 13 ? strcpy(str, "Rate Scaling") :
+  k == 14 ? strcpy(str, "Amp Mod Sens") :
+  k == 15 ? strcpy(str, "Key Velocity") :
+  k == 16 ? strcpy(str, "Output Level") :
+  k == 17 ? strcpy(str, "Mode") :
+  k == 18 ? strcpy(str, "Freq Coarse") :
+  k == 19 ? strcpy(str, "Freq Fine") :
+  k == 20 ? strcpy(str, "Detune") :
+  strcpy(str, "");
+);
+
+function glob_name(o, str)
+(
+  o == 126 ? strcpy(str, "Pitch EG Rate 1") :
+  o == 127 ? strcpy(str, "Pitch EG Rate 2") :
+  o == 128 ? strcpy(str, "Pitch EG Rate 3") :
+  o == 129 ? strcpy(str, "Pitch EG Rate 4") :
+  o == 130 ? strcpy(str, "Pitch EG Level 1") :
+  o == 131 ? strcpy(str, "Pitch EG Level 2") :
+  o == 132 ? strcpy(str, "Pitch EG Level 3") :
+  o == 133 ? strcpy(str, "Pitch EG Level 4") :
+  o == 134 ? strcpy(str, "Algorithm") :
+  o == 135 ? strcpy(str, "Feedback") :
+  o == 136 ? strcpy(str, "Osc Key Sync") :
+  o == 137 ? strcpy(str, "LFO Speed") :
+  o == 138 ? strcpy(str, "LFO Delay") :
+  o == 139 ? strcpy(str, "LFO PM Depth") :
+  o == 140 ? strcpy(str, "LFO AM Depth") :
+  o == 141 ? strcpy(str, "LFO Key Sync") :
+  o == 142 ? strcpy(str, "LFO Wave") :
+  o == 143 ? strcpy(str, "Pitch Mod Sens") :
+  o == 144 ? strcpy(str, "Transpose") :
+  strcpy(str, "");
+);
+
+function perf_name(n, str)
+(
+  n == 1 ? strcpy(str, "Cartridge") :
+  n == 2 ? strcpy(str, "Program") :
+  n == 3 ? strcpy(str, "Output (dB)") :
+  n == 4 ? strcpy(str, "MIDI Channel") :
+  n == 5 ? strcpy(str, "Polyphony") :
+  n == 6 ? strcpy(str, "Cutoff") :
+  n == 7 ? strcpy(str, "Resonance") :
+  n == 8 ? strcpy(str, "Mono") :
+  n == 9 ? strcpy(str, "Master Tune (cents)") :
+  n == 10 ? strcpy(str, "Pitch Bend Up") :
+  n == 11 ? strcpy(str, "Pitch Bend Down") :
+  n == 12 ? strcpy(str, "Pitch Bend Step") :
+  n == 13 ? strcpy(str, "Mod Wheel Range") :
+  n == 14 ? strcpy(str, "Mod Wheel -> Pitch") :
+  n == 15 ? strcpy(str, "Mod Wheel -> Amp") :
+  n == 16 ? strcpy(str, "Mod Wheel -> EG Bias") :
+  n == 17 ? strcpy(str, "Foot Range") :
+  n == 18 ? strcpy(str, "Foot -> Pitch") :
+  n == 19 ? strcpy(str, "Foot -> Amp") :
+  n == 20 ? strcpy(str, "Foot -> EG Bias") :
+  n == 21 ? strcpy(str, "Breath Range") :
+  n == 22 ? strcpy(str, "Breath -> Pitch") :
+  n == 23 ? strcpy(str, "Breath -> Amp") :
+  n == 24 ? strcpy(str, "Breath -> EG Bias") :
+  n == 25 ? strcpy(str, "Aftertouch Range") :
+  n == 26 ? strcpy(str, "Aftertouch -> Pitch") :
+  n == 27 ? strcpy(str, "Aftertouch -> Amp") :
+  n == 28 ? strcpy(str, "Aftertouch -> EG Bias") :
+  n == 29 ? strcpy(str, "OP1 On") :
+  n == 30 ? strcpy(str, "OP2 On") :
+  n == 31 ? strcpy(str, "OP3 On") :
+  n == 32 ? strcpy(str, "OP4 On") :
+  n == 33 ? strcpy(str, "OP5 On") :
+  n == 34 ? strcpy(str, "OP6 On") :
+  strcpy(str, "");
+);
+
+function sx(x) ( ox + x * z; );
+function sy(y) ( oy + y * z; );
+function hit(x, y, w, h) ( mouse_x >= sx(x) && mouse_x < sx(x + w) && mouse_y >= sy(y) && mouse_y < sy(y + h); );
+function hitc(x, y, r) ( sqr(mouse_x - sx(x)) + sqr(mouse_y - sy(y)) <= sqr(r * z); );
+function font(n, sz, fl) ( n == 1 ? gfx_setfont(1, "Arial", (sz + 2) * z, fl) : gfx_setfont(n, "Courier New", (sz + 2) * z, fl); );
+function clamp01(x) ( max(0, min(1, x)); );
+
+function upper(str) local(i, c)
+(
+  i = 0;
+  loop(strlen(str), c = str_getchar(str, i); (c >= 97 && c <= 122) ? str_setchar(str, i, c - 32); i += 1; );
+  str;
+);
+
+function text_c(str, cx, y) local(tw, th) ( gfx_measurestr(str, tw, th); gfx_x = sx(cx) - tw * 0.5; gfx_y = sy(y); gfx_drawstr(str); );
+function text_r(str, rx, y) local(tw, th) ( gfx_measurestr(str, tw, th); gfx_x = sx(rx) - tw; gfx_y = sy(y); gfx_drawstr(str); );
+function text_l(str, lx, y) ( gfx_x = sx(lx); gfx_y = sy(y); gfx_drawstr(str); );
+
+function glow_str(str, x, y, r, g, b) local(d)
+(
+  d = max(1, z);
+  gfx_set(r, g, b, 0.14);
+  gfx_x = x - d; gfx_y = y; gfx_drawstr(str);
+  gfx_x = x + d; gfx_y = y; gfx_drawstr(str);
+  gfx_x = x; gfx_y = y - d; gfx_drawstr(str);
+  gfx_x = x; gfx_y = y + d; gfx_drawstr(str);
+  gfx_set(r, g, b, 1);
+  gfx_x = x; gfx_y = y; gfx_drawstr(str);
+);
+
+function rrect(x, y, w, h, rad) local(QX, QY, QW, QH, QR)
+(
+  QX = sx(x); QY = sy(y); QW = w * z; QH = h * z; QR = rad * z;
+  gfx_rect(QX + QR, QY, QW - 2*QR, QH, 1);
+  gfx_rect(QX, QY + QR, QR, QH - 2*QR, 1);
+  gfx_rect(QX + QW - QR, QY + QR, QR, QH - 2*QR, 1);
+  gfx_circle(QX + QR, QY + QR, QR, 1, 1);
+  gfx_circle(QX + QW - QR - 1, QY + QR, QR, 1, 1);
+  gfx_circle(QX + QR, QY + QH - QR - 1, QR, 1, 1);
+  gfx_circle(QX + QW - QR - 1, QY + QH - QR - 1, QR, 1, 1);
+);
+
+function soft_shadow(x, y, w, h, rad, n, a) local(i)
+(
+  i = 1;
+  loop(n,
+    gfx_set(0, 0, 0, a * (1 - (i - 1) / n));
+    gfx_roundrect(sx(x) - i, sy(y) - i + 2 * z, w * z + 2 * i, h * z + 2 * i, (rad + i / z) * z, 1);
+    i += 1;
+  );
+);
+
+function acc(c)
+(
+  c == 0 ? ( acc_r = 1.00; acc_g = 0.66; acc_b = 0.26; ) :
+  c == 1 ? ( acc_r = 0.30; acc_g = 0.82; acc_b = 0.96; ) :
+  c == 2 ? ( acc_r = 0.46; acc_g = 0.92; acc_b = 0.56; ) :
+  c == 3 ? ( acc_r = 0.74; acc_g = 0.54; acc_b = 1.00; ) :
+  c == 4 ? ( acc_r = 0.46; acc_g = 0.64; acc_b = 1.00; ) :
+  c == 5 ? ( acc_r = 1.00; acc_g = 0.42; acc_b = 0.56; ) :
+  ( acc_r = 0.30; acc_g = 0.76; acc_b = 0.62; );
+);
+
+function panel(x, y, w, h, title, c) local(tw, th)
+(
+  pass == 0 ? (
+    soft_shadow(x, y, w, h, 7, max(3, floor(6 * z)), 0.10);
+    gfx_set(0.115, 0.122, 0.140, 1);
+    rrect(x, y, w, h, 7);
+    gfx_gradrect(sx(x + 7), sy(y + 1), (w - 14) * z, 40 * z, 1, 1, 1, 0.035, 0, 0, 0, 0, 0, 0, 0, -0.035 / (40 * z));
+    gfx_set(1, 1, 1, 0.05);
+    gfx_line(sx(x + 7), sy(y) + 1, sx(x + w - 7), sy(y) + 1, 1);
+    acc(c);
+    font(1, 11, 'b');
+    gfx_measurestr(title, tw, th);
+    gfx_set(acc_r, acc_g, acc_b, 0.95);
+    gfx_x = sx(x + 12); gfx_y = sy(y + 8);
+    gfx_drawstr(title);
+    gfx_set(acc_r, acc_g, acc_b, 0.35);
+    gfx_rect(sx(x + 12) + tw + 8 * z, sy(y + 14), sx(x + w - 12) - (sx(x + 12) + tw + 8 * z), max(1, z), 1);
+  );
+);
+
+function screen(x, y, w, h) local(QX, QY, QW, QH)
+(
+  QX = sx(x); QY = sy(y); QW = w * z; QH = h * z;
+  gfx_set(0, 0, 0, 0.55);
+  gfx_rect(QX - z, QY - z, QW + 2 * z, QH + 2 * z, 1);
+  gfx_set(0.035, 0.038, 0.045, 1);
+  gfx_rect(QX, QY, QW, QH, 1);
+  gfx_set(1, 1, 1, 0.025);
+  gfx_rect(QX, QY, QW, QH * 0.45, 1);
+);
+
+
+function cart_label(c, str) ( c == 0 ? strcpy(str, "Dexed_01") : c == 33 ? strcpy(str, "User") : sprintf(str, "SynprezFM_%02d", c); str; );
+function vo(n) ( n - 35; );
+function is_voice(n) ( n >= 35 && n < 35 + 145; );
+function sl_norm(n) ( (slider(n) - slMin[n]) / (slMax[n] - slMin[n]); );
+
+function note_str(v, str) local(pc)
+(
+  pc = v % 12;
+  strcpy(str, pc == 0 ? "C" : pc == 1 ? "C#" : pc == 2 ? "D" : pc == 3 ? "D#" : pc == 4 ? "E" : pc == 5 ? "F" :
+              pc == 6 ? "F#" : pc == 7 ? "G" : pc == 8 ? "G#" : pc == 9 ? "A" : pc == 10 ? "A#" : "B");
+);
+
+function op_freq(op, str) local(b, md, co, fi, de, f)
+(
+  b = 35 + op * 21;
+  md = floor(slider(b + 17) + 0.5); co = floor(slider(b + 18) + 0.5); fi = floor(slider(b + 19) + 0.5); de = floor(slider(b + 20) + 0.5) - 7;
+  !md ? (
+    f = co == 0 ? 0.5 : co;
+    f = f + f * fi / 100;
+    sprintf(str, "%.2f", f);
+  ) : (
+    f = 10 ^ (co & 3) * exp(log(10) * fi / 100);
+    f < 10 ? sprintf(str, "%.3f Hz", f) : f < 100 ? sprintf(str, "%.2f Hz", f) : f < 1000 ? sprintf(str, "%.1f Hz", f) : sprintf(str, "%.0f Hz", f);
+  );
+  de != 0 ? strcat(str, sprintf(#dtn, " %+d", de));
+  str;
+);
+
+function fmt_sl(n, str) local(v, o, k, f)
+(
+  v = slider(n);
+  is_voice(n) ? (
+    o = vo(n); v = floor(v + 0.5);
+    o < 126 ? (
+      k = o % 21;
+      k == 8 ? ( note_str(v + 9, #ns); sprintf(str, "%s%d", #ns, floor((v + 9) / 12) - 1); ) :
+      (k == 11 || k == 12) ? strcpy(str, v == 0 ? "-LIN" : v == 1 ? "-EXP" : v == 2 ? "+EXP" : "+LIN") :
+      k == 17 ? strcpy(str, v ? "Fixed" : "Ratio") :
+      k == 20 ? sprintf(str, "%+d", v - 7) :
+      (k == 18 || k == 19) ? op_freq(floor(o / 21), str) :
+      sprintf(str, "%d", v);
+    ) :
+    o == 134 ? sprintf(str, "%d", v + 1) :
+    (o == 136 || o == 141) ? strcpy(str, v ? "On" : "Off") :
+    o == 142 ? strcpy(str, v == 0 ? "Triangle" : v == 1 ? "Saw Down" : v == 2 ? "Saw Up" : v == 3 ? "Square" : v == 4 ? "Sine" : "S&H") :
+    o == 144 ? ( note_str(v, #ns); sprintf(str, "%s%d", #ns, floor(v / 12) + 1); ) :
+    sprintf(str, "%d", v);
+  ) :
+  n == 3 ? sprintf(str, "%+.1f dB", v) :
+  n == 6 ? ( v >= 1 ? strcpy(str, "Open") : ( f = ((exp(v * log(20)) - 1) / 19) * 18940 + 60; f < 1000 ? sprintf(str, "%.0f Hz", f) : sprintf(str, "%.1f kHz", f / 1000); ); ) :
+  n == 7 ? sprintf(str, "%.0f %%", v * 100) :
+  n == 9 ? sprintf(str, "%+.1f cents", v) :
+  (n == 10 || n == 11) ? sprintf(str, "%d semi", floor(v + 0.5)) :
+  n == 12 ? ( floor(v + 0.5) == 0 ? strcpy(str, "Off") : sprintf(str, "%d semi", floor(v + 0.5)); ) :
+  (n == 13 || n == 17 || n == 21 || n == 25) ? sprintf(str, "%d", floor(v + 0.5)) :
+  n == 5 ? sprintf(str, "%d", 2 ^ floor(v + 0.5)) :
+  n == 4 ? ( floor(v + 0.5) == 0 ? strcpy(str, "Omni") : sprintf(str, "Ch %d", floor(v + 0.5)); ) :
+  n == 1 ? cart_label(floor(v + 0.5), str) : n == 2 ? sprintf(str, "%d", floor(v + 0.5) + 1) :
+  n == 8 ? strcpy(str, v >= 0.5 ? "Mono" : "Poly") :
+  strcpy(str, v >= 0.5 ? "On" : "Off");
+  str;
+);
+
+function sl_name(n, str) local(o)
+(
+  is_voice(n) ? (
+    o = vo(n);
+    o < 126 ? ( op_name(o % 21, #on); sprintf(str, "OP%d %s", 6 - floor(o / 21), #on); ) : glob_name(o, str);
+  ) : perf_name(n, str);
+  upper(str);
+);
+
+function set_sl(n, v)
+(
+  v = max(slMin[n], min(slMax[n], v));
+  slStep[n] >= 1 ? v = floor(v / slStep[n] + 0.5) * slStep[n];
+  slider(n) !== v ? ( slider(n) = v; automate(n, 0); );
+  touched_n = n; touched_t = now;
+);
+function end_sl(n) ( automate(n, 1); );
+function tap_sl(n, v) ( set_sl(n, v); end_sl(n); );
+
+
+function knob_body(x, y, r) local(QX, QY, QR, i, t, c, a0, a1)
+(
+  QX = sx(x); QY = sy(y); QR = r * z;
+  gfx_set(0, 0, 0, 0.45);
+  gfx_circle(QX, QY + 2 * z, QR + 2 * z, 1, 1);
+  a0 = -2.35619; a1 = 2.35619;
+  gfx_set(0.035, 0.037, 0.045, 1);
+  i = 0; loop(ceil(5 * z) + 1, gfx_arc(QX, QY, QR + 2 * z + i * 0.5, a0, a1, 1); i += 1; );
+  gfx_set(0.05, 0.052, 0.06, 1);
+  gfx_circle(QX, QY, QR, 1, 1);
+  i = 0;
+  loop(ceil(QR),
+    t = i / ceil(QR);
+    c = 0.14 + 0.16 * t;
+    gfx_set(c, c * 1.01, c * 1.06, 1);
+    gfx_circle(QX - QR * 0.18 * t, QY - QR * 0.22 * t, (QR - 1.5 * z) * (1 - t * 0.92), 1, 1);
+    i += 1;
+  );
+  gfx_set(1, 1, 1, 0.10);
+  gfx_arc(QX, QY, QR - 1.5 * z, -1.9, 0.2, 1);
+);
+
+function knob_value(x, y, r, pos, style, hot) local(QX, QY, QR, a0, a1, as, ae, a, i, px, py, br)
+(
+  QX = sx(x); QY = sy(y); QR = r * z;
+  a0 = -2.35619; a1 = 2.35619;
+  a = a0 + (a1 - a0) * clamp01(pos);
+  style == 1 ? ( as = min(0, a); ae = max(0, a); ) : ( as = a0; ae = a; );
+  br = hot ? 1 : 0.85;
+  ae > as + 0.001 ? (
+    gfx_set(acc_r, acc_g, acc_b, 0.10 * br);
+    i = 0; loop(3, gfx_arc(QX, QY, QR + (4.5 + i * 0.7) * z, as, ae, 1); i += 1; );
+    gfx_set(acc_r * br, acc_g * br, acc_b * br, 1);
+    i = 0; loop(ceil(5 * z) + 1, gfx_arc(QX, QY, QR + 2 * z + i * 0.5, as, ae, 1); i += 1; );
+  );
+  style == 1 ? ( gfx_set(1, 1, 1, 0.35); gfx_line(QX, QY - QR - 1.5 * z, QX, QY - QR - 4.5 * z, 1); );
+  px = sin(a); py = -cos(a);
+  gfx_set(0.95, 0.95, 0.97, 1);
+  gfx_circle(QX + px * QR * 0.72, QY + py * QR * 0.72, max(1.5, 2.2 * z), 1, 1);
+);
+
+function tooltip(x, y, str) local(tw, th, bx, by, bw, bh)
+(
+  font(1, 11, 'b');
+  gfx_measurestr(str, tw, th);
+  bw = tw + 12 * z; bh = th + 6 * z;
+  bx = max(2, min(gfx_w - bw - 2, sx(x) - bw * 0.5)); by = sy(y) - bh;
+  gfx_set(0.02, 0.02, 0.03, 0.92);
+  gfx_rect(bx, by, bw, bh, 1);
+  gfx_set(acc_r, acc_g, acc_b, 0.8);
+  gfx_rect(bx, by + bh - max(1, z), bw, max(1, z), 1);
+  gfx_set(1, 1, 1, 1);
+  gfx_x = bx + 6 * z; gfx_y = by + 3 * z;
+  gfx_drawstr(str);
+);
+
+function tip_below(x, y, str) local(tw, th, bx, by, bw, bh)
+(
+  font(1, 11, 'b');
+  gfx_measurestr(str, tw, th);
+  bw = tw + 12 * z; bh = th + 6 * z;
+  bx = max(2, min(gfx_w - bw - 2, sx(x) - bw * 0.5)); by = sy(y);
+  gfx_set(0.02, 0.02, 0.03, 0.92);
+  gfx_rect(bx, by, bw, bh, 1);
+  gfx_set(acc_r, acc_g, acc_b, 0.8);
+  gfx_rect(bx, by, bw, max(1, z), 1);
+  gfx_set(1, 1, 1, 1);
+  gfx_x = bx + 6 * z; gfx_y = by + 3 * z;
+  gfx_drawstr(str);
+);
+
+function knob(x, y, r, n, style, label, c) local(pos, hov, nv, d, st, fine, steps)
+(
+  acc(c);
+  pass == 0 ? (
+    knob_body(x, y, r);
+    font(1, r >= 14 ? 10 : 9, 'b');
+    gfx_set(0.62, 0.64, 0.68, 1);
+    text_c(label, x, y + r + 6);
+  ) : (
+    hov = hitc(x, y, r + 4);
+    (mouse_click && hov) ? (
+      (last_click_n == n && now - last_click_t < 0.3) ? ( tap_sl(n, slDef[n]); drag_n = -1; ) :
+        ( drag_n = n; drag_y0 = mouse_y; drag_v0 = slider(n); );
+      last_click_n = n; last_click_t = now;
+      mouse_click = 0;
+    );
+    drag_n == n ? (
+      mouse_cap |= 65536;
+      fine = (mouse_cap & 4) || (mouse_cap & 8);
+      d = (drag_y0 - mouse_y) / (220 * z) * (fine ? 0.12 : 1);
+      st = slStep[n];
+      st >= 1 ? (
+        steps = (slMax[n] - slMin[n]) / st;
+        nv = drag_v0 + floor(d * steps * (fine ? 4 : 1.2) + 0.5) * st;
+      ) : nv = drag_v0 + d * (slMax[n] - slMin[n]);
+      set_sl(n, nv);
+    );
+    (hov && mouse_wheel != 0 && drag_n < 0) ? (
+      st = slStep[n];
+      nv = slider(n) + (mouse_wheel > 0 ? 1 : -1) * (st >= 1 ? st : (slMax[n] - slMin[n]) * ((mouse_cap & 4) ? 0.002 : 0.02));
+      tap_sl(n, nv);
+      mouse_wheel = 0;
+    );
+    pos = sl_norm(n);
+    knob_value(x, y, r, pos, style, hov || drag_n == n);
+    (hov || drag_n == n) ? ( hov_n = n; hov_x = x; hov_y = y - r - 6; hov_c = c; );
+  );
+);
+
+function dropdown(x, y, w, h, label, str, c) local(hov, tw, th, QX, QY, QW, QH)
+(
+  acc(c);
+  QX = sx(x); QY = sy(y); QW = w * z; QH = h * z;
+  pass == 0 ? (
+    strlen(label) ? (
+      font(1, 9, 'b');
+      gfx_set(0.62, 0.64, 0.68, 1);
+      gfx_x = QX; gfx_y = QY - 12 * z;
+      gfx_drawstr(label);
+    );
+    gfx_set(0, 0, 0, 0.5);
+    gfx_rect(QX - z, QY - z, QW + 2 * z, QH + 2 * z, 1);
+    gfx_set(0.075, 0.08, 0.09, 1);
+    gfx_rect(QX, QY, QW, QH, 1);
+    0;
+  ) : (
+    hov = hit(x, y, w, h);
+    hov ? ( gfx_set(1, 1, 1, 0.05); gfx_rect(QX, QY, QW, QH, 1); );
+    font(1, 10.5, 'b');
+    gfx_set(0.90, 0.91, 0.93, 1);
+    gfx_measurestr(str, tw, th);
+    gfx_x = QX + 6 * z; gfx_y = QY + (QH - th) * 0.5;
+    gfx_drawstr(str);
+    gfx_set(acc_r, acc_g, acc_b, hov ? 1 : 0.8);
+    gfx_triangle(QX + QW - 12 * z, QY + QH * 0.5 - 2 * z, QX + QW - 5 * z, QY + QH * 0.5 - 2 * z, QX + QW - 8.5 * z, QY + QH * 0.5 + 2.5 * z);
+    gfx_rect(QX, QY + QH - max(1, z), QW, max(1, z), 1);
+    ret = mouse_click && hov;
+    ret ? ( mouse_click = 0; gfx_x = QX; gfx_y = QY + QH; );
+    ret;
+  );
+);
+
+function enum_dd(x, y, w, h, n, label, c) local(i, cur, sel)
+(
+  fmt_sl(n, #dd);
+  dropdown(x, y, w, h, label, #dd, c) ? (
+    cur = floor(slider(n) + 0.5);
+    strcpy(#menu, "");
+    i = slMin[n];
+    while (i <= slMax[n]) (
+      i > slMin[n] ? strcat(#menu, "|");
+      i == cur ? strcat(#menu, "!");
+      slider(n) = i; fmt_sl(n, #mi); slider(n) = cur;
+      strcat(#menu, #mi);
+      i += 1;
+    );
+    sel = gfx_showmenu(#menu);
+    sel > 0 ? tap_sl(n, slMin[n] + sel - 1);
+  );
+  pass == 1 && hit(x, y, w, h) ? ( hov_n = n; hov_x = x + w * 0.5; hov_y = y - 14; hov_c = c; );
+);
+
+function toggle_btn(x, y, w, h, n, label, c) local(hov, on, QX, QY, QW, QH, tw, th)
+(
+  acc(c);
+  QX = sx(x); QY = sy(y); QW = w * z; QH = h * z;
+  pass == 0 ? (
+    gfx_set(0, 0, 0, 0.5);
+    gfx_rect(QX - z, QY - z, QW + 2 * z, QH + 2 * z, 1);
+  ) : (
+    hov = hit(x, y, w, h);
+    on = slider(n) >= 0.5;
+    on ? gfx_set(acc_r * 0.28, acc_g * 0.28, acc_b * 0.28, 1) : gfx_set(0.075, 0.08, 0.09, 1);
+    gfx_rect(QX, QY, QW, QH, 1);
+    hov ? ( gfx_set(1, 1, 1, 0.06); gfx_rect(QX, QY, QW, QH, 1); );
+    on ? ( gfx_set(acc_r, acc_g, acc_b, 0.25); gfx_circle(QX + 8 * z, QY + QH * 0.5, 4.5 * z, 1, 1); );
+    on ? gfx_set(acc_r, acc_g, acc_b, 1) : gfx_set(0.25, 0.26, 0.28, 1);
+    gfx_circle(QX + 8 * z, QY + QH * 0.5, 2.4 * z, 1, 1);
+    font(1, 9.5, 'b');
+    on ? gfx_set(1, 1, 1, 1) : gfx_set(0.62, 0.64, 0.68, 1);
+    gfx_measurestr(label, tw, th);
+    gfx_x = QX + 15 * z; gfx_y = QY + (QH - th) * 0.5;
+    gfx_drawstr(label);
+    hov ? ( hov_n = n; hov_x = x + w * 0.5; hov_y = y - 4; hov_c = c; );
+    (mouse_click && hov) ? ( tap_sl(n, on ? 0 : 1); mouse_click = 0; );
+  );
+);
+
+function btn_en(x, y, w, h, label, lit, c, en) local(QX, QY, QW, QH, hov, tw, th)
+(
+  acc(c);
+  QX = sx(x); QY = sy(y); QW = w * z; QH = h * z;
+  pass == 1 ? (
+    hov = hit(x, y, w, h);
+    gfx_set(0, 0, 0, 0.5);
+    gfx_rect(QX - z, QY - z, QW + 2 * z, QH + 2 * z, 1);
+    !en ? ( gfx_set(0.10, 0.105, 0.115, 1); gfx_rect(QX, QY, QW, QH, 1); ) :
+    lit ? gfx_gradrect(QX, QY, QW, QH, acc_r * 0.55, acc_g * 0.55, acc_b * 0.55, 1, 0, 0, 0, 0, -0.1 / QH, -0.1 / QH, -0.1 / QH, 0)
+        : gfx_gradrect(QX, QY, QW, QH, 0.16, 0.165, 0.18, 1, 0, 0, 0, 0, -0.05 / QH, -0.05 / QH, -0.05 / QH, 0);
+    hov && en ? ( gfx_set(1, 1, 1, 0.07); gfx_rect(QX, QY, QW, QH, 1); );
+    font(1, 10, 'b');
+    !en ? gfx_set(0.34, 0.35, 0.38, 1) : lit ? gfx_set(1, 1, 1, 1) : gfx_set(0.82, 0.83, 0.86, 1);
+    gfx_measurestr(label, tw, th);
+    gfx_x = QX + (QW - tw) * 0.5; gfx_y = QY + (QH - th) * 0.5;
+    gfx_drawstr(label);
+    hov && !en ? ( tip_on = 1; tip_x = x + w * 0.5; tip_y = y + h + 4; );
+    ret = mouse_click && hov;
+    ret ? ( mouse_click = 0; gfx_x = QX; gfx_y = QY + QH; );
+    ret && en;
+  ) : 0;
+);
+
+function btn(x, y, w, h, label, lit, c) ( btn_en(x, y, w, h, label, lit, c, 1); );
+
+function arrow(x, y, w, h, dir) local(hov, QX, QY, QW, QH, cx, cy, s)
+(
+  pass == 1 ? (
+    QX = sx(x); QY = sy(y); QW = w * z; QH = h * z;
+    hov = hit(x, y, w, h);
+    gfx_set(0.02, 0.022, 0.025, 1);
+    gfx_rect(QX - z, QY - z, QW + 2 * z, QH + 2 * z, 1);
+    gfx_set(hov ? 0.19 : 0.13, hov ? 0.19 : 0.13, hov ? 0.21 : 0.15, 1);
+    gfx_rect(QX, QY, QW, QH, 1);
+    cx = QX + QW * 0.5; cy = QY + QH * 0.5; s = min(6 * z, QH * 0.3);
+    acc(0);
+    gfx_set(acc_r, acc_g, acc_b, hov ? 1 : 0.85);
+    dir < 0 ? gfx_triangle(cx + s * 0.55, cy - s, cx + s * 0.55, cy + s, cx - s * 0.65, cy)
+            : gfx_triangle(cx - s * 0.55, cy - s, cx - s * 0.55, cy + s, cx + s * 0.65, cy);
+    ret = mouse_click && hov;
+    ret ? mouse_click = 0;
+    ret;
+  ) : 0;
+);
+
+
+function lvl_q24(L) ( ((scaleout(max(0, min(99, floor(L + 0.5)))) >> 1) * 64 + 3168 - 4256) / 256; );
+
+function stage_time(rate, la, lb) local(qr, inc, a, b, blocks, sr_)
+(
+  rate = max(0, min(99, floor(rate + 0.5)));
+  qr = min(63, (rate * 41) >> 6);
+  inc = (4 + (qr & 3)) * 2 ^ (8 + (qr >> 2));
+  a = lvl_q24(la); b = lvl_q24(lb);
+  abs(b - a) < 0.001 ? (
+    sr_ = min(99, rate);
+    (sr_ < 77 ? statics_t[sr_] : 20 * (99 - sr_)) / 44100;
+  ) : b < a ? (
+    blocks = (a - b) * 16777216 / inc;
+    blocks * 64 / 44100;
+  ) : (
+    a = max(a, 6.703125);
+    b = min(b, 16.9);
+    blocks = b > a ? 16777216 / inc * log((17 - a) / (17 - b)) : 0;
+    blocks * 64 / 44100;
+  );
+);
+
+function env_w(t) ( 0.18 + log(1 + t / 0.004); );
+
+function env_xy(P) local(i, f)
+(
+  i = min(4, floor(P)); f = P - i;
+  env_px = ex_[i] + (ex_[i + 1] - ex_[i]) * f;
+  env_py = ey_[i] + (ey_[i + 1] - ey_[i]) * f;
+);
+
+function env_path(Pa, Pb) local(p, q, xa, ya)
+(
+  p = Pa;
+  env_xy(p); xa = env_px; ya = env_py;
+  while (p < Pb - 0.0001) (
+    q = min(Pb, floor(p) + 1);
+    env_xy(q);
+    gfx_line(xa, ya, env_px, env_py, 1);
+    gfx_line(xa, ya + 1, env_px, env_py + 1, 1);
+    xa = env_px; ya = env_py; p = q;
+  );
+);
+
+function dx_env(x, y, w, h, rb, lb, c, opi) local(QX, QY, QW, QH, L1, L2, L3, L4, w0, w1, w2, w3, wh, tot, i, k, p, ix, lv, frac, la, lbb, P, hb, n, j, a)
+(
+  acc(c);
+  pass == 0 ? screen(x, y, w, h) : (
+    QX = sx(x + 6); QY = sy(y + 6); QW = (w - 12) * z; QH = (h - 12) * z;
+    L1 = slider(lb); L2 = slider(lb + 1); L3 = slider(lb + 2); L4 = slider(lb + 3);
+    w0 = env_w(stage_time(slider(rb), L4, L1)); w1 = env_w(stage_time(slider(rb + 1), L1, L2));
+    w2 = env_w(stage_time(slider(rb + 2), L2, L3)); w3 = env_w(stage_time(slider(rb + 3), L3, L4));
+    wh = 0.25 * (w0 + w1 + w2 + w3) + 0.3;
+    tot = w0 + w1 + w2 + wh + w3;
+    ex_ = 6650000; ey_ = 6650010;
+    ex_[0] = QX;                        ey_[0] = QY + QH - L4 / 99 * QH;
+    ex_[1] = QX + QW * w0 / tot;        ey_[1] = QY + QH - L1 / 99 * QH;
+    ex_[2] = QX + QW * (w0 + w1) / tot; ey_[2] = QY + QH - L2 / 99 * QH;
+    ex_[3] = QX + QW * (w0 + w1 + w2) / tot; ey_[3] = QY + QH - L3 / 99 * QH;
+    ex_[4] = QX + QW * (w0 + w1 + w2 + wh) / tot; ey_[4] = ey_[3];
+    ex_[5] = QX + QW;                   ey_[5] = QY + QH - L4 / 99 * QH;
+    gfx_set(acc_r, acc_g, acc_b, 0.08);
+    i = 0; loop(5, gfx_triangle(ex_[i], ey_[i], ex_[i + 1], ey_[i + 1], ex_[i + 1], QY + QH, ex_[i], QY + QH); i += 1; );
+    gfx_set(acc_r, acc_g, acc_b, 1);
+    i = 0;
+    loop(5,
+      i == 3 ? gfx_set(acc_r, acc_g, acc_b, 0.45) : gfx_set(acc_r, acc_g, acc_b, 1);
+      gfx_line(ex_[i], ey_[i], ex_[i + 1], ey_[i + 1], 1);
+      i != 3 ? gfx_circle(ex_[i + 1], ey_[i + 1], 2 * z, 1, 1);
+      i += 1;
+    );
+    opi >= 0 ? (
+      k = 0;
+      loop(nvoices,
+        p = voice(k);
+        hb = 6600000 + k * 16;
+        (p[6] && p[32 + opi * 32 + 14] < 4) ? (
+          p = p + 32 + opi * 32;
+          ix = p[14];
+          lv = (p[11] / 65536 - p[9] + 4256) / 32;
+          lv = lv >= 48 ? lv - 28 : lv * 20 / 48;
+          lv = max(0, min(99, lv));
+          ix == 0 ? ( la = L4; lbb = L1; ) : ix == 1 ? ( la = L1; lbb = L2; ) : ix == 2 ? ( la = L2; lbb = L3; ) :
+          ix == 3 ? ( la = L3; lbb = L4; ) : ( la = L4; lbb = L4; );
+          frac = abs(lbb - la) >= 0.5 ? clamp01((lv - la) / (lbb - la)) : 0.5;
+          P = ix < 3 ? ix + frac : (ix == 3 && p[17]) ? 3.5 : ix == 3 ? 4 + frac : 5;
+          (hb[8] < 0.5 || P < hb[9] - 0.001) ? ( hb[8] = 1; j = 0; loop(6, hb[j] = 0; j += 1; ); );
+          n = 0;
+          loop(5,
+            a = 0.10 + n * 0.12;
+            gfx_set(1, 1, 1, a);
+            env_path(hb[n], hb[n + 1]);
+            n += 1;
+          );
+          gfx_set(1, 1, 1, 0.7);
+          env_path(hb[5], P);
+          j = 0; loop(5, hb[j] = hb[j + 1]; j += 1; );
+          hb[5] = P; hb[9] = P;
+          env_xy(P);
+          gfx_set(1, 1, 1, 0.25); gfx_circle(env_px, env_py, 4.5 * z, 1, 1);
+          gfx_set(1, 1, 1, 0.95); gfx_circle(env_px, env_py, 2.5 * z, 1, 1);
+        ) : ( hb[8] = 0; );
+        k += 1;
+      );
+    );
+  );
+);
+
+
+function algo_diagram(x, y, sc) local(a, i, id, gx, gy, lk, fb, bx, by, cw, ch, on, QX, QY, lw, t)
+(
+  a = floor(slider(35 + 134) + 0.5);
+  cw = 25 * sc; ch = 21 * sc; lw = max(1, floor(2 * z));
+  i = 0;
+  loop(6,
+    id = alg_t[a * 30 + i * 5]; gx = alg_t[a * 30 + i * 5 + 1]; gy = alg_t[a * 30 + i * 5 + 2];
+    lk = alg_t[a * 30 + i * 5 + 3]; fb = alg_t[a * 30 + i * 5 + 4];
+    on = slider(28 + id) >= 0.5;
+    bx = x + gx * cw + 3 * sc; by = y + gy * ch + 5 * sc;
+    acc(1);
+    on ? gfx_set(acc_r, acc_g, acc_b, 0.9) : gfx_set(0.3, 0.32, 0.35, 1);
+    t = 0;
+    loop(lw,
+      lk == 0 ? gfx_line(sx(bx + 8 * sc) + t, sy(by + 12 * sc), sx(bx + 8 * sc) + t, sy(by + 21 * sc), 1) :
+      lk == 1 ? ( gfx_line(sx(bx + 8 * sc) + t, sy(by + 12 * sc), sx(bx + 8 * sc) + t, sy(by + 18 * sc), 1); gfx_line(sx(bx + 7 * sc), sy(by + 18 * sc) + t, sx(bx + 34 * sc), sy(by + 18 * sc) + t, 1); ) :
+      lk == 2 ? gfx_line(sx(bx + 8 * sc) + t, sy(by + 12 * sc), sx(bx + 8 * sc) + t, sy(by + 19 * sc), 1) :
+      lk == 3 ? ( gfx_line(sx(bx + 8 * sc) + t, sy(by + 12 * sc), sx(bx + 8 * sc) + t, sy(by + 21 * sc), 1); gfx_line(sx(bx + 7 * sc), sy(by + 18 * sc) + t, sx(bx + 34 * sc), sy(by + 18 * sc) + t, 1);
+                  gfx_line(sx(bx + 34 * sc) + t, sy(by + 17 * sc), sx(bx + 34 * sc) + t, sy(by + 21 * sc), 1); ) :
+      lk == 4 ? ( gfx_line(sx(bx + 8 * sc) + t, sy(by + 12 * sc), sx(bx + 8 * sc) + t, sy(by + 21 * sc), 1); gfx_line(sx(bx - 17 * sc), sy(by + 18 * sc) + t, sx(bx + 34 * sc), sy(by + 18 * sc) + t, 1);
+                  gfx_line(sx(bx + 34 * sc) + t, sy(by + 17 * sc), sx(bx + 34 * sc) + t, sy(by + 21 * sc), 1); gfx_line(sx(bx - 17 * sc) + t, sy(by + 17 * sc), sx(bx - 17 * sc) + t, sy(by + 21 * sc), 1); ) :
+      lk == 6 ? ( gfx_line(sx(bx + 8 * sc) + t, sy(by + 12 * sc), sx(bx + 8 * sc) + t, sy(by + 18 * sc), 1); gfx_line(sx(bx + 7 * sc), sy(by + 18 * sc) + t, sx(bx + 58 * sc), sy(by + 18 * sc) + t, 1); ) :
+      lk == 7 ? ( gfx_line(sx(bx + 8 * sc) + t, sy(by + 12 * sc), sx(bx + 8 * sc) + t, sy(by + 19 * sc), 1); gfx_line(sx(bx - 17 * sc), sy(by + 18 * sc) + t, sx(bx + 9 * sc), sy(by + 18 * sc) + t, 1); );
+      fb == 1 ? ( gfx_line(sx(bx + 8 * sc) + t, sy(by), sx(bx + 8 * sc) + t, sy(by - 4 * sc), 1); gfx_line(sx(bx + 8 * sc), sy(by - 4 * sc) + t, sx(bx + 20 * sc), sy(by - 4 * sc) + t, 1);
+                  gfx_line(sx(bx + 20 * sc) + t, sy(by - 4 * sc), sx(bx + 20 * sc) + t, sy(by + 15 * sc), 1); gfx_line(sx(bx + 8 * sc), sy(by + 15 * sc) + t, sx(bx + 20 * sc), sy(by + 15 * sc) + t, 1); ) :
+      fb == 2 ? ( gfx_line(sx(bx + 8 * sc) + t, sy(by), sx(bx + 8 * sc) + t, sy(by - 4 * sc), 1); gfx_line(sx(bx + 8 * sc), sy(by - 4 * sc) + t, sx(bx + 20 * sc), sy(by - 4 * sc) + t, 1);
+                  gfx_line(sx(bx + 20 * sc) + t, sy(by - 4 * sc), sx(bx + 20 * sc) + t, sy(by + 58 * sc), 1); gfx_line(sx(bx + 8 * sc), sy(by + 58 * sc) + t, sx(bx + 20 * sc), sy(by + 58 * sc) + t, 1); ) :
+      fb == 3 ? ( gfx_line(sx(bx + 8 * sc) + t, sy(by), sx(bx + 8 * sc) + t, sy(by - 4 * sc), 1); gfx_line(sx(bx + 8 * sc), sy(by - 4 * sc) + t, sx(bx + 20 * sc), sy(by - 4 * sc) + t, 1);
+                  gfx_line(sx(bx + 20 * sc) + t, sy(by - 4 * sc), sx(bx + 20 * sc) + t, sy(by + 37 * sc), 1); gfx_line(sx(bx + 8 * sc), sy(by + 37 * sc) + t, sx(bx + 20 * sc), sy(by + 37 * sc) + t, 1); ) :
+      fb == 4 ? ( gfx_line(sx(bx + 8 * sc) + t, sy(by), sx(bx + 8 * sc) + t, sy(by - 4 * sc), 1); gfx_line(sx(bx - 3 * sc), sy(by - 4 * sc) + t, sx(bx + 8 * sc), sy(by - 4 * sc) + t, 1);
+                  gfx_line(sx(bx - 3 * sc) + t, sy(by - 4 * sc), sx(bx - 3 * sc) + t, sy(by + 15 * sc), 1); gfx_line(sx(bx - 3 * sc), sy(by + 15 * sc) + t, sx(bx + 8 * sc), sy(by + 15 * sc) + t, 1); );
+      t += 1;
+    );
+    QX = sx(bx); QY = sy(by);
+    on ? gfx_set(0.13, 0.30, 0.36, 1) : gfx_set(0.10, 0.105, 0.12, 1);
+    id == sel_op + 1 ? ( acc(1); gfx_set(acc_r * 0.55, acc_g * 0.55, acc_b * 0.55, 1); );
+    gfx_rect(QX, QY, 17 * sc * z, 12 * sc * z, 1);
+    on ? gfx_set(1, 1, 1, 1) : gfx_set(0.56, 0.58, 0.62, 1);
+    font(1, 9 * sc, 'b');
+    sprintf(#oid, "%d", id);
+    text_c(#oid, bx + 8.5 * sc, by + 0.5 * sc);
+    (mouse_click && hit(bx, by, 17 * sc, 12 * sc)) ? ( sel_op = id - 1; mouse_click = 0; );
+    i += 1;
+  );
+);
+
+
+
+function voice_name(c, n, str) local(b, k, ch, last)
+(
+  b = carts + c * cart_bytes + 6 + n * 128 + 118;
+  strcpy(str, "          ");
+  last = 0; k = 0;
+  loop(10, ch = b[k]; (ch < 32 || ch > 126) ? ch = 32; str_setchar(str, k, ch); ch != 32 ? last = k + 1; k += 1; );
+  str_setlen(str, last);
+  str;
+);
+
+function patch_name(str) local(k, ch, last)
+(
+  strcpy(str, "          ");
+  last = 0; k = 0;
+  loop(10, ch = patch[145 + k]; (ch < 32 || ch > 126) ? ch = 32; str_setchar(str, k, ch); ch != 32 ? last = k + 1; k += 1; );
+  str_setlen(str, last);
+  str;
+);
+
+function menu_name(c, n, str) local(b, k, ch, last)
+(
+  b = carts + c * cart_bytes + 6 + n * 128 + 118;
+  last = 0; k = 0;
+  loop(10, ch = b[k]; (ch > 32 && ch < 127) ? last = k + 1; k += 1; );
+  k = 0;
+  loop(last, ch = b[k]; (ch < 32 || ch > 126) ? ch = 32; ch == 38 ? strcat(str, "&&") : strcat(str, sprintf(#mc, "%c", ch)); k += 1; );
+  str;
+);
+
+function pick_voice(c, n)
+(
+  slider1 = c; slider2 = n;
+  slider_automate(slider1, 0); slider_automate(slider1, 1);
+  slider_automate(slider2, 0); slider_automate(slider2, 1);
+);
+
+function step_voice(d)
+(
+  pick_voice(floor(slider1 + 0.5), (floor(slider2 + 0.5) + d + 32) % 32);
+);
+
+function voice_menu() local(c, n, cc, cp, sel)
+(
+  cc = floor(slider1 + 0.5); cp = floor(slider2 + 0.5);
+  strcpy(#vm, "");
+  c = 0;
+  loop(ncarts + 1,
+    c > 0 ? strcat(#vm, "|");
+    strcat(#vm, ">"); strcat(#vm, cart_label(c, #cl));
+    n = 0;
+    loop(32,
+      strcat(#vm, "|");
+      n == 31 ? strcat(#vm, "<");
+      (c == cc && n == cp) ? strcat(#vm, "!");
+      strcat(#vm, sprintf(#mn, "%02d ", n + 1));
+      menu_name(c, n, #vm);
+      n += 1;
+    );
+    c += 1;
+  );
+  sel = gfx_showmenu(#vm);
+  sel > 0 ? pick_voice(floor((sel - 1) / 32), (sel - 1) % 32);
+);
+
+function cart_menu() local(c, cc, sel)
+(
+  cc = floor(slider1 + 0.5);
+  strcpy(#vm, "");
+  c = 0;
+  loop(ncarts + 1, c > 0 ? strcat(#vm, "|"); c == cc ? strcat(#vm, "!"); strcat(#vm, cart_label(c, #cl)); c += 1; );
+  sel = gfx_showmenu(#vm);
+  (sel > 0 && sel - 1 != cc) ? pick_voice(sel - 1, 0);
+);
+
+function store_menu() local(n, sel)
+(
+  strcpy(#vm, "#STORE CURRENT VOICE IN USER SLOT|");
+  n = 0;
+  loop(32, strcat(#vm, sprintf(#mn, "|%02d ", n + 1)); menu_name(33, n, #vm); n += 1; );
+  sel = gfx_showmenu(#vm);
+  sel > 1 ? (
+    pack_voice(userc + 6 + (sel - 2) * 128);
+    sliderchange(-1);
+    pick_voice(33, sel - 2);
+  );
+);
+
+function lcd(x, y, w, h) local(gx, gy, gw, gh, lr, lg, lb, tw, th, c, p, led, ly, np, seg, sw, lit, hovc, hovn, hovv)
+(
+  pass == 0 ? (
+    gfx_set(0, 0, 0, 0.6);
+    gfx_rect(sx(x) - 2 * z, sy(y) - 2 * z, (w + 4) * z, (h + 4) * z, 1);
+    gfx_set(0.10, 0.105, 0.12, 1);
+    gfx_rect(sx(x), sy(y), w * z, h * z, 1);
+  ) : (
+    arrow(x + 5, y + 6, 22, h - 12, -1) ? step_voice(-1);
+    arrow(x + w - 27, y + 6, 22, h - 12, 1) ? step_voice(1);
+    gx = x + 32; gy = y + 5; gw = w - 64; gh = h - 10;
+    lr = 1.0; lg = 0.62; lb = 0.28;
+    gfx_set(0.012, 0.012, 0.012, 1);
+    gfx_rect(sx(gx) - z, sy(gy) - z, (gw + 2) * z, (gh + 2) * z, 1);
+    gfx_set(0.07, 0.045, 0.028, 1);
+    gfx_rect(sx(gx), sy(gy), gw * z, gh * z, 1);
+    c = floor(slider1 + 0.5); p = floor(slider2 + 0.5);
+    hovc = hit(gx, gy, gw * 0.6, 16);
+    hovv = hit(gx, gy + 16, gw, 30) && !name_edit;
+    (hit(gx, gy, gw, gh) && mouse_wheel != 0) ? ( step_voice(mouse_wheel > 0 ? -1 : 1); mouse_wheel = 0; );
+    font(2, 11, 'b');
+    upper(cart_label(c, #lt));
+    glow_str(#lt, sx(gx + 8), sy(gy + 4), lr, lg, lb);
+    gfx_measurestr(#lt, tw, th);
+    midi_flag ? ( midi_led_t = now; midi_flag = 0; );
+    led = now - midi_led_t < 0.12;
+    gfx_set(lr, lg, lb, led ? 1 : 0.16);
+    gfx_circle(sx(gx + 8) + tw + 9 * z, sy(gy + 4) + th * 0.5, 2.8 * z, 1, 1);
+    sprintf(#lt, "%02d/32", p + 1);
+    voice_edited ? strcat(#lt, " *");
+    gfx_measurestr(#lt, tw, th);
+    glow_str(#lt, sx(gx + gw - 8) - tw, sy(gy + 4), lr, lg, lb);
+    font(2, 21, 'b');
+    name_edit ? ( strcpy(#ln, #ned); (floor(now * 2.5) & 1) ? strcat(#ln, "_") : strcat(#ln, " "); ) :
+    carts_ok ? upper(patch_name(#ln)) : strcpy(#ln, "- - -");
+    gfx_measurestr(#ln, tw, th);
+    glow_str(#ln, sx(gx + gw * 0.5) - tw * 0.5, sy(gy + 29) - th * 0.5, lr, lg, lb);
+    hovv ? ( gfx_set(lr, lg, lb, 0.35); gfx_rect(sx(gx + gw * 0.5) - tw * 0.5, sy(gy + 29) + th * 0.5, tw, max(1, z), 1); );
+    font(2, 11, 'b');
+    ly = gy + gh - 15;
+    !carts_ok ? (
+      strcpy(#lt, "JexedCarts.txt NOT FOUND");
+      gfx_measurestr(#lt, tw, th);
+      glow_str(#lt, sx(gx + gw * 0.5) - tw * 0.5, sy(ly), 1, 0.35, 0.3);
+    ) : name_edit ? (
+      strcpy(#lt, "TYPE A NAME, ENTER TO KEEP, ESC TO CANCEL");
+      gfx_measurestr(#lt, tw, th);
+      glow_str(#lt, sx(gx + gw * 0.5) - tw * 0.5, sy(ly), lr, lg, lb);
+    ) : (hov_n > 0 || now - touched_t < 1.6) ? (
+      sl_name(hov_n > 0 ? hov_n : touched_n, #lt);
+      glow_str(#lt, sx(gx + 8), sy(ly), lr, lg, lb);
+      fmt_sl(hov_n > 0 ? hov_n : touched_n, #lv);
+      upper(#lv);
+      gfx_measurestr(#lv, tw, th);
+      glow_str(#lv, sx(gx + gw - 8) - tw, sy(ly), lr, lg, lb);
+    ) : (
+      np = nvoices;
+      sprintf(#lt, "VOICES %d/%d", min(n_active, np), np);
+      glow_str(#lt, sx(gx + 8), sy(ly), lr, lg, lb);
+      gfx_measurestr(#lt, tw, th);
+      seg = 0;
+      sw = (gw - 24) * z - tw - 8 * z;
+      lit = ceil(16 * min(1, n_active / max(1, np)));
+      loop(16,
+        gfx_set(lr, lg, lb, seg < lit ? 0.9 : 0.12);
+        gfx_rect(sx(gx + 8) + tw + 10 * z + seg * sw / 16, sy(ly) + 2 * z, sw / 16 - 2 * z, th - 4 * z, 1);
+        seg += 1;
+      );
+    );
+    gfx_set(0, 0, 0, 0.22);
+    i_ = sy(gy);
+    while (i_ < sy(gy + gh)) ( gfx_rect(sx(gx), i_, gw * z, max(1, floor(z)), 1); i_ += 3 * z; );
+    gfx_set(1, 1, 1, 0.03);
+    gfx_rect(sx(gx), sy(gy), gw * z, gh * z * 0.42, 1);
+    (mouse_click && hovc) ? ( gfx_x = sx(gx); gfx_y = sy(gy + 16); cart_menu(); mouse_click = 0; );
+    (mouse_click && hovv) ? ( gfx_x = sx(gx + gw * 0.5 - 60); gfx_y = sy(gy + 46); voice_menu(); mouse_click = 0; );
+  );
+);
+
+function name_keys() local(ch, k, n)
+(
+  name_edit ? (
+    ch = gfx_getchar();
+    while (ch > 0) (
+      ch == 13 ? (
+        n = strlen(#ned);
+        k = 0; loop(10, patch[145 + k] = k < n ? str_getchar(#ned, k) : 32; k += 1; );
+        floor(slider1 + 0.5) == 33 ? ( k = 0; loop(10, userc[6 + floor(slider2 + 0.5) * 128 + 118 + k] = patch[145 + k]; k += 1; ); );
+        name_edit = 0; sliderchange(-1);
+      ) : ch == 27 ? ( name_edit = 0; ) :
+      ch == 8 ? ( strlen(#ned) > 0 ? str_setlen(#ned, strlen(#ned) - 1); ) :
+      (ch >= 32 && ch < 127 && strlen(#ned) < 10) ? ( ch >= 97 && ch <= 122 ? ch -= 32; strcat(#ned, sprintf(#nc, "%c", ch)); );
+      ch = name_edit ? gfx_getchar() : 0;
+    );
+  );
+);
+
+function meters(x, y, w, h) local(QX, QY, QW, f, db)
+(
+  pass == 0 ? (
+    font(1, 9, 'b'); gfx_set(0.62, 0.64, 0.68, 1);
+    gfx_x = sx(x); gfx_y = sy(y - 12); gfx_drawstr("LEVEL");
+  ) : (
+    QX = sx(x); QY = sy(y); QW = w * z;
+    db = meter_peak > 0.000001 ? 20 * log10(meter_peak) : -100;
+    f = clamp01((db + 48) / 48);
+    gfx_set(0, 0, 0, 0.5); gfx_rect(QX - z, QY - z, QW + 2 * z, h * z + 2 * z, 1);
+    gfx_set(0.05, 0.055, 0.06, 1); gfx_rect(QX, QY, QW, h * z, 1);
+    gfx_gradrect(QX, QY, QW * f, h * z, 0.30, 0.85, 0.50, 1, 0.9 / (QW + 1), -0.2 / (QW + 1), -0.35 / (QW + 1), 0);
+    clip_latch ? ( gfx_set(1, 0.28, 0.28, 1); gfx_rect(QX + QW - 5 * z, QY, 5 * z, h * z, 1); );
+    (mouse_click && hit(x, y, w, h)) ? ( clip_latch = 0; mouse_click = 0; );
+  );
+);
+
+function keyboard(x, y, w, h) local(kw, lo, nw, ww, n, kx, pc, isb, bx, bw, bh, hovn, down, vel, QX, QY, QH, oct, wi, col, lit, snd, kg)
+(
+  lo = 36; nw = 36;
+  ww = w / nw; bw = ww * 0.62; bh = h * 0.62;
+  QX = sx(x); QY = sy(y); QH = h * z;
+  pass == 0 ? soft_shadow(x, y, w, h, 3, max(3, floor(5 * z)), 0.12) : (
+    hovn = -1;
+    (mouse_y >= QY && mouse_y < QY + QH && mouse_x >= QX && mouse_x < QX + w * z) ? (
+      n = lo; wi = 0;
+      loop(61,
+        pc = n % 12; isb = pc == 1 || pc == 3 || pc == 6 || pc == 8 || pc == 10;
+        isb ? ( bx = x + wi * ww - bw * 0.5; (mouse_y < QY + bh * z && mouse_x >= sx(bx) && mouse_x < sx(bx + bw)) ? hovn = n; );
+        !isb ? wi += 1;
+        n += 1;
+      );
+      hovn < 0 ? ( wi = floor((mouse_x - QX) / (ww * z)); oct = floor(wi / 7); pc = wi - oct * 7;
+        hovn = lo + oct * 12 + (pc == 0 ? 0 : pc == 1 ? 2 : pc == 2 ? 4 : pc == 3 ? 5 : pc == 4 ? 7 : pc == 5 ? 9 : 11); );
+    );
+    down = mouse_cap & 1;
+    (mouse_click && hovn >= 0) ? ( kb_note = -1; kb_on = 1; mouse_click = 0; );
+    kb_on && !down ? (
+      kb_note >= 0 ? ( gq[gq_w*3] = 128; gq[gq_w*3+1] = kb_note; gq[gq_w*3+2] = 0; gq_w = (gq_w + 1) % 64; );
+      kb_note = -1; kb_on = 0;
+    );
+    (kb_on && down && hovn != kb_note && hovn >= 0 && hovn <= 127) ? (
+      kb_note >= 0 ? ( gq[gq_w*3] = 128; gq[gq_w*3+1] = kb_note; gq[gq_w*3+2] = 0; gq_w = (gq_w + 1) % 64; );
+      vel = floor(40 + 87 * clamp01((mouse_y - QY) / QH));
+      gq[gq_w*3] = 144; gq[gq_w*3+1] = hovn; gq[gq_w*3+2] = vel; gq_w = (gq_w + 1) % 64;
+      kb_note = hovn;
+    );
+    acc(6);
+    n = lo; wi = 0;
+    loop(61,
+      pc = n % 12; isb = pc == 1 || pc == 3 || pc == 6 || pc == 8 || pc == 10;
+      !isb ? (
+        kg = max(1, floor(z));
+        kx = floor(sx(x + wi * ww)) + kg;
+        kw = floor(sx(x + (wi + 1) * ww)) - kx;
+        lit = kdown[n] || kb_note == n;
+        snd = vact[n];
+        lit ? gfx_gradrect(kx, QY, kw, QH, acc_r, acc_g, acc_b, 1, 0, 0, 0, 0, -0.2 / QH, -0.2 / QH, -0.2 / QH, 0) : (
+          col = snd ? 0.80 : 0.90;
+          gfx_gradrect(kx, QY, kw, QH, col * 0.86, col * 0.87, col * 0.9, 1, 0, 0, 0, 0, 0.12 / QH, 0.12 / QH, 0.12 / QH, 0);
+          snd ? ( gfx_set(acc_r, acc_g, acc_b, 0.35); gfx_rect(kx, QY + QH - 5 * z, kw, 5 * z, 1); );
+        );
+        gfx_set(0, 0, 0, 0.18); gfx_rect(kx, QY, kw, 2 * z, 1);
+        pc == 0 ? ( font(1, 8, 'b'); gfx_set(0.35, 0.36, 0.4, 1); sprintf(#kl, "C%d", floor(n / 12) - 1); text_c(#kl, x + wi * ww + ww * 0.5, y + h - 12); );
+        wi += 1;
+      );
+      n += 1;
+    );
+    n = lo; wi = 0;
+    loop(61,
+      pc = n % 12; isb = pc == 1 || pc == 3 || pc == 6 || pc == 8 || pc == 10;
+      isb ? (
+        bx = floor(sx(x + wi * ww - bw * 0.5));
+        lit = kdown[n] || kb_note == n;
+        snd = vact[n];
+        gfx_set(0, 0, 0, 0.35); gfx_rect(bx + z, QY, bw * z, bh * z + 2 * z, 1);
+        lit ? gfx_gradrect(bx, QY, bw * z, bh * z, acc_r * 0.8, acc_g * 0.8, acc_b * 0.8, 1, 0, 0, 0, 0, 0.1 / (bh * z), 0.1 / (bh * z), 0.1 / (bh * z), 0) : (
+          gfx_gradrect(bx, QY, bw * z, bh * z, 0.08, 0.085, 0.095, 1, 0, 0, 0, 0, 0.1 / (bh * z), 0.1 / (bh * z), 0.1 / (bh * z), 0);
+          gfx_set(1, 1, 1, 0.10); gfx_rect(bx + 2 * z, QY + bh * z - 7 * z, bw * z - 4 * z, 5 * z, 1);
+          snd ? ( gfx_set(acc_r, acc_g, acc_b, 0.55); gfx_rect(bx + 2 * z, QY + bh * z - 7 * z, bw * z - 4 * z, 5 * z, 1); );
+        );
+      );
+      !isb ? wi += 1;
+      n += 1;
+    );
+  );
+);
+
+function tab(x, y, w, h, pg, label) local(QX, QY, QW, QH, hov, on, tw, th)
+(
+  pass == 1 ? (
+    QX = sx(x); QY = sy(y); QW = w * z; QH = h * z;
+    on = page == pg; hov = hit(x, y, w, h);
+    acc(0);
+    gfx_set(0, 0, 0, 0.5); gfx_rect(QX - z, QY - z, QW + 2 * z, QH + 2 * z, 1);
+    on ? gfx_gradrect(QX, QY, QW, QH, acc_r * 0.62, acc_g * 0.62, acc_b * 0.62, 1, 0, 0, 0, 0, -0.1 / QH, -0.1 / QH, -0.1 / QH, 0)
+       : gfx_gradrect(QX, QY, QW, QH, 0.15, 0.155, 0.17, 1, 0, 0, 0, 0, -0.04 / QH, -0.04 / QH, -0.04 / QH, 0);
+    hov && !on ? ( gfx_set(1, 1, 1, 0.07); gfx_rect(QX, QY, QW, QH, 1); );
+    font(1, 11, 'b');
+    on ? gfx_set(1, 1, 1, 1) : gfx_set(0.72, 0.73, 0.77, 1);
+    gfx_measurestr(label, tw, th);
+    gfx_x = QX + (QW - tw) * 0.5; gfx_y = QY + (QH - th) * 0.5; gfx_drawstr(label);
+    (mouse_click && hov) ? ( page = pg; bg_dirty = 1; mouse_click = 0; );
+  );
+);
+
+function logo() local(tw, th)
+(
+  pass == 0 ? (
+    font(1, 30, 'b');
+    acc(6);
+    gfx_set(acc_r, acc_g, acc_b, 0.18);
+    gfx_x = sx(18) + z; gfx_y = sy(14) + 2 * z; gfx_drawstr("JEXED");
+    gfx_set(acc_r, acc_g, acc_b, 1);
+    gfx_x = sx(18); gfx_y = sy(14); gfx_drawstr("JEXED");
+    font(1, 11, 0);
+    gfx_set(0.50, 0.52, 0.56, 1);
+    gfx_x = sx(20); gfx_y = sy(50); gfx_drawstr("by chmaha  ·  based on Dexed");
+  );
+);
+
+
+function play_page() local(c, i, n, x, y, cur, hov, QX, QY, tw, th)
+(
+  panel(10, 92, 560, 452, "VOICES", 0);
+  pass == 1 ? (
+    c = floor(slider1 + 0.5); cur = floor(slider2 + 0.5);
+    i = 0;
+    loop(32,
+      x = 22 + floor(i / 8) * 136; y = 124 + (i % 8) * 51;
+      QX = sx(x); QY = sy(y);
+      hov = hit(x, y, 128, 44);
+      acc(0);
+      i == cur ? gfx_gradrect(QX, QY, 128 * z, 44 * z, acc_r * 0.4, acc_g * 0.4, acc_b * 0.4, 1, 0, 0, 0, 0, -0.1 / (44 * z), -0.1 / (44 * z), -0.1 / (44 * z), 0)
+               : ( gfx_set(0.075, 0.08, 0.09, 1); gfx_rect(QX, QY, 128 * z, 44 * z, 1); );
+      hov ? ( gfx_set(1, 1, 1, 0.07); gfx_rect(QX, QY, 128 * z, 44 * z, 1); );
+      font(1, 9, 'b');
+      gfx_set(acc_r, acc_g, acc_b, i == cur ? 1 : 0.6);
+      sprintf(#vn, "%02d", i + 1); text_l(#vn, x + 8, y + 6);
+      font(2, 12.5, 'b');
+      i == cur ? gfx_set(1, 1, 1, 1) : gfx_set(0.85, 0.86, 0.89, 1);
+      voice_name(c, i, #vn); upper(#vn); text_l(#vn, x + 8, y + 21);
+      (mouse_click && hov) ? ( pick_voice(c, i); mouse_click = 0; );
+      i += 1;
+    );
+  );
+
+  panel(580, 92, 370, 196, "PERFORMANCE", 5);
+  knob(616, 150, 16, 3, 1, "OUTPUT", 5);
+  knob(682, 150, 16, 6, 0, "CUTOFF", 5);
+  knob(748, 150, 16, 7, 0, "RESONANCE", 5);
+  knob(814, 150, 16, 9, 1, "TUNE", 5);
+  toggle_btn(854, 136, 82, 22, 8, "MONO", 5);
+  enum_dd(596, 222, 70, 22, 5, "VOICES", 5);
+  enum_dd(676, 222, 70, 22, 4, "MIDI CH", 5);
+  enum_dd(756, 222, 58, 22, 10, "BEND UP", 5);
+  enum_dd(820, 222, 58, 22, 11, "BEND DN", 5);
+  enum_dd(884, 222, 54, 22, 12, "STEP", 5);
+  pass == 1 ? (
+    font(1, 9, 'b');
+    sustain ? ( acc(5); gfx_set(acc_r, acc_g, acc_b, 1); ) : gfx_set(0.3, 0.31, 0.34, 1);
+    text_c("SUSTAIN", 895, 170);
+    gfx_circle(sx(895), sy(188), 3 * z, 1, 1);
+  );
+
+  panel(580, 296, 370, 248, "CONTROLLERS", 3);
+  i = 0;
+  loop(4,
+    y = 344 + i * 48;
+    pass == 0 ? ( font(1, 10, 'b'); gfx_set(0.72, 0.73, 0.77, 1); text_l(i == 0 ? "MOD WHEEL" : i == 1 ? "FOOT" : i == 2 ? "BREATH" : "AFTERTOUCH", 596, y - 6); );
+    knob(710, y, 13, 13 + i * 4, 0, "", 3);
+    toggle_btn(740, y - 10, 62, 20, 14 + i * 4, "PITCH", 3);
+    toggle_btn(808, y - 10, 58, 20, 15 + i * 4, "AMP", 3);
+    toggle_btn(872, y - 10, 66, 20, 16 + i * 4, "EG BIAS", 3);
+    i += 1;
+  );
+  pass == 0 ? ( font(1, 9, 'b'); gfx_set(0.5, 0.52, 0.56, 1); text_c("RANGE", 710, 318); );
+);
+
+function op_card(op, x, y, w, h) local(b, QX, QY, QW, QH, on, hov, lvl, sel, i, sn)
+(
+  b = 35 + (5 - op) * 21;
+  sn = 29 + op;
+  sel = sel_op == op;
+  acc(1);
+  pass == 0 ? (
+    gfx_set(0, 0, 0, 0.5); gfx_rect(sx(x) - z, sy(y) - z, (w + 2) * z, (h + 2) * z, 1);
+  ) : (
+    QX = sx(x); QY = sy(y); QW = w * z; QH = h * z;
+    on = slider(sn) >= 0.5;
+    hov = hit(x, y, w, h);
+    sel ? gfx_gradrect(QX, QY, QW, QH, acc_r * 0.22, acc_g * 0.22, acc_b * 0.22, 1, 0, 0, 0, 0, -0.06 / QH, -0.06 / QH, -0.06 / QH, 0)
+        : ( gfx_set(0.085, 0.09, 0.1, 1); gfx_rect(QX, QY, QW, QH, 1); );
+    sel ? ( gfx_set(acc_r, acc_g, acc_b, 1); gfx_rect(QX, QY, QW, 2 * z, 1); );
+    hov && !sel ? ( gfx_set(1, 1, 1, 0.05); gfx_rect(QX, QY, QW, QH, 1); );
+    font(1, 13, 'b');
+    on ? gfx_set(1, 1, 1, 1) : gfx_set(0.56, 0.58, 0.62, 1);
+    sprintf(#oc, "OP%d", op + 1); text_l(#oc, x + 8, y + 6);
+    font(2, 11, 'b');
+    gfx_set(acc_r, acc_g, acc_b, on ? 1 : 0.4);
+    floor(slider(b + 17) + 0.5) ? strcpy(#of, "") : strcpy(#of, "x ");
+    op_freq(5 - op, #oq); strcat(#of, #oq);
+    text_r(#of, x + w - 8, y + 8);
+    lvl = slider(b + 16) / 99;
+    gfx_set(0.04, 0.045, 0.05, 1); gfx_rect(QX + 8 * z, QY + 28 * z, QW - 16 * z, 4 * z, 1);
+    gfx_set(acc_r, acc_g, acc_b, on ? 0.9 : 0.3); gfx_rect(QX + 8 * z, QY + 28 * z, (QW - 16 * z) * lvl, 4 * z, 1);
+    (mouse_click && hit(x + 4, y + 4, 44, 20)) ? ( tap_sl(sn, on ? 0 : 1); mouse_click = 0; ) :
+    (mouse_click && hov) ? ( sel_op = op; bg_dirty = 1; mouse_click = 0; );
+  );
+);
+
+function ks_graph(x, y, w, h, b) local(QX, QY, QW, QH, bp, ld, rd, lc, rc, i, n, d, gg, px, py, lx, ly, s)
+(
+  screen(x, y, w, h);
+  acc(4);
+  QX = sx(x + 4); QY = sy(y + 4); QW = (w - 8) * z; QH = (h - 8) * z;
+  bp = floor(slider(b + 8) + 0.5) + 21; ld = slider(b + 9); rd = slider(b + 10);
+  lc = floor(slider(b + 11) + 0.5); rc = floor(slider(b + 12) + 0.5);
+  gfx_set(1, 1, 1, 0.12); gfx_line(QX, QY + QH * 0.5, QX + QW, QY + QH * 0.5, 1);
+  px = QX + (bp - 21) / 99 * QW; gfx_line(px, QY, px, QY + QH, 1);
+  gfx_set(acc_r, acc_g, acc_b, 1);
+  i = 0;
+  loop(100,
+    n = 21 + i;
+    d = n < bp ? (bp - n) : (n - bp);
+    s = n < bp ? lc : rc;
+    gg = (s == 1 || s == 2) ? (1 - exp(-d / 20)) : d / 60;
+    gg = min(1, gg) * (n < bp ? ld : rd) / 99 * (s < 2 ? -1 : 1);
+    py = QY + QH * 0.5 - gg * QH * 0.48;
+    px = QX + i / 99 * QW;
+    i > 0 ? gfx_line(lx, ly, px, py, 1);
+    lx = px; ly = py;
+    i += 1;
+  );
+);
+
+function alg_step(d) local(v, n, i) (
+  i = 35 + 134;
+  v = floor(slider(i) + 0.5) - slMin[i];
+  n = slMax[i] - slMin[i] + 1;
+  tap_sl(i, slMin[i] + (v + d + n) % n);
+);
+
+function edit_page() local(b, op, i, x, lab)
+(
+  panel(10, 92, 226, 196, "ALGORITHM", 0);
+  algo_diagram(26, 112, 1.25);
+  arrow(20, 246, 22, 26, -1) ? alg_step(-1);
+  arrow(126, 246, 22, 26, 1) ? alg_step(1);
+  pass == 1 ? (
+    acc(0); font(1, 15, 'b'); gfx_set(1, 1, 1, 1);
+    sprintf(#an, "ALG %d", floor(slider(35 + 134) + 0.5) + 1); text_c(#an, 84, 250);
+    hit(44, 244, 80, 30) && mouse_wheel != 0 ? ( alg_step(mouse_wheel > 0 ? 1 : -1); mouse_wheel = 0; );
+  );
+  knob(194, 256, 12, 35 + 135, 0, "FEEDBACK", 0);
+
+  panel(10, 296, 226, 248, "LFO & GLOBAL", 3);
+  enum_dd(24, 332, 96, 22, 35 + 142, "WAVE", 3);
+  toggle_btn(130, 332, 94, 22, 35 + 141, "KEY SYNC", 3);
+  knob(40, 398, 14, 35 + 137, 0, "SPEED", 3);
+  knob(94, 398, 14, 35 + 138, 0, "DELAY", 3);
+  knob(148, 398, 14, 35 + 139, 0, "PM DEPTH", 3);
+  knob(202, 398, 14, 35 + 140, 0, "AM DEPTH", 3);
+  knob(44, 476, 14, 35 + 143, 0, "PM SENS", 3);
+  knob(110, 476, 14, 35 + 144, 1, "TRANSPOSE", 3);
+  toggle_btn(146, 466, 80, 22, 35 + 136, "OSC SYNC", 3);
+
+  panel(244, 92, 472, 196, "OPERATORS", 1);
+  i = 0;
+  loop(6, op_card(i, 256 + (i % 3) * 152, 120 + floor(i / 3) * 80, 146, 72); i += 1; );
+  pass == 0 ? ( font(1, 9, 'b'); gfx_set(0.5, 0.52, 0.56, 1); text_l("CLICK A CARD TO EDIT IT, ITS NAME TO SWITCH IT", 256, 276); );
+
+  op = sel_op;
+  b = 35 + (5 - op) * 21;
+  sprintf(#pt, "OPERATOR %d", op + 1);
+  panel(244, 296, 472, 248, #pt, 2);
+  dx_env(256, 322, 212, 92, b, b + 4, 2, 5 - op);
+  i = 0;
+  loop(4,
+    sprintf(#kr, "R%d", i + 1); knob(274 + i * 50, 446, 11, b + i, 0, #kr, 2);
+    sprintf(#kr, "L%d", i + 1); knob(274 + i * 50, 506, 11, b + 4 + i, 0, #kr, 2);
+    i += 1;
+  );
+  knob(508, 350, 15, b + 16, 0, "OUTPUT", 1);
+  enum_dd(548, 334, 72, 22, b + 17, "MODE", 1);
+  knob(652, 350, 13, b + 20, 1, "DETUNE", 1);
+  knob(508, 418, 13, b + 18, 0, "COARSE", 1);
+  knob(560, 418, 13, b + 19, 0, "FINE", 1);
+  pass == 0 ? ( screen(598, 406, 106, 26); font(1, 9, 'b'); gfx_set(0.62, 0.64, 0.68, 1); text_l("FREQUENCY", 598, 393); );
+  pass == 1 ? ( acc(1); font(2, 12, 'b'); gfx_set(acc_r, acc_g, acc_b, 1); op_freq(5 - op, #of); text_c(#of, 651, 412); );
+  knob(516, 490, 12, b + 13, 0, "RATE SCALE", 2);
+  knob(588, 490, 12, b + 15, 0, "VELOCITY", 1);
+  knob(660, 490, 12, b + 14, 0, "AMP MOD", 3);
+
+  panel(724, 92, 226, 196, "PITCH ENVELOPE", 4);
+  dx_env(736, 118, 202, 72, 35 + 126, 35 + 130, 4, -1);
+  i = 0;
+  loop(4,
+    sprintf(#kr, "R%d", i + 1); knob(760 + i * 50, 220, 11, 35 + 126 + i, 0, #kr, 4);
+    sprintf(#kr, "L%d", i + 1); knob(760 + i * 50, 266, 11, 35 + 130 + i, 1, #kr, 4);
+    i += 1;
+  );
+
+  panel(724, 296, 226, 248, "KEY SCALING", 4);
+  knob(770, 350, 14, b + 9, 0, "L DEPTH", 4);
+  knob(837, 350, 14, b + 8, 0, "BREAK PT", 4);
+  knob(904, 350, 14, b + 10, 0, "R DEPTH", 4);
+  enum_dd(740, 406, 64, 22, b + 11, "L CURVE", 4);
+  enum_dd(872, 406, 64, 22, b + 12, "R CURVE", 4);
+  pass == 1 ? ks_graph(740, 440, 196, 92, b);
+);
+
+function layout()
+(
+  logo();
+  lcd(210, 10, 400, 72);
+  tab(624, 14, 78, 26, 0, "PLAY");
+  tab(706, 14, 78, 26, 1, "EDIT");
+  user_cart = floor(slider1 + 0.5) == 33;
+  !user_cart ? name_edit = 0;
+  btn_en(624, 50, 78, 24, "STORE", 0, 0, user_cart) ? store_menu();
+  btn_en(706, 50, 78, 24, "INIT", 0, 0, user_cart) ? init_req = 1;
+  btn_en(870, 50, 78, 24, "NAME", name_edit, 0, user_cart) ? ( name_edit = !name_edit; name_edit ? patch_name(#ned); );
+  meters(798, 26, 150, 12);
+  page == 0 ? play_page() : edit_page();
+  keyboard(10, 552, 940, 80);
+);
+
+
+mouse_down = mouse_cap & 1;
+mouse_click = mouse_down && !mouse_prev;
+!mouse_down ? ( drag_n >= 0 ? end_sl(drag_n); drag_n = -1; );
+!gfx_inited ? (
+  drag_n = -1; last_click_n = -1; touched_n = 0; touched_t = -10; sel_op = 0; page = 0; gfx_inited = 1;
+  slMin = 6500000; slMax = 6500300; slStep = 6500600; slDef = 6500900; alg_t = 6501200;
+  mem_set_values(slMin+1, 0,0,-24,0,0,0,0,0,-100,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+    0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+    0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+    0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+    0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+    0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0);
+  mem_set_values(slMax+1, 33,31,12,16,8,1,1,1,100,48,48,12,99,1,1,1,99,1,1,1,99,1,1,1,99,1,1,1,1,1,
+    1,1,1,1,99,99,99,99,99,99,99,99,99,99,99,3,3,7,3,7,99,1,31,99,14,99,99,99,99,99,
+    99,99,99,99,99,99,3,3,7,3,7,99,1,31,99,14,99,99,99,99,99,99,99,99,99,99,99,3,3,7,
+    3,7,99,1,31,99,14,99,99,99,99,99,99,99,99,99,99,99,3,3,7,3,7,99,1,31,99,14,99,99,
+    99,99,99,99,99,99,99,99,99,3,3,7,3,7,99,1,31,99,14,99,99,99,99,99,99,99,99,99,99,99,
+    3,3,7,3,7,99,1,31,99,14,99,99,99,99,99,99,99,99,31,7,1,99,99,99,99,1,5,7,48);
+  mem_set_values(slStep+1, 1,1,.1,1,1,.001,.001,1,.1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,
+    1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,
+    1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,
+    1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,
+    1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,
+    1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1);
+  mem_set_values(slDef+1, 0,0,0,0,4,1,0,0,0,3,3,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,
+    1,1,1,1,7,64,45,99,45,99,0,0,0,0,0,0,0,0,0,0,99,0,0,0,7,10,64,49,99,46,
+    99,0,0,0,0,0,0,0,0,0,0,99,0,2,0,7,13,64,49,99,46,99,0,0,0,0,0,0,0,0,
+    0,0,99,0,0,0,7,15,64,49,99,44,99,0,0,0,0,0,0,0,0,0,0,99,0,2,0,7,25,64,
+    49,99,50,99,0,0,0,0,0,0,0,0,0,0,99,0,0,0,7,70,40,49,99,99,92,0,0,0,0,0,
+    0,0,0,0,0,99,0,1,0,7,99,99,99,99,50,50,50,50,31,7,1,35,0,0,0,1,0,3,24);
+  mem_set_values(alg_t, 6,3,0,0,1,5,3,1,0,0,4,3,2,0,0,3,3,3,2,0,2,2,2,0,0,1,2,3,1,0,
+    6,3,0,0,0,5,3,1,0,0,4,3,2,0,0,3,3,3,2,0,2,2,2,0,1,1,2,3,1,0,
+    6,3,1,0,1,5,3,2,0,0,4,3,3,2,0,3,2,1,0,0,2,2,2,0,0,1,2,3,1,0,
+    6,3,1,0,2,5,3,2,0,0,4,3,3,2,0,3,2,1,0,0,2,2,2,0,0,1,2,3,1,0,
+    6,4,2,0,1,5,4,3,2,0,4,3,2,0,0,3,3,3,1,0,2,2,2,0,0,1,2,3,1,0,
+    6,4,2,0,3,5,4,3,2,0,4,3,2,0,0,3,3,3,1,0,2,2,2,0,0,1,2,3,1,0,
+    6,4,1,0,1,5,4,2,7,0,4,3,2,0,0,3,3,3,2,0,2,2,2,0,0,1,2,3,1,0,
+    6,4,1,0,0,5,4,2,7,0,4,3,2,0,4,3,3,3,2,0,2,2,2,0,0,1,2,3,1,0,
+    6,4,1,0,0,5,4,2,7,0,4,3,2,0,0,3,3,3,2,0,2,2,2,0,1,1,2,3,1,0,
+    6,2,2,0,0,5,1,2,1,0,4,2,3,1,0,3,3,1,0,1,2,3,2,0,0,1,3,3,2,0,
+    6,2,2,0,1,5,1,2,1,0,4,2,3,1,0,3,3,1,0,0,2,3,2,0,0,1,3,3,2,0,
+    6,3,2,7,0,5,2,2,0,0,4,1,2,1,0,3,2,3,6,0,2,4,2,0,1,1,4,3,2,0,
+    6,3,2,7,1,5,2,2,0,0,4,1,2,1,0,3,2,3,6,0,2,4,2,0,0,1,4,3,2,0,
+    6,4,1,7,1,5,3,1,0,0,4,3,2,0,0,3,3,3,2,0,2,2,2,0,0,1,2,3,1,0,
+    6,4,1,7,0,5,3,1,0,0,4,3,2,0,0,3,3,3,2,0,2,2,2,0,4,1,2,3,1,0,
+    6,4,1,0,1,5,4,2,7,0,4,3,1,0,0,3,3,2,0,0,2,2,2,1,0,1,3,3,0,0,
+    6,4,1,0,0,5,4,2,7,0,4,3,1,0,0,3,3,2,0,0,2,2,2,1,4,1,3,3,0,0,
+    6,4,0,0,0,5,4,1,0,0,4,4,2,7,0,3,3,2,0,4,2,2,2,1,0,1,3,3,0,0,
+    6,3,2,3,1,5,4,3,2,0,4,3,3,1,0,3,2,1,0,0,2,2,2,0,0,1,2,3,1,0,
+    6,4,2,0,0,5,3,2,1,0,4,4,3,2,0,3,1,2,3,1,2,2,3,6,0,1,1,3,1,0,
+    6,3,2,3,0,5,4,3,2,0,4,3,3,1,0,3,1,2,3,1,2,2,3,1,0,1,1,3,1,0,
+    6,3,2,4,1,5,4,3,2,0,4,3,3,1,0,3,2,3,1,0,2,1,2,0,0,1,1,3,1,0,
+    6,3,2,3,1,5,4,3,2,0,4,3,3,1,0,3,2,2,0,0,2,2,3,1,0,1,1,3,1,0,
+    6,3,2,4,1,5,4,3,2,0,4,3,3,1,0,3,2,3,1,0,2,1,3,1,0,1,0,3,1,0,
+    6,3,2,3,1,5,4,3,2,0,4,3,3,1,0,3,2,3,1,0,2,1,3,1,0,1,0,3,1,0,
+    6,4,2,0,1,5,3,2,1,0,4,4,3,2,0,3,2,2,0,0,2,2,3,6,0,1,1,3,1,0,
+    6,4,2,0,0,5,3,2,1,0,4,4,3,2,0,3,2,2,0,1,2,2,3,6,0,1,1,3,1,0,
+    6,4,3,2,0,5,3,1,0,1,4,3,2,0,0,3,3,3,1,0,2,2,2,0,0,1,2,3,1,0,
+    6,4,2,0,1,5,4,3,2,0,4,3,2,0,0,3,3,3,1,0,2,2,3,1,0,1,1,3,1,0,
+    6,4,3,2,0,5,3,1,0,1,4,3,2,0,0,3,3,3,1,0,2,2,3,1,0,1,1,3,1,0,
+    6,4,2,0,1,5,4,3,2,0,4,3,3,1,0,3,2,3,1,0,2,1,3,1,0,1,0,3,1,0,
+    6,5,3,2,1,5,4,3,1,0,4,3,3,1,0,3,2,3,1,0,2,1,3,1,0,1,0,3,1,0);
+);
+name_keys();
+
+(gfx_w != bg_w || gfx_h != bg_h || bg_dirty) ? (
+  gfx_setimgdim(1, gfx_w, gfx_h);
+  gfx_dest = 1;
+  gfx_set(0.075, 0.078, 0.088, 1);
+  gfx_rect(0, 0, gfx_w, gfx_h, 1);
+  gfx_gradrect(0, 0, gfx_w, gfx_h, 0.11, 0.115, 0.13, 1, 0, 0, 0, 0, -0.05 / gfx_h, -0.05 / gfx_h, -0.05 / gfx_h, 0);
+  i_ = 0;
+  loop(floor(gfx_h / max(2, 2 * z)),
+    gfx_set(1, 1, 1, 0.008 + 0.006 * sin(i_ * 1.7) * sin(i_ * 0.31));
+    gfx_line(0, i_ * max(2, 2 * z), gfx_w, i_ * max(2, 2 * z), 0);
+    i_ += 1;
+  );
+  pass = 0;
+  layout();
+  gfx_dest = -1;
+  bg_w = gfx_w; bg_h = gfx_h; bg_dirty = 0;
+);
+gfx_x = gfx_y = 0;
+gfx_blit(1, 1, 0);
+
+pass = 1;
+hov_n = -1; tip_on = 0;
+layout();
+tip_on ? ( acc(0); tip_below(tip_x, tip_y, "Switch to the User cartridge to store, init or rename voices"); );
+hov_n > 0 ? ( acc(hov_c); sl_name(hov_n, #tn); fmt_sl(hov_n, #tv); sprintf(#tt, "%s  %s", #tn, #tv); tooltip(hov_x, hov_y, #tt); );
+
+mouse_wheel = 0;
+mouse_prev = mouse_down;
