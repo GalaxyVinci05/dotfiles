@@ -10,6 +10,7 @@
 -- require("myColors")
 
 pcall(require, "nvidia_flags")
+pcall(require, "hotkeys")
 
 ---------------------
 ---- MY PROGRAMS ----
